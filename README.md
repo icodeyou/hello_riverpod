@@ -25,13 +25,32 @@ flutter pub get
 
 ## Output
 ```
-├── xxxxxxx
-│   └── xxxxxx.dart
-├── xxxxxxx
-│   └── xxxxxxxx.dart
-├── xxxxxxxxx
-│   ├── xxxxxxxxxxxx.dart
-│   └── x.dart
-└── xxxxxxxxxx
-    └── xxxxxxxxxx.dart
+lib/
+├── data/
+│   ├── data_module.dart
+│   ├── entity/
+│   ├── mapper/
+│   ├── repository/
+│   └── service/   (API, local database..)
+├── domain/
+│   ├── domain_module.dart
+│   ├── model/
+│   ├── repository/
+│   └── usecase/
+├── domain/
+│   ├── domain_module.dart
+│   ├── model/
+│   ├── repository/
+│   └── usecase/
+└── presentation/
+    ├── controller/
+    ├── states/
+    ├── ui/
+    │   ├── constants/
+    │   ├── pages/
+    │   ├── routing/
+    │   ├── styles/
+    │   ├── utils/
+    │   └── widgets/
+    └── main.dart
 ```

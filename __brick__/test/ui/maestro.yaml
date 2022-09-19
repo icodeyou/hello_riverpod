@@ -1,0 +1,6 @@
+appId: com.icodeyou.herecomesthesun.herecomesthesun
+---
+- launchApp
+- tapOn: "Hello"
+- assertVisible:
+    text: .*Hel.*
