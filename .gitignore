@@ -6,3 +6,6 @@
 *.ipr
 *.iws
 .idea/
+
+# Test folder
+/brick_testing/test_project/
