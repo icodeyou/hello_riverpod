@@ -16,8 +16,9 @@ flutter create my_app
 mkdir mason
 cd mason
 mason init
-mason add hello_provider
-mason make hello_provider --on-conflict overwrite -o ../
+mason add hello_riverpod
+mason make hello_riverpod --on-conflict overwrite -o ../
+cd ..
 flutter pub add flutter_riverpod go_router freezed freezed_annotation build_runner http mocktail intl test
 flutter pub add json_serializable --dev
 flutter pub get
