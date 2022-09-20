@@ -13,6 +13,7 @@ Installed version of [Mason](https://pub.dev/packages/mason)
 To create a new project using hello_provider, run the following commands :
 ```
 flutter create my_app
+cd my_app
 mkdir mason
 cd mason
 mason init

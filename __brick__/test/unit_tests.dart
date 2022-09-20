@@ -1,12 +1,12 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:herecomesthesun/data/repository/weather_repository_impl.dart';
-import 'package:herecomesthesun/data/service/weather_api.dart';
-import 'package:herecomesthesun/domain/model/city.dart';
-import 'package:herecomesthesun/domain/model/day.dart';
-import 'package:herecomesthesun/domain/model/weather.dart';
-import 'package:herecomesthesun/domain/repository/weather_repository.dart';
-import 'package:herecomesthesun/domain/usecase/get_current_weather_use_case.dart';
-import 'package:herecomesthesun/domain/usecase/get_forecast_use_case.dart';
+import '../lib/data/repository/weather_repository_impl.dart';
+import '../lib/data/service/weather_api.dart';
+import '../lib/domain/model/city.dart';
+import '../lib/domain/model/day.dart';
+import '../lib/domain/model/weather.dart';
+import '../lib/domain/repository/weather_repository.dart';
+import '../lib/domain/usecase/get_current_weather_use_case.dart';
+import '../lib/domain/usecase/get_forecast_use_case.dart';
 import 'package:http/http.dart';
 import 'package:mocktail/mocktail.dart';
 
