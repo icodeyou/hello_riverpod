@@ -133,7 +133,7 @@ Feature is finished :
 
 **All commits should be formatted like this :**
 
-`git commit "Name of feature - description of last task"`
+`git commit "Name of feature : description of last task"`
 
 | Préfixe   | Description                                 |
 |-----------|---------------------------------------------|
@@ -144,7 +144,7 @@ Feature is finished :
 | [refacto] | refactoring code                            |
 | [doc]     | code documentation                          |
 
-*Ex of commit message :* **Counter Screen - [wip] add top right button**
+*Ex of commit message :* **Counter Screen : [wip] add top right button**
 
 ## Versioning with tags
 
