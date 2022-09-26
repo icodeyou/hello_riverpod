@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hello_riverpod/presentation/ui/styles/app_colors.dart';
 
 import '../constants/strings.dart';
-import '../styles/ui_constants.dart';
+import '../constants/ui.dart';
 import 'widget_main_button.dart';
 
 class ErrorDetailsWidget extends StatelessWidget {

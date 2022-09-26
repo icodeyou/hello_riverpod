@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'presentation/ui/constants/strings.dart';
+import 'presentation/ui/constants/ui.dart';
 import 'presentation/ui/routing/app_routes.dart';
 import 'presentation/ui/styles/app_colors.dart';
-import 'presentation/ui/styles/ui_constants.dart';
 
 void main() {
   runApp(const ProviderScope(child: MyApp()));
