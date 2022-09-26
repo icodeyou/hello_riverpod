@@ -1,7 +1,6 @@
 class UI {
   // Margins, heights and widths
   static const double defaultPadding = 15;
-  static const double boxPadding = 30;
   static const double boxCornerRadius = 5;
   static const double buttonCornerRadius = 10;
 

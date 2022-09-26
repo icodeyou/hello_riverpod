@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:hello_riverpod/presentation/ui/styles/app_colors.dart';
 
 import '../constants/strings.dart';
-import '../styles/constants.dart';
+import '../styles/ui_constants.dart';
 import 'widget_main_button.dart';
 
 class ErrorDetailsWidget extends StatelessWidget {
@@ -22,7 +23,7 @@ class ErrorDetailsWidget extends StatelessWidget {
               const Text(Strings.errorDefault),
               Text(
                 errorDebugMessage,
-                style: const TextStyle(color: Colors.red),
+                style: const TextStyle(color: AppColors.error),
               ),
               const SizedBox(height: UI.defaultPadding),
               if (retryCallback != null)

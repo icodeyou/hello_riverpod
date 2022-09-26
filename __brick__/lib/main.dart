@@ -3,8 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'presentation/ui/constants/strings.dart';
 import 'presentation/ui/routing/app_routes.dart';
-import 'presentation/ui/styles/colors.dart';
-import 'presentation/ui/styles/constants.dart';
+import 'presentation/ui/styles/app_colors.dart';
+import 'presentation/ui/styles/ui_constants.dart';
 
 void main() {
   runApp(const ProviderScope(child: MyApp()));
@@ -15,15 +15,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // TODO Write test
-    /*
-    // Test
-    unawaited(() async {
-      print(await WeatherApi.getWeather(const City(
-          name: 'London', Country: 'UK', latitude: 45.50, longitude: 73.57)));
-    }.call())
-    ;*/
-
     return MaterialApp.router(
       routeInformationProvider: AppRoutes.router.routeInformationProvider,
       routeInformationParser: AppRoutes.router.routeInformationParser,
@@ -31,17 +22,17 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: Strings.appName,
       theme: ThemeData(
-        scaffoldBackgroundColor: MyColors.background,
+        scaffoldBackgroundColor: AppColors.background,
         elevatedButtonTheme: ElevatedButtonThemeData(
             style: ElevatedButton.styleFrom(
                 textStyle: const TextStyle(
                     fontSize: UI.textS, fontWeight: FontWeight.w500),
-                backgroundColor: MyColors.accent,
+                backgroundColor: AppColors.accent,
                 shape: RoundedRectangleBorder(
                     borderRadius:
                         BorderRadius.circular(UI.buttonCornerRadius)))),
         colorScheme: ColorScheme.fromSwatch()
-            .copyWith(primary: MyColors.primary, secondary: MyColors.accent),
+            .copyWith(primary: AppColors.primary, secondary: AppColors.accent),
       ),
     );
   }

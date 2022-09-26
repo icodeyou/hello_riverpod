@@ -1,22 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import '../pages/change_city_page.dart';
-import '../pages/home_weather.dart';
+import '../pages/home_page.dart';
+import '../pages/say_hello_page.dart';
 
 class AppRoutes {
-  static const String routeCity = '/city';
+  static const String routeHome = '/';
+  static const String routeSayHello = '/sayHello';
 
   static final GoRouter router = GoRouter(routes: [
     GoRoute(
-        path: '/',
+        path: routeHome,
         builder: (BuildContext context, GoRouterState state) {
-          return const WeatherPage();
+          return const HomePage();
         }),
     GoRoute(
-        path: '/city',
+        path: routeSayHello,
         builder: (BuildContext context, GoRouterState state) {
-          return const ChangeCityPage();
+          return const SayHelloPage();
         }),
   ]);
 }
