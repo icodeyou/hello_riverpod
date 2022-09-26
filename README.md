@@ -23,6 +23,7 @@ cd ..
 flutter pub add flutter_riverpod go_router freezed freezed_annotation build_runner http mocktail intl test
 flutter pub add json_serializable --dev
 flutter pub get
+flutter pub run build_runner build --delete-conflicting-outputs
 ```
 
 ## Output
