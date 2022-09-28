@@ -1,7 +1,7 @@
 name: hello_riverpod
-description: The starter project for Flutter, based on Clean Architecture, riverpod, go_router. The example provides Mocktail tests.
+description: Hello World Project for Flutter, based on Clean Architecture, Riverpod, Go_router. The starter provides Mocktail tests.
 repository: https://github.com/icodeyou/hello_riverpod
-version: 0.1.0+1
+version: 0.1.1+2
 
 environment:
   mason: ">=0.1.0-dev.26 <0.1.0"
