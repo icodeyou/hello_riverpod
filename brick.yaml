@@ -1,14 +1,10 @@
 name: hello_riverpod
-description: A complete starter project for Flutter apps, with examples of navigation, requests and tests. The app uses riverpod, go_router, (hive), mockito, and follows the guidelines of Clean Architecture.
-
+description: The starter project for Flutter, based on Clean Architecture, riverpod, go_router. The example provides Mocktail tests.
+repository: https://github.com/icodeyou/hello_riverpod
 version: 0.1.0+1
 
 environment:
   mason: ">=0.1.0-dev.26 <0.1.0"
 
 vars:
-  name:
-    type: string
-    description: .
-    default: .
-    prompt: First question ?
+  
