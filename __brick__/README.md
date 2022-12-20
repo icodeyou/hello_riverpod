@@ -1,43 +1,20 @@
-# Here Comes The Sun
+# FlutterApp
 
-Here Comes The Sun is a mobile application to provide the weather during the tour of The Beatles !
+FlutterApp has been built with Mason, using the brick hello_riverpod.
 
 ## Prerequisites
-Here Comes The Sun runs on following devices :
-- Android >= API 19
+FlutterApp runs on following devices :
+- Android >= API 21
 - iOS >= iOS 10.12
 
 # Getting started
 ## Running the project
 
 ### Run from Terminal
-To compile the project, run the following commands :
-
-`flutter pub run build_runner build --delete-conflicting-outputs`
-
-`flutter run`
+To compile the project, run the command `flutter run`
 
 If you need to specify the device, run the last command with the argument :
 `-d {DEVICE_ID}`
-
-## Run the tests
-
-### Unit tests
-
-The Unit tests are written in the file `test/unit_tests.dart`
-
-They can be launch with : 
-
-`flutter test test/unit_tests.dart`
-
-### UI and Integration tests
-
-We consider Maestro covers both UI and Integration tests.
-Here is the documentation to install Maestro :
-https://maestro.mobile.dev/getting-started/installing-maestro
-
-To run the test, use the command :
-`maestro test test/ui/maestro.yaml`
 
 ## Deliveries
 ### Android
@@ -49,14 +26,6 @@ Make sure to prepare your files `ExportOptions.plist` in the iOS folder.
 Then, run the following command :
 
 `flutter build ipa --export-options-plist=ios/ExportOptions.plist`
-
-### Web
-The first time, run the script : `scripts/create-web-repository.sh`
-Then, go the Github repository -> Settings -> Github Pages
-And link the project to your domain name if you have one.
-
-For the next deliveries, you can just run the script : `scripts/deploy-web.sh`
-
 
 # Architecture
 ## App diagram
