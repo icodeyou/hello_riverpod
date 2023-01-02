@@ -25,35 +25,3 @@ flutter pub add json_serializable --dev
 flutter pub get
 flutter pub run build_runner build --delete-conflicting-outputs
 ```
-
-## Output
-```
-lib/
-├── data/
-│   ├── data_module.dart
-│   ├── entity/
-│   ├── mapper/
-│   ├── repository/
-│   └── service/   (API, local database..)
-├── domain/
-│   ├── domain_module.dart
-│   ├── model/
-│   ├── repository/
-│   └── usecase/
-├── domain/
-│   ├── domain_module.dart
-│   ├── model/
-│   ├── repository/
-│   └── usecase/
-└── presentation/
-    ├── controller/
-    ├── states/
-    ├── ui/
-    │   ├── constants/
-    │   ├── pages/
-    │   ├── routing/
-    │   ├── styles/
-    │   ├── utils/
-    │   └── widgets/
-    └── main.dart
-```
