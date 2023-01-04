@@ -26,15 +26,12 @@ git tag $newVersion -m "Feature : $1"
 
 # Push ?
 echo ""
-echo "Here are the changes :"
+echo "Here are the changes from the last commit :"
 git --no-pager diff HEAD~
 echo ""
+echo "⏳ Publishing those changes on Mason :"
+mason publish
+git push
+git push --tags origin
 echo ""
-echo "Do you want to push and publish ? [Y/N]"
-read answerPush
-if [[ $answerPush == 'Y' ]]
-then
-	mason publish
-	git push
-	git push --tags origin
-fi
+echo "✅  Finished"
