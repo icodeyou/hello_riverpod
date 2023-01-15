@@ -14,6 +14,7 @@ To create a new project using hello_provider, run the following commands :
 ```
 flutter create my_app
 cd my_app
+rm -f test/widget_test.dart
 mkdir mason
 cd mason
 mason init
