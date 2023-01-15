@@ -13,14 +13,25 @@ FlutterApp runs on following devices :
 ### Run from Terminal
 To compile the project, run the following command :
 ```
-flutter run
+flutter run --flavor {FLAVOR} -t main_{FLAVOR}.dart
 ```
 
-If you need to specify the device, run the last command with the argument :
+💡 Replace {FLAVOR} by the one of the following flavors :
+- development
+- staging
+- production
+
+Example :
+```
+flutter run --flavor development -t main_development.dart
+```
+
+If you need to specify the device, add the argument :
 `-d {DEVICE_ID}`
 
-If this is the first time you run the project, or if you edited some files annotated with @freezed,
-you might want to run this command before :
+💡 Replace {DEVICE_ID} by the ID of your target device. You can find it by running the command `flutter devices`
+
+If this is the first time you run the project, or if you edited some files annotated with @freezed, you might want to run this command before running the project :
 `flutter pub run build_runner build --delete-conflicting-outputs`
 
 ## Deliveries
