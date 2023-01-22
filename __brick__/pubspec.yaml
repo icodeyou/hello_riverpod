@@ -1,5 +1,5 @@
 name: {{projectName}}
-description: A Very Good Project created by Very Good CLI.
+description: A project created by Very Good CLI and hello_riverpod
 version: 1.0.0+1
 
 # Prevent accidental publishing to pub.dev.
