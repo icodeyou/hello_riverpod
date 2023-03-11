@@ -1,0 +1,9 @@
+{
+    "cSpell.diagnosticLevel": "Hint",
+    "workbench.colorCustomizations": {
+        "titleBar.activeBackground": "#0ebed8",
+        "titleBar.activeForeground": "#093a65",
+        "titleBar.inactiveBackground": "#0ebed8",
+        "titleBar.inactiveForeground": "#093a65",
+    },
+}
