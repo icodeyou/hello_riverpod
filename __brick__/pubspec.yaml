@@ -1,4 +1,4 @@
-name: {{projectName}}
+name: { { projectName } }
 description: A project created by Very Good CLI and hello_riverpod
 version: 1.0.0+1
 
@@ -21,6 +21,10 @@ dependencies:
   http: ^0.13.5
   intl: ^0.17.0
   mocktail: ^0.3.0
+  snowflake_flutter_theme:
+    git:
+      url: https://github.com/icodeyou/snowflake_flutter_theme
+      ref: "master"
   test: ^1.22.0
 
 dev_dependencies:
