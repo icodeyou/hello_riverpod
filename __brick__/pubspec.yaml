@@ -1,4 +1,4 @@
-name: { { projectName } }
+name: {{projectName}}
 description: A project created by Very Good CLI and hello_riverpod
 version: 1.0.0+1
 
