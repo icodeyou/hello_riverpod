@@ -74,23 +74,50 @@ Here is a diagram that shows how providers and states are organized in the proje
 
 ### Directory Tree
 
-```text
-lib
----/app/
- ---/routing
-        ---/app_routes.dart
-    ---/app.dart
----/modules/
- ---/moduleX/
-    ---/moduleY/
----/shared/
- ---/helpers
-  ---/extensions.dart
-  ---/print.dart
- ---/riverpod
-     ---/app_state.dart
----/main.dart
+The architecture is mainly feature-first, with the exception of the data layer.
 
+```text
+---/assets/
+---/lib/
+    ---/app/
+        ---/app.dart
+        ---/routing/
+    ---/data/
+        ---/models/
+            ---/model1.dart
+            ---/model2.dart
+        ---/repository/    
+    ---/i18n/
+        ---/main_fr.i18n.yaml
+        ---/main.i18n.yaml
+    ---/features/
+        ---/feature1/
+            ---/providers/
+                ---/xxx_provider.dart
+            ---/views/
+                ---/feature1_screen.dart
+                ---/widget1.dart
+                ---/widget2.dart
+        ---/feature2/
+            ---/constants.dart
+            ---/helpers/
+            ---/providers/
+            ---/services/
+            ---/views/
+    ---/shared/
+        ---/constants.dart
+        ---/helpers/
+            ---/extensions/
+                ---/string_extensions.dart
+                ---/xxx_extensions.dart
+        ---/providers/
+            xxx_provider.dart
+        ---/views/
+        ---/services/
+            ---/log.dart
+            ---/camera_service.dart    
+    ---/main.dart
+    ---/xxx_module.dart
 ```
 
 ### Clean Architecture
@@ -98,12 +125,11 @@ lib
 We rely as much as possible on the Clean Architecture.
 It is important to distinct the following layers in the code :
 
-- Database provider
 - Entities
+- Database provider
 - Repository
+- Business logic
 - UI
-
-![Application layers](assets/readme/application_layers.png)
 
 ## Git Workflow
 
