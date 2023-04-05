@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../modules/hello/views/hello_view.dart';
+import '../../features/hello/views/hello_view.dart';
 
 class AppRoutes {
   static const String routeHome = '/';
