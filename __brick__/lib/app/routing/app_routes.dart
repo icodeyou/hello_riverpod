@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../features/hello/views/hello_view.dart';
+import '../../features/hello/views/home_view.dart';
 
 class AppRoutes {
   static const String routeHome = '/';
@@ -10,7 +10,7 @@ class AppRoutes {
     GoRoute(
         path: routeHome,
         builder: (BuildContext context, GoRouterState state) {
-          return const HelloView();
+          return const HomeView();
         }),
   ]);
 }
