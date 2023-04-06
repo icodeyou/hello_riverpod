@@ -4,12 +4,12 @@ SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 cd $SCRIPTPATH
 
 genType=$1
-if [[ $genType != "local" ]] && [[ $genType != "mason" ]] && [[ $genType != "helloworld" ]] 
+if [[ $genType != "snowball" ]] && [[ $genType != "mason" ]] && [[ $genType != "helloworld" ]] 
   then
     echo ""
     echo "ERROR"
     echo "Please type the following command : './gen.sh <ARGUMENT>'"
-    echo "<ARGUMENT> can be : local, mason, helloworld"
+    echo "<ARGUMENT> can be : snowball, mason, helloworld"
     echo ""
     exit
 fi
@@ -61,13 +61,13 @@ echo ""
 echo "Navigate to the folder where the project will be created"
 echo "📂 From $PWD"
 case "$genType" in
-"local")
-    rm -rf LOCAL_SNOWBALL/; mkdir LOCAL_SNOWBALL/ # Safest way to clear LOCAL_SNOWBALL/ including empty files
-    cd LOCAL_SNOWBALL/
+"snowball")
+    rm -rf SNOWBALL/; mkdir SNOWBALL/ # Safest way to clear SNOWBALL/ including empty files
+    cd SNOWBALL/
     ;;
 "mason")
-    rm -rf MASON_SNOWBALL/; mkdir MASON_SNOWBALL/ # Safest way to clear MASON_SNOWBALL/ including empty files
-    cd MASON_SNOWBALL/
+    rm -rf MASON/; mkdir MASON/ # Safest way to clear MASON/ including empty files
+    cd MASON/
     ;;
 "helloworld")
     cd HELLOWORLDS/
@@ -114,19 +114,19 @@ fi
 # Navigate inside new project
 echo ""
 case "$genType" in
-"local")
-    echo "Move app to LOCAL_SNOWBALL/"
+"snowball")
+    echo "Move app to SNOWBALL/"
     mv $nameLowercase ../ # Move app to hello_riverpod
     cd ..
-    rm -rf LOCAL_SNOWBALL/ # Delete empty LOCAL_SNOWBALL
-    mv $nameLowercase LOCAL_SNOWBALL # Rename app to LOCAL_SNOWBALL
+    rm -rf SNOWBALL/ # Delete empty SNOWBALL
+    mv $nameLowercase SNOWBALL # Rename app to SNOWBALL
     ;;
 "mason")
-    echo "Move app to MASON_SNOWBALL/"
+    echo "Move app to MASON/"
     mv $nameLowercase ../ # Move app to hello_riverpod
     cd ..
-    rm -rf MASON_SNOWBALL/ # Delete empty LOCAL_SNOWBALL
-    mv $nameLowercase MASON_SNOWBALL # Rename app to MASON_SNOWBALL
+    rm -rf MASON/ # Delete empty SNOWBALL
+    mv $nameLowercase MASON # Rename app to MASON
     ;;
 "helloworld")
     echo "Navigate inside new project"
@@ -202,8 +202,8 @@ mason init
 echo ""
 echo "🔥 Mason add brick"
 case "$genType" in
-"local")
-    mason add hello_riverpod --path ../
+"snowball")
+    mason add hello_riverpod --git-url https://github.com/icodeyou/hello_riverpod.git  --git-ref snowball
     ;;
 "mason")
     mason add hello_riverpod
