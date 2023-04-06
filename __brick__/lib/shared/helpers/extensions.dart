@@ -1,5 +1,3 @@
-import 'dart:math';
-
 extension CapExtension on String {
   String get capitalize {
     if (isEmpty) {
@@ -15,4 +13,3 @@ extension CapExtension on String {
     return split(' ').map((String str) => str.capitalize).join(' ');
   }
 }
-
