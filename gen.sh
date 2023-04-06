@@ -49,12 +49,15 @@ echo "To $PWD"
     echo "🔥 Creating project '$nameLowercase' with bundle ID '$org.app' 🔥"
     echo ""
     very_good create flutter_app $nameLowercase --org-name $org --application-id $bundleId
-    cd $nameLowercase #Navigating to new project
+    
+    # Navigating inside new project (only for this temporary environment)
+    cd $nameLowercase
+    
     echo ""
     echo "ℹ️ Cleaning very good project"
     rm -f pubspec.lock
     rm -rf lib/counter
-    rm -rf lib/app/app.dart
+    rm -rf lib/app/view/
     rm -rf test/**
     echo ""
     echo "⚠️ Removing folders web/ linux/ windows/ macos/"
