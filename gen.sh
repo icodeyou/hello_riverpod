@@ -242,7 +242,7 @@ case "$genType" in
     mason add hello_riverpod
     ;;
 "snowball")
-    mason add hello_riverpod --path ../../__brick__/
+    mason add hello_riverpod --path ../../
     ;;
 "master")
     mason add hello_riverpod --git-url https://github.com/icodeyou/hello_riverpod.git  --git-ref master
