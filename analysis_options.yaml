@@ -1,0 +1,4 @@
+analyzer:
+  exclude:
+    - "**/*.yaml"
+    - "**/*.reflectable.dart"
