@@ -31,16 +31,19 @@ nameUppercaseNoSpace=$(echo "$nameUppercase" | tr -d ' ')
 nameLowercase=$(echo "$nameUppercase" | awk '{print tolower($0)}' | tr -d ' ')
 
 # Check if HELLOWORLDS folder exists in this path
-if ! [ -d "HELLOWORLDS" ]; then
-  mkdir HELLOWORLDS
-  else 
-    # Check if project already exists in HELLOWORLDS/
-    if [ -d "HELLOWORLDS/$nameLowercase" ]; then
-      echo "$nameLowercase does exist in HELLOWORLDS/"
-      echo "Delete the folder or choose another name for your project."
-      echo ""
-      exit
-    fi
+if [[ $genType != "helloworld" ]]
+  then
+  if ! [ -d "HELLOWORLDS" ]; then
+    mkdir HELLOWORLDS
+    else 
+      # Check if project already exists in HELLOWORLDS/
+      if [ -d "HELLOWORLDS/$nameLowercase" ]; then
+        echo "$nameLowercase does exist in HELLOWORLDS/"
+        echo "Delete the folder or choose another name for your project."
+        echo ""
+        exit
+      fi
+  fi
 fi
 
 org="com.$nameLowercase"
@@ -71,6 +74,10 @@ case "$genType" in
 "snowball")
     rm -rf SNOWBALL/; mkdir SNOWBALL/ # Safest way to clear SNOWBALL/ including empty files
     cd SNOWBALL/
+    ;;
+"master")
+    rm -rf MASTER/; mkdir MASTER/ # Safest way to clear SNOWBALL/ including empty files
+    cd MASTER/
     ;;
 *)
     echo "ERROR : Argument is not recognized"
@@ -135,6 +142,7 @@ case "$genType" in
     cd MASON
     echo "📂 To $PWD"
     ;;
+\
 "snowball")
     echo "Move app to SNOWBALL/"
     mv $nameLowercase ../ # Move app to hello_riverpod
@@ -145,6 +153,18 @@ case "$genType" in
     echo "Navigate inside new project"
     echo "📂 From $PWD"
     cd SNOWBALL
+    echo "📂 To $PWD"
+    ;;
+"master")
+    echo "Move app to MASTER/"
+    mv $nameLowercase ../ # Move app to hello_riverpod
+    cd ..
+    rm -rf MASTER/ # Delete empty MASTER
+    mv $nameLowercase MASTER # Rename app to MASTER
+    echo ""
+    echo "Navigate inside new project"
+    echo "📂 From $PWD"
+    cd MASTER
     echo "📂 To $PWD"
     ;;
 *)
@@ -222,7 +242,10 @@ case "$genType" in
     mason add hello_riverpod
     ;;
 "snowball")
-    mason add hello_riverpod --git-url https://github.com/icodeyou/hello_riverpod.git  --git-ref snowball
+    mason add hello_riverpod --path ../../__brick__/
+    ;;
+"master")
+    mason add hello_riverpod --git-url https://github.com/icodeyou/hello_riverpod.git  --git-ref master
     ;;
 *)
     echo "ERROR : Argument is not recognized"
