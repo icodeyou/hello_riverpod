@@ -36,7 +36,11 @@ echo "The Bundle ID will be : $org.app"
 echo "If this is OK, press enter. Otherwise press Ctrl+C"
 read
 
+# Navigate to the folder where the project will be created
+echo ""
+echo "Navigate from $PWD"
 cd HELLOWORLDS/
+echo "To $PWD"
 
 ( # try
 	set -e
@@ -70,8 +74,13 @@ if [ $errorCode -ne 0 ]; then
   exit $errorCode
 fi 
 
-# Git upload
+# Navigate inside the project
+echo ""
+echo "Navigate from $PWD"
 cd $nameLowercase #Navigating to new project
+echo "To $PWD"
+
+# Git upload
 projectPath=$PWD
 echo ""
 echo ""
