@@ -23,7 +23,7 @@ class App extends StatelessWidget {
         localizationsDelegates: AppLocalizations.localizationsDelegates,
         supportedLocales: AppLocalizations.supportedLocales,
         debugShowCheckedModeBanner: false,
-        title: 'Flutter App',
+        title: '{{projectName}}',
       ),
     );
   }
