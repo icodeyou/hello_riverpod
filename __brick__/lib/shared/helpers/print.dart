@@ -1,3 +1,6 @@
+// ignore_for_file: public_member_api_docs
+// TODO(jeanvallon): add documentation and remove ignore comment
+
 import 'package:flutter/foundation.dart';
 
 class Print {
@@ -5,10 +8,11 @@ class Print {
     debugPrint(message);
   }
 
-  static void debug([Object? objectOrMessage, bool? stack]) {
+  static void debug({Object? objectOrMessage, bool stack = true}) {
     debugPrintStack(
-        label: '🐼 DEBUG : ${objectOrMessage ?? ""}',
-        maxFrames: (stack ?? true) ? 3 : 0);
+      label: '🐼 DEBUG : ${objectOrMessage ?? ""}',
+      maxFrames: stack ? 3 : 0,
+    );
   }
 
   static void error(String description, [String? title]) {
