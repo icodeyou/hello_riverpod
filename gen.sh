@@ -1,6 +1,17 @@
 SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 cd $SCRIPTPATH
 
+genType=$1
+if [[ $genType != "local" ]] && [[ $genType != "mason" ]] && [[ $genType != "helloworld" ]] 
+  then
+    echo ""
+    echo "ERROR"
+    echo "Please type the following command : './gen.sh <ARGUMENT>'"
+    echo "<ARGUMENT> can be : local, mason, helloworld"
+    echo ""
+    exit
+fi
+
 echo "Prerequisites : Make sure that following CLI are installed :"
 echo "flutter, very_good, mason, gh"
 echo ""
