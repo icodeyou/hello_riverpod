@@ -118,13 +118,19 @@ case "$genType" in
     echo "Navigate inside new project"
     echo "📂 From $PWD"
     cd $nameLowercase
+    echo "📂 To $PWD"
     ;;
 "mason")
     echo "Move app to MASON/"
     mv $nameLowercase ../ # Move app to hello_riverpod
     cd ..
-    rm -rf MASON/ # Delete empty SNOWBALL
+    rm -rf MASON/ # Delete empty MASON
     mv $nameLowercase MASON # Rename app to MASON
+    echo ""
+    echo "Navigate inside new project"
+    echo "📂 From $PWD"
+    cd MASON
+    echo "📂 To $PWD"
     ;;
 "snowball")
     echo "Move app to SNOWBALL/"
@@ -132,13 +138,17 @@ case "$genType" in
     cd ..
     rm -rf SNOWBALL/ # Delete empty SNOWBALL
     mv $nameLowercase SNOWBALL # Rename app to SNOWBALL
+    echo ""
+    echo "Navigate inside new project"
+    echo "📂 From $PWD"
+    cd SNOWBALL
+    echo "📂 To $PWD"
     ;;
 *)
     echo "ERROR : Argument is not recognized"
     exit
     ;;
 esac 
-echo "📂 To $PWD"
 
 
 # Git upload
