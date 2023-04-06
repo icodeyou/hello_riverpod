@@ -19,20 +19,21 @@ echo "Prerequisites : Make sure that following CLI are installed :"
 echo "flutter, very_good, mason, gh"
 echo ""
 
-echo "Enter the name of the project (ex: Top Gun) : "
-read nameUppercase
-if [[ $nameUppercase == "" ]]
+if [[ $genType == "helloworld" ]]
   then
-    echo "The name of your project is invalid. Please start again."
-    exit
-fi
 
-nameUppercaseNoSpace=$(echo "$nameUppercase" | tr -d ' ')
-nameLowercase=$(echo "$nameUppercase" | awk '{print tolower($0)}' | tr -d ' ')
+  # Get name of project
+  echo "Enter the name of the project (ex: Top Gun) : "
+  read nameUppercase
+  if [[ $nameUppercase == "" ]]
+    then
+      echo "The name of your project is invalid. Please start again."
+      exit
+  fi
+  nameUppercaseNoSpace=$(echo "$nameUppercase" | tr -d ' ')
+  nameLowercase=$(echo "$nameUppercase" | awk '{print tolower($0)}' | tr -d ' ')
 
-# Check if HELLOWORLDS folder exists in this path
-if [[ $genType != "helloworld" ]]
-  then
+  # Check if HELLOWORLDS folder exists in this path
   if ! [ -d "HELLOWORLDS" ]; then
     mkdir HELLOWORLDS
     else 
@@ -44,22 +45,26 @@ if [[ $genType != "helloworld" ]]
         exit
       fi
   fi
+
+  # Get Bundle ID for project
+  org="com.$nameLowercase"
+  echo "⚠️ Your organization is by default : $org"
+  echo "If this is OK, press enter. Otherwise type the name of your new org :"
+  read newOrg
+  if [[ $newOrg != '' ]]; then org="$newOrg"; fi
+  bundleId="$org.app"
+  echo ""
+  echo "Here is a suggestion for the Bundle ID : $bundleId"
+  echo "If this is OK, press enter. Otherwise, enter the word that you need after '$org.'"
+  read nameAppForBundleId
+  if [[ $nameAppForBundleId != '' ]]; then bundleId="$org.$nameAppForBundleId"; fi
+
+  else
+    nameUppercaseNoSpace=project$genType
+    nameLowercase=project$genType
+    org="com.$nameLowercase"
+    bundleId="$org.app"
 fi
-
-org="com.$nameLowercase"
-
-echo "⚠️ Your organization is by default : $org"
-echo "If this is OK, press enter. Otherwise type the name of your new org :"
-read newOrg
-if [[ $newOrg != '' ]]; then org="$newOrg"; fi
-
-bundleId="$org.app"
-
-echo ""
-echo "Here is a suggestion for the Bundle ID : $bundleId"
-echo "If this is OK, press enter. Otherwise, enter the word that you need after '$org.'"
-read nameAppForBundleId
-if [[ $nameAppForBundleId != '' ]]; then bundleId="$org.$nameAppForBundleId"; fi
 
 echo ""
 echo "✨ ✨ ✨ ✨ ✨"
