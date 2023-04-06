@@ -56,6 +56,8 @@ echo "The Bundle ID will be : $org.app"
 echo "If this is OK, press enter. Otherwise press Ctrl+C"
 read
 
+# Navigate to the folder where the project will be created
+echo ""
 case "$genType" in
 "local")
     echo "Navigating to LOCAL_SNOWBALL/"
@@ -109,8 +111,33 @@ if [ $errorCode -ne 0 ]; then
   exit $errorCode
 fi 
 
+# Navigate to new project
+echo ""
+echo "Navigate to new project"
+echo ""
+case "$genType" in
+"local")
+    echo "Navigating to LOCAL_SNOWBALL/"
+    rm -rf LOCAL_SNOWBALL/; mkdir LOCAL_SNOWBALL/ # Safest way to clear LOCAL_SNOWBALL/ including empty files
+    cd LOCAL_SNOWBALL/
+    ;;
+"mason")
+    echo "Navigating to MASON_SNOWBALL/"
+    rm -rf MASON_SNOWBALL/; mkdir MASON_SNOWBALL/ # Safest way to clear MASON_SNOWBALL/ including empty files
+    cd MASON_SNOWBALL/
+    ;;
+"helloworld")
+    echo "Navigating to HELLOWORLDS/"
+    cd HELLOWORLDS/
+    ;;
+*)
+    echo "ERROR : Argument is not recognized"
+    exit
+    ;;
+esac 
+cd $nameLowercase
+
 # Git upload
-cd $nameLowercase #Navigating to new project
 projectPath=$PWD
 echo ""
 echo ""
@@ -163,7 +190,7 @@ mason init
 case "$genType" in
 "local")
     echo "Navigating to LOCAL_SNOWBALL/"
-    mason add hello_riverpod --path ../__brick__
+    mason add hello_riverpod --path ../
     ;;
 "mason")
     echo "Navigating to MASON_SNOWBALL/"
@@ -179,7 +206,9 @@ case "$genType" in
 esac 
 
 mason make hello_riverpod --on-conflict overwrite -o ../ --projectName $nameLowercase
+pwd
 cd ..
+pwd
 sed -i '' "s/Flutter App/$nameUppercase/g" lib/app/app.dart
 echo ""
 echo "ℹ️ Now running 'flutter pub get' :"
