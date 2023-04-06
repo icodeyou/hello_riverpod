@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:{{projectName}}/l10n/l10n.dart';
 
 /// Widget for Home Screen
 class HomeScreen extends StatelessWidget {
@@ -7,10 +8,12 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
+
     return Scaffold(
       appBar: AppBar(title: const Text('aaa')),
-      body: const Center(
-        child: Text('Hello'),
+      body: Center(
+        child: Text(l10n.hello),
       ),
     );
   }
