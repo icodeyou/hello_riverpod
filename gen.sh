@@ -58,19 +58,18 @@ read
 
 # Navigate to the folder where the project will be created
 echo ""
+echo "Navigate to the folder where the project will be created"
+echo "📂 From $PWD"
 case "$genType" in
 "local")
-    echo "Navigating to LOCAL_SNOWBALL/"
-    rm -rf LOCAL_SNOWBALL/**
+    rm -rf LOCAL_SNOWBALL/; mkdir LOCAL_SNOWBALL/ # Safest way to clear LOCAL_SNOWBALL/ including empty files
     cd LOCAL_SNOWBALL/
     ;;
 "mason")
-    echo "Navigating to MASON_SNOWBALL/"
-    rm -rf MASON_SNOWBALL/**
+    rm -rf MASON_SNOWBALL/; mkdir MASON_SNOWBALL/ # Safest way to clear MASON_SNOWBALL/ including empty files
     cd MASON_SNOWBALL/
     ;;
 "helloworld")
-    echo "Navigating to HELLOWORLDS/"
     cd HELLOWORLDS/
     ;;
 *)
@@ -78,6 +77,7 @@ case "$genType" in
     exit
     ;;
 esac 
+echo "📂 To $PWD"
 
 ( # try
 	set -e
@@ -111,70 +111,77 @@ if [ $errorCode -ne 0 ]; then
   exit $errorCode
 fi 
 
-# Navigate to new project
-echo ""
-echo "Navigate to new project"
+# Navigate inside new project
 echo ""
 case "$genType" in
 "local")
-    echo "Navigating to LOCAL_SNOWBALL/"
-    rm -rf LOCAL_SNOWBALL/; mkdir LOCAL_SNOWBALL/ # Safest way to clear LOCAL_SNOWBALL/ including empty files
-    cd LOCAL_SNOWBALL/
+    echo "Move app to LOCAL_SNOWBALL/"
+    mv $nameLowercase ../ # Move app to hello_riverpod
+    cd ..
+    rm -rf LOCAL_SNOWBALL/ # Delete empty LOCAL_SNOWBALL
+    mv $nameLowercase LOCAL_SNOWBALL # Rename app to LOCAL_SNOWBALL
     ;;
 "mason")
-    echo "Navigating to MASON_SNOWBALL/"
-    rm -rf MASON_SNOWBALL/; mkdir MASON_SNOWBALL/ # Safest way to clear MASON_SNOWBALL/ including empty files
-    cd MASON_SNOWBALL/
+    echo "Move app to MASON_SNOWBALL/"
+    mv $nameLowercase ../ # Move app to hello_riverpod
+    cd ..
+    rm -rf MASON_SNOWBALL/ # Delete empty LOCAL_SNOWBALL
+    mv $nameLowercase MASON_SNOWBALL # Rename app to MASON_SNOWBALL
     ;;
 "helloworld")
-    echo "Navigating to HELLOWORLDS/"
-    cd HELLOWORLDS/
+    echo "Navigate inside new project"
+    echo "📂 From $PWD"
+    cd $nameLowercase
     ;;
 *)
     echo "ERROR : Argument is not recognized"
     exit
     ;;
 esac 
-cd $nameLowercase
+echo "📂 To $PWD"
+
 
 # Git upload
-projectPath=$PWD
-echo ""
-echo ""
-echo "🔥 Creating Git Repository for project $nameLowercase 🔥"
-git init
-git add --all
-git commit -m "First commit 🦋"
+if [[ $genType == "helloworld" ]] 
+  then
+    projectPath=$PWD
+    echo ""
+    echo ""
+    echo "🔥 Creating Git Repository for project $nameLowercase 🔥"
+    git init
+    git add --all
+    git commit -m "First commit 🦋"
 
-echo "Do you want to push the repo to Github ? Press enter to confirm, type NO otherwise :"
-read githubAnswer
-if [[ $githubAnswer != 'NO' ]]; then 
-  gh repo create $nameLowercase --private
-  git remote add origin https://github.com/icodeyou/$nameLowercase.git
-  echo "New remote URLs :"
-  git remote -v
-  git push -u origin master
+    echo "Do you want to push the repo to Github ? Press enter to confirm, type NO otherwise :"
+    read githubAnswer
+    if [[ $githubAnswer != 'NO' ]]; then 
+      gh repo create $nameLowercase --private
+      git remote add origin https://github.com/icodeyou/$nameLowercase.git
+      echo "New remote URLs :"
+      git remote -v
+      git push -u origin master
 
-  echo ""
-  echo "If you have this message : 'command not found: gh' ➡️ Follow steps below :"
-  echo "1) Run 'brew install gh'"
-  echo "2) Run 'gh repo create $nameLowercase --private' "
-  echo "3) Run 'git remote add origin git@github.com:icodeyou/$nameLowercase.git' "
-  echo "4) Run 'git 'git push -u origin master' "
+      echo ""
+      echo "If you have this message : 'command not found: gh' ➡️ Follow steps below :"
+      echo "1) Run 'brew install gh'"
+      echo "2) Run 'gh repo create $nameLowercase --private' "
+      echo "3) Run 'git remote add origin git@github.com:icodeyou/$nameLowercase.git' "
+      echo "4) Run 'git 'git push -u origin master' "
 
-  echo ""
-  echo "If you have this message : 'To authenticate, please run gh auth login.' ➡️ Follow steps below :"
-  echo "1) Run 'gh auth login' "
-  echo "2) Run 'gh repo create $nameLowercase --private' "
-  echo "3) Run 'git remote add origin git@github.com:icodeyou/$nameLowercase.git' "
-  echo "4) Run 'git 'git push -u origin master' "
+      echo ""
+      echo "If you have this message : 'To authenticate, please run gh auth login.' ➡️ Follow steps below :"
+      echo "1) Run 'gh auth login' "
+      echo "2) Run 'gh repo create $nameLowercase --private' "
+      echo "3) Run 'git remote add origin git@github.com:icodeyou/$nameLowercase.git' "
+      echo "4) Run 'git 'git push -u origin master' "
 
-  echo ""
-  echo ""
-  echo "🎉 Project uploaded"
-  echo ""
-  echo ""
-  echo "The project has been uploaded to : https://github.com/icodeyou/$nameLowercase.git"
+      echo ""
+      echo ""
+      echo "🎉 Project uploaded"
+      echo ""
+      echo ""
+      echo "The project has been uploaded to : https://github.com/icodeyou/$nameLowercase.git"
+    fi
 fi
 
 # Mason
@@ -184,16 +191,21 @@ echo "🔥🔥🔥 MASON (hello_riverpod) 🔥🔥🔥"
 echo ""
 echo ""
 mkdir mason
+echo "Navigate to mason folder"
+echo "📂 From $PWD"
 cd mason
+echo "📂 To $PWD"
+echo ""
+echo "🔥 Mason init"
 mason init
 
+echo ""
+echo "🔥 Mason add brick"
 case "$genType" in
 "local")
-    echo "Navigating to LOCAL_SNOWBALL/"
     mason add hello_riverpod --path ../
     ;;
 "mason")
-    echo "Navigating to MASON_SNOWBALL/"
     mason add hello_riverpod
     ;;
 "helloworld")
@@ -205,11 +217,16 @@ case "$genType" in
     ;;
 esac 
 
+echo ""
+echo "🔥 Mason make"
 mason make hello_riverpod --on-conflict overwrite -o ../ --projectName $nameLowercase
-pwd
+
+echo ""
+echo "Navigate back to app"
+echo "📂 From $PWD"
 cd ..
-pwd
-sed -i '' "s/Flutter App/$nameUppercase/g" lib/app/app.dart
+echo "📂 To $PWD"
+
 echo ""
 echo "ℹ️ Now running 'flutter pub get' :"
 echo ""
@@ -219,24 +236,27 @@ echo ""
 echo "⚠️ If pubspec.yaml has been modified,"
 echo "⚠️ it might be time to upgrade pubspec.yaml in hello_riverpod"
 flutter pub run build_runner build --delete-conflicting-outputs
+
 echo ""
 echo "🔥 Mason finished"
 
 # Commit and push
-echo ""
-echo ""
-git add --all 
-git commit -m "Mason template ✨"
-echo "🎉 Commit README Mason"
+if [[ $genType == "helloworld" ]]
+  then
+    echo ""
+    echo ""
+    git add --all 
+    git commit -m "Mason template ✨"
+    echo "🎉 Commit Mason"
 
-if [[ $githubAnswer != 'NO' ]]; then 
-  echo "🎯 LAST STEP : PUSH"
-  git push
-  echo ""
-  echo ""
-  echo "The project has been uploaded to : https://github.com/icodeyou/$nameLowercase.git"
+    if [[ $githubAnswer != 'NO' ]]; then 
+      echo "🎯 LAST STEP : PUSH"
+      git push
+      echo ""
+      echo ""
+      echo "The project has been uploaded to : https://github.com/icodeyou/$nameLowercase.git"
+    fi
 fi
-
 
 echo ""
 echo ""
