@@ -120,7 +120,7 @@ echo ""
 mkdir mason
 cd mason
 mason init
-mason add hello_riverpod --git-url https://github.com/icodeyou/hello_riverpod.git  --git-ref snowball
+mason add hello_riverpod
 mason make hello_riverpod --on-conflict overwrite -o ../ --projectName $nameLowercase
 cd ..
 sed -i '' "s/Flutter App/$nameUppercase/g" lib/app/app.dart
