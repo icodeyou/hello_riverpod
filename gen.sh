@@ -1,20 +1,26 @@
 SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 cd $SCRIPTPATH
 
-echo "Prerequisites : You need flutter, very_good, mason and gh installed."
+echo "Prerequisites : Make sure that following CLI are installed :"
+echo "flutter, very_good, mason, gh"
 echo ""
 
-echo "Enter the name of the project (ex: Smart Afterwork) : "
+echo "Enter the name of the project (ex: Top Gun) : "
 read nameUppercase
 nameUppercaseNoSpace=$(echo "$nameUppercase" | tr -d ' ')
 nameLowercase=$(echo "$nameUppercase" | awk '{print tolower($0)}' | tr -d ' ')
 
-# Check if project already exists in SNOWBALLS/
-if [ -d "SNOWBALLS/$nameLowercase" ]; then
-  echo "$nameLowercase does exist in SNOWBALLS/"
-  echo "Delete the folder or choose another name for your project."
-  echo ""
-  exit
+# Check if HELLOWORLDS folder exists in this path
+if ! [ -d "HELLOWORLDS" ]; then
+  mkdir HELLOWORLDS
+  else 
+    # Check if project already exists in HELLOWORLDS/
+    if [ -d "HELLOWORLDS/$nameLowercase" ]; then
+      echo "$nameLowercase does exist in HELLOWORLDS/"
+      echo "Delete the folder or choose another name for your project."
+      echo ""
+      exit
+    fi
 fi
 
 org="com.$nameLowercase"
@@ -30,7 +36,7 @@ echo "The Bundle ID will be : $org.app"
 echo "If this is OK, press enter. Otherwise press Ctrl+C"
 read
 
-cd SNOWBALLS/
+cd HELLOWORLDS/
 
 ( # try
 	set -e
