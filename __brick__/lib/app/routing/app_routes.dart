@@ -1,16 +1,21 @@
-import 'package:flutter/material.dart';
+import 'package:{{projectName}}/features/hello/views/home_screen.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../features/hello/views/home_view.dart';
-
+/// This class is used to defined all the routes of the project
 class AppRoutes {
+
+  /// Home route
   static const String routeHome = '/';
 
-  static final GoRouter router = GoRouter(routes: [
-    GoRoute(
+  /// GoRouter instantiation, with associated routes
+  static final GoRouter router = GoRouter(
+    routes: [
+      GoRoute(
         path: routeHome,
-        builder: (BuildContext context, GoRouterState state) {
-          return const HomeView();
-        }),
-  ]);
+        builder: (context, state) {
+          return const HomeScreen();
+        },
+      ),
+    ],
+  );
 }
