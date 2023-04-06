@@ -4,7 +4,7 @@ SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 cd $SCRIPTPATH
 
 genType=$1
-if [[ $genType != "snowball" ]] && [[ $genType != "mason" ]] && [[ $genType != "helloworld" ]] 
+if [[ $genType != "helloworld" ]] && [[ $genType != "mason" ]] && [[ $genType != "snowball" ]] && [[ $genType != "master" ]] 
   then
     echo ""
     echo "ERROR"
@@ -61,16 +61,16 @@ echo ""
 echo "Navigate to the folder where the project will be created"
 echo "📂 From $PWD"
 case "$genType" in
-"snowball")
-    rm -rf SNOWBALL/; mkdir SNOWBALL/ # Safest way to clear SNOWBALL/ including empty files
-    cd SNOWBALL/
+"helloworld")
+    cd HELLOWORLDS/
     ;;
 "mason")
     rm -rf MASON/; mkdir MASON/ # Safest way to clear MASON/ including empty files
     cd MASON/
     ;;
-"helloworld")
-    cd HELLOWORLDS/
+"snowball")
+    rm -rf SNOWBALL/; mkdir SNOWBALL/ # Safest way to clear SNOWBALL/ including empty files
+    cd SNOWBALL/
     ;;
 *)
     echo "ERROR : Argument is not recognized"
@@ -114,12 +114,10 @@ fi
 # Navigate inside new project
 echo ""
 case "$genType" in
-"snowball")
-    echo "Move app to SNOWBALL/"
-    mv $nameLowercase ../ # Move app to hello_riverpod
-    cd ..
-    rm -rf SNOWBALL/ # Delete empty SNOWBALL
-    mv $nameLowercase SNOWBALL # Rename app to SNOWBALL
+"helloworld")
+    echo "Navigate inside new project"
+    echo "📂 From $PWD"
+    cd $nameLowercase
     ;;
 "mason")
     echo "Move app to MASON/"
@@ -128,10 +126,12 @@ case "$genType" in
     rm -rf MASON/ # Delete empty SNOWBALL
     mv $nameLowercase MASON # Rename app to MASON
     ;;
-"helloworld")
-    echo "Navigate inside new project"
-    echo "📂 From $PWD"
-    cd $nameLowercase
+"snowball")
+    echo "Move app to SNOWBALL/"
+    mv $nameLowercase ../ # Move app to hello_riverpod
+    cd ..
+    rm -rf SNOWBALL/ # Delete empty SNOWBALL
+    mv $nameLowercase SNOWBALL # Rename app to SNOWBALL
     ;;
 *)
     echo "ERROR : Argument is not recognized"
@@ -202,13 +202,13 @@ mason init
 echo ""
 echo "🔥 Mason add brick"
 case "$genType" in
-"snowball")
+"helloworld")
     mason add hello_riverpod --git-url https://github.com/icodeyou/hello_riverpod.git  --git-ref snowball
     ;;
 "mason")
     mason add hello_riverpod
     ;;
-"helloworld")
+"snowball")
     mason add hello_riverpod --git-url https://github.com/icodeyou/hello_riverpod.git  --git-ref snowball
     ;;
 *)
