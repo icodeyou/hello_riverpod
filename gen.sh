@@ -1,3 +1,5 @@
+#!/bin/bash
+
 SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 cd $SCRIPTPATH
 
@@ -12,12 +14,19 @@ if [[ $genType != "local" ]] && [[ $genType != "mason" ]] && [[ $genType != "hel
     exit
 fi
 
+echo ""
 echo "Prerequisites : Make sure that following CLI are installed :"
 echo "flutter, very_good, mason, gh"
 echo ""
 
 echo "Enter the name of the project (ex: Top Gun) : "
 read nameUppercase
+if [[ $nameUppercase == "" ]]
+  then
+    echo "The name of your project is invalid. Please start again."
+    exit
+fi
+
 nameUppercaseNoSpace=$(echo "$nameUppercase" | tr -d ' ')
 nameLowercase=$(echo "$nameUppercase" | awk '{print tolower($0)}' | tr -d ' ')
 
@@ -47,7 +56,26 @@ echo "The Bundle ID will be : $org.app"
 echo "If this is OK, press enter. Otherwise press Ctrl+C"
 read
 
-cd HELLOWORLDS/
+case "$genType" in
+"local")
+    echo "Navigating to LOCAL_SNOWBALL/"
+    rm -rf LOCAL_SNOWBALL/**
+    cd LOCAL_SNOWBALL/
+    ;;
+"mason")
+    echo "Navigating to MASON_SNOWBALL/"
+    rm -rf MASON_SNOWBALL/**
+    cd MASON_SNOWBALL/
+    ;;
+"helloworld")
+    echo "Navigating to HELLOWORLDS/"
+    cd HELLOWORLDS/
+    ;;
+*)
+    echo "ERROR : Argument is not recognized"
+    exit
+    ;;
+esac 
 
 ( # try
 	set -e
@@ -131,7 +159,25 @@ echo ""
 mkdir mason
 cd mason
 mason init
-mason add hello_riverpod --git-url https://github.com/icodeyou/hello_riverpod.git  --git-ref snowball
+
+case "$genType" in
+"local")
+    echo "Navigating to LOCAL_SNOWBALL/"
+    mason add hello_riverpod --path ../__brick__
+    ;;
+"mason")
+    echo "Navigating to MASON_SNOWBALL/"
+    mason add hello_riverpod
+    ;;
+"helloworld")
+    mason add hello_riverpod --git-url https://github.com/icodeyou/hello_riverpod.git  --git-ref snowball
+    ;;
+*)
+    echo "ERROR : Argument is not recognized"
+    exit
+    ;;
+esac 
+
 mason make hello_riverpod --on-conflict overwrite -o ../ --projectName $nameLowercase
 cd ..
 sed -i '' "s/Flutter App/$nameUppercase/g" lib/app/app.dart
