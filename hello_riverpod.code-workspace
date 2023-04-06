@@ -8,5 +8,10 @@
 		"cSpell.words": [
 			"riverpod"
 		],
+		"dart.analysisExcludedFolders": [
+			"HELLOWORLDS",
+			"__brick__"
+		],
+		"dart.runPubGetOnPubspecChanges": "never"
 	}
 }
