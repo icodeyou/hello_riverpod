@@ -47,17 +47,26 @@ if [[ $genType != "helloworld" ]]
 fi
 
 org="com.$nameLowercase"
-bundleId="$org.app"
 
 echo "⚠️ Your organization is by default : $org"
 echo "If this is OK, press enter. Otherwise type the name of your new org :"
 read newOrg
 if [[ $newOrg != '' ]]; then org="$newOrg"; fi
 
+bundleId="$org.app"
+
 echo ""
-echo "The Bundle ID will be : $org.app"
-echo "If this is OK, press enter. Otherwise press Ctrl+C"
-read
+echo "Here is a suggestion for the Bundle ID : $bundleId"
+echo "If this is OK, press enter. Otherwise, enter the word that you need after '$org.'"
+read nameAppForBundleId
+if [[ $nameAppForBundleId != '' ]]; then bundleId="$org.$nameAppForBundleId"; fi
+
+echo ""
+echo "✨ ✨ ✨ ✨ ✨"
+echo "The Bundle ID of the project will be : $bundleId"
+echo "It is not easy to change it, so be sure to pick the right one."
+echo "✨ ✨ ✨ ✨ ✨"
+echo ""
 
 # Navigate to the folder where the project will be created
 echo ""
@@ -100,8 +109,9 @@ echo "📂 To $PWD"
     echo ""
     echo "ℹ️ Cleaning very good project"
     rm -f pubspec.lock
-    rm -rf lib/counter
+    rm -rf lib/counter/
     rm -rf lib/app/view/
+    rm -rf lib/l10n/
     rm -rf test/**
     echo ""
     echo "⚠️ Removing folders web/ linux/ windows/ macos/"
@@ -266,6 +276,7 @@ echo "📂 To $PWD"
 echo ""
 echo "ℹ️ Now running 'flutter pub get' :"
 echo ""
+ls -lAh
 flutter pub get
 flutter pub upgrade --major-versions
 echo ""

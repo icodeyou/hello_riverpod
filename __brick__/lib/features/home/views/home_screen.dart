@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:{{projectName}}/i18n/translations.g.dart';
 
 /// Widget for Home Screen
 class HomeScreen extends StatelessWidget {
@@ -9,8 +10,8 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('aaa')),
-      body: const Center(
-        child: Text('Hello'),
+      body: Center(
+        child: Text(t.home.hello),
       ),
     );
   }

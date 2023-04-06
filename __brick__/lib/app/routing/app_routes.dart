@@ -1,9 +1,9 @@
-import 'package:{{projectName}}/features/hello/views/home_screen.dart';
 import 'package:go_router/go_router.dart';
+import 'package:{{projectName}}/features/home/views/home_screen.dart';
+
 
 /// This class is used to defined all the routes of the project
 class AppRoutes {
-
   /// Home route
   static const String routeHome = '/';
 

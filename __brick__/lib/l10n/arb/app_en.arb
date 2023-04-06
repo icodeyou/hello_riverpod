@@ -1,7 +1,0 @@
-{
-    "@@locale": "en",
-    "hello": "Hello",
-    "@hello": {
-        "description": "Text shown in Hello Page"
-    }
-}
