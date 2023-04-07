@@ -2,11 +2,21 @@
 	"folders": [
 		{
 			"path": "."
+		},
+		{
+			"path": "SNOWBALL"
+		},
+		{
+			"path": "MASON"
+		},
+		{
+			"path": "MASTER"
 		}
 	],
 	"settings": {
 		"cSpell.words": [
-			"HELLOWORLDS"
+			"HELLOWORLDS",
+			"Salut"
 		],
 		"cSpell.useGitignore": false,
 		"dart.analysisExcludedFolders": [
@@ -14,5 +24,16 @@
 			"__brick__"
 		],
 		"dart.runPubGetOnPubspecChanges": "never",
+		"files.exclude": {
+			"**/.git": true,
+			"**/.svn": true,
+			"**/.hg": true,
+			"**/CVS": true,
+			"**/.DS_Store": true,
+			"**/Thumbs.db": true,
+			"SNOWBALL": true,
+			"MASTER": true,
+			"MASON": true,
+		}
 	},
 }
