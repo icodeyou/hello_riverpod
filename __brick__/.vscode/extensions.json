@@ -1,17 +1,24 @@
 {
-  // See https://go.microsoft.com/fwlink/?LinkId=827846
-  // for the documentation about the extensions.json format
   "recommendations": [
     "dart-code.dart-code",
     "dart-code.flutter",
     "streetsidesoftware.code-spell-checker",
+    "streetsidesoftware.code-spell-checker-french",
     "redhat.vscode-yaml",
     "pflannery.vscode-versionlens",
     "circlecodesolution.ccs-flutter-color",
     "alexisvt.flutter-snippets",
     "eamodio.gitlens",
     "rubymaniac.vscode-paste-and-indent",
-    "lsaudon.l10nization",
+    "fabiospampinato.vscode-terminals",
+    "robert-brunhage.flutter-riverpod-snippets",
+    "MarufHassan.flutter-snippets",
+    "alexisvt.flutter-snippets",
+    "mhutchie.git-graph",
+    "bierner.markdown-preview-github-styles",
+    "DavidAnson.vscode-markdownlint",
+    "PKief.material-icon-theme",
     "Gruntfuggly.todo-tree",
-  ]
+    "usernamehw.errorlens",
+  ],
 }
