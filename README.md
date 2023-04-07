@@ -1,11 +1,10 @@
-# hello_riverpod
+# hello_riverpod - Snowball version
 
 [![Powered by Mason](https://img.shields.io/endpoint?url=https%3A%2F%2Ftinyurl.com%2Fmason-badge)](https://github.com/felangel/mason)
 
 A complete starter project for Flutter apps.
-With hello_riverpod, you can easily create a new Flutter project that follows the guidelines of Clean Architecture, and with all the basic packages ready to use (`riverpod`, `go_router`, `freezed`, `intl`, `mocktail`).
 
-⚠️ This Mason Project is only working if you create your project using `very_good create` (see the details below)
+With hello_riverpod, you can easily create a new Flutter project that follows the guidelines of Clean Architecture, and with all the basic packages ready to use (`riverpod`, `go_router`, `freezed`, `intl`, `mocktail`).
 
 ## Prerequisites
 
@@ -22,21 +21,12 @@ Thanks to `hello_riverpod`, you now have a way to generate a 'Very Good project'
 
 ## Get Started
 
-To create a new project using hello_provider, run the following commands :
+All you need to do is [this script](https://github.com/icodeyou/hello_riverpod/blob/master/gen.sh).
+Download it and put it in a folder where you want to create your new projects.
+Then, run it with `./gen.sh` and follow the instructions.
 
-```shell
-very_good create my_app
-cd my_app
-rm -rf lib/counter
-rm -rf test/**
+Your projects will be added in a folder named `HELLOWORLDS/`
 
-mkdir mason
-cd mason
-mason init
-mason add hello_riverpod
-mason make hello_riverpod --on-conflict overwrite -o ../
+Feel free to create an issue if you have any question.
 
-cd ..
-flutter pub get
-flutter pub run build_runner build --delete-conflicting-outputs
-```
+Cheers ✨
