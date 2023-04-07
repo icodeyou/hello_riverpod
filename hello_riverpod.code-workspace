@@ -5,10 +5,14 @@
 		}
 	],
 	"settings": {
+		"cSpell.words": [
+			"HELLOWORLDS"
+		],
+		"cSpell.useGitignore": false,
 		"dart.analysisExcludedFolders": [
 			"HELLOWORLDS",
 			"__brick__"
 		],
-		"dart.runPubGetOnPubspecChanges": "never"
-	}
+		"dart.runPubGetOnPubspecChanges": "never",
+	},
 }
