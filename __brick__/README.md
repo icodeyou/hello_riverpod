@@ -57,3 +57,39 @@ We chose [Riverpod](https://riverpod.dev/) as a solution for State Management.
 Here is a diagram that shows how providers and states are organized in the project :
 
 ![App Architecture Diagram](assets/readme/architecture_riverpod.png)
+
+### Directory Tree
+
+The directory tree is organized in a feature-first strategy.
+
+```text
+---/assets/
+---/lib/
+    ---/app/
+        ---/app.dart
+        ---/routing/ 
+    ---/l10n/
+        ---/arb/
+            ---/app_en.arb
+            ---/app_es.arb
+            ---/app_fr.arb
+    ---/features/
+        ---/feature1/
+            ---/providers/
+            ---/views/
+        ---/feature2/
+            ---/constants.dart
+            ---/helpers/
+            ---/providers/
+            ---/services/
+            ---/views/
+    ---/shared/
+        ---/constants.dart
+        ---/helpers/
+            ---/extensions.dart
+        ---/views/
+        ---/services/
+            ---/log.dart
+    ---/main.dart
+    ---/xxx_module.dart
+```
