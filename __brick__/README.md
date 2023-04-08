@@ -161,20 +161,59 @@ Feature is finished :
 
 ### Commits
 
+#### Description
+
 **All commits should be formatted like this :**
 
-`git commit "Name of feature - description of last task"`
+```text
+<type>(<optional scope>): <subject>
 
-| Préfixe   | Description                                 |
-|-----------|---------------------------------------------|
-| [clean]   | clean code                                  |
-| [wip]     | work in progress : tâche arrêté non terminé |
-| [wording] | clean wording                               |
-| [fix]     | fix bug                                     |
-| [refacto] | refactoring code                            |
-| [doc]     | ajout de documentation du code              |
+<optional body>
 
-*Ex of commit message :* **Navigation : [wip] add top right button**
+<optional footer>
+```
+
+| Type       | Description                                    |
+|------------|------------------------------------------------|
+| [feat]     | New feature for the user                       |
+| [build]    | Develop architectural features                 |
+| [chore]    | Update grunt tasks                             |
+| [refactor] | Restructure code, rename fields                |
+| [test]     | Add/edit some tests                            |
+| [fix]      | Repair a bug, correct a mistake                |
+| [loc]      | Change localization configuration/translations |
+| [pub]      | Edit pubspec/build/analysis files.             |
+| [lint]     | Fix linter problems                            |
+| [clean]    | Remove dead code, make it more readable        |
+| [readme]   | Apply changes to the README file               |
+| [doc]      | Update documentation                           |
+
+- `<optional scope>` describes the feature or the file that is edited. This field is optional.
+- `<subject>` gives a short description about the edited code in the last commit.
+- `<optional body>` provides a longer description to describe the commit more precisely. This field is optional.
+- `<optional footer>` specifies the ticket in progress, or some references, if they are needed. This field is optional.
+
+#### Notes
+
+- If the work is in progress, you should prefix the commit message by `[WIP]`.
+- All commit messages should be written in the present tense
+- If there is a breaking change, add `!` after `<type>`, before `:`
+
+#### Examples of commit message
+
+```text
+feat: change color button 'send'
+build: import package flutter_riverpod in pubspec
+refactor!: new library for navigation (go_router)
+chore!: update version go_router
+```
+
+#### Sources
+
+This syntax has been inspired by the following contents :
+
+- [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/)
+- [Gist by @joshbuchea](https://gist.github.com/joshbuchea/6f47e86d2510bce28f8e7f42ae84c716)
 
 ### Versioning with tags
 
