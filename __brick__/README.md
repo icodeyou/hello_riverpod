@@ -65,6 +65,10 @@ The directory tree is organized in a feature-first strategy.
 ```text
 ---/assets/
 ---/lib/
+    ---/bootstrap.dart
+    ---/main_development.dart
+    ---/main_production.dart
+    ---/main_staging.dart
     ---/app/
         ---/app.dart
         ---/routing/ 
@@ -90,5 +94,4 @@ The directory tree is organized in a feature-first strategy.
         ---/views/
         ---/services/
             ---/log.dart
-    ---/main.dart
 ```
