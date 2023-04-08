@@ -79,6 +79,10 @@ The architecture is mainly feature-first, with the exception of the data layer.
 ```text
 ---/assets/
 ---/lib/
+    ---/bootstrap.dart
+    ---/main_development.dart
+    ---/main_production.dart
+    ---/main_staging.dart
     ---/app/
         ---/app.dart
         ---/routing/
@@ -116,8 +120,6 @@ The architecture is mainly feature-first, with the exception of the data layer.
         ---/services/
             ---/log.dart
             ---/camera_service.dart    
-    ---/main.dart
-    ---/xxx_module.dart
 ```
 
 ### Clean Architecture
