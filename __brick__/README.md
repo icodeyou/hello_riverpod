@@ -91,5 +91,4 @@ The directory tree is organized in a feature-first strategy.
         ---/services/
             ---/log.dart
     ---/main.dart
-    ---/xxx_module.dart
 ```
