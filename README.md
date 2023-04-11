@@ -1,4 +1,4 @@
-# hello_riverpod - Snowball version
+# hello_riverpod
 
 [![Powered by Mason](https://img.shields.io/endpoint?url=https%3A%2F%2Ftinyurl.com%2Fmason-badge)](https://github.com/felangel/mason)
 
@@ -21,9 +21,16 @@ Thanks to `hello_riverpod`, you now have a way to generate a 'Very Good project'
 
 ## Get Started
 
-All you need to do is [this script](https://github.com/icodeyou/hello_riverpod/blob/master/gen.sh).
-Download it and put it in a folder where you want to create your new projects.
-Then, run it with `./gen.sh` and follow the instructions.
+All you need is [this script](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/icodeyou/hello_riverpod/blob/master/gen.sh).
+Download it and save it under the name `gen.sh` in a folder where you want to create your new projects.
+
+Then, you just have to run :
+
+```shell
+./gen.sh
+```
+
+And follow the instructions.
 
 Your projects will be added in a folder named `HELLOWORLDS/`
 
