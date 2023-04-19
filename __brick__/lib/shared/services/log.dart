@@ -21,6 +21,7 @@ class Log extends Logger {
 
   static final _instance = Log._();
 
+  /// Primary public constructor, returns instance of singleton 
   // ignore: sort_unnamed_constructors_first, sort_constructors_first
   factory Log() {
     return _instance;
