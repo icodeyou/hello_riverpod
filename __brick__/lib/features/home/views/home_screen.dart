@@ -9,7 +9,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('aaa')),
+      appBar: AppBar(title: const Text('{{projectName}}')),
       body: Center(
         child: Text(t.home.hello),
       ),
