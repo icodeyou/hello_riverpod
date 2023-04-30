@@ -117,6 +117,7 @@ echo "📂 To $PWD"
     rm -rf lib/counter/
     rm -rf lib/app/view/
     rm -rf lib/l10n/
+    rm -rf l10n.yaml
     rm -rf test/**
     echo ""
     echo "⚠️ Removing folders web/ linux/ windows/ macos/"
@@ -284,10 +285,15 @@ echo ""
 ls -lAh
 flutter pub get
 flutter pub upgrade --major-versions
+
 echo ""
 echo "⚠️ If pubspec.yaml has been modified,"
 echo "⚠️ it might be time to upgrade pubspec.yaml in hello_riverpod"
 flutter pub run build_runner build --delete-conflicting-outputs
+
+echo ""
+echo "ℹ️ Running Slang Build"
+flutter pub run slang
 
 echo ""
 echo "🔥 Mason finished"
