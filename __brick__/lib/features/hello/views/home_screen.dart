@@ -11,7 +11,7 @@ class HomeScreen extends StatelessWidget {
     final l10n = context.l10n;
 
     return Scaffold(
-      appBar: AppBar(title: const Text('aaa')),
+      appBar: AppBar(title: const Text('{{projectName}}')),
       body: Center(
         child: Text(l10n.hello),
       ),
