@@ -6,4 +6,23 @@
         "titleBar.inactiveBackground": "#0ebed8",
         "titleBar.inactiveForeground": "#093a65",
     },
+    "cSpell.words": [
+        "riverpod",
+    ],
+    "cSpell.overrides": [
+        {
+            "filename": "**/*.i18n.yaml",
+            //"diagnosticLevel": "Warning" // waiting for this : https://github.com/streetsidesoftware/vscode-spell-checker/issues/2595
+        },
+        {
+            "language": "fr,en",
+            "filename": "**/*_fr.i18n.yaml",
+        }
+    ],
+    // ------------------------
+    // The two following codes kill terminals when reloading window,
+    // so that Terminals Manager doesn't display duplicated terminals
+    "terminal.integrated.enablePersistentSessions": false,
+    "terminal.integrated.environmentChangesRelaunch": false,
+    // ------------------------
 }
