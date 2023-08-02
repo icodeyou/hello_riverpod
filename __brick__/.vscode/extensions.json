@@ -9,5 +9,6 @@
     "robert-brunhage.flutter-riverpod-snippets",
     "alexisvt.flutter-snippets",
     "DavidAnson.vscode-markdownlint",
+    "aaron-bond.better-comments",
   ],
 }
