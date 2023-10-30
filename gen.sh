@@ -83,14 +83,17 @@ case "$genType" in
     ;;
 "mason")
     rm -rf MASON/; mkdir MASON/ # Safest way to clear MASON/ including empty files
+    # Plus it creates the directory if it does not exist
     cd MASON/
     ;;
 "snowball")
     rm -rf SNOWBALL/; mkdir SNOWBALL/ # Safest way to clear SNOWBALL/ including empty files
+    # Plus it creates the directory if it does not exist
     cd SNOWBALL/
     ;;
 "master")
     rm -rf MASTER/; mkdir MASTER/ # Safest way to clear SNOWBALL/ including empty files
+    # Plus it creates the directory if it does not exist
     cd MASTER/
     ;;
 *)
