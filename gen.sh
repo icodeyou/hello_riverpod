@@ -282,10 +282,16 @@ echo "📂 From $PWD"
 cd ..
 echo "📂 To $PWD"
 
+if [[ $genType == 'helloworld' ]]; then 
+  echo ""
+  echo "Rename terminals_example.json to terminals.json"
+  # This will set up Terminals Manager
+  mv .vscode/terminals_example.json .vscode/terminals.json
+fi
+
 echo ""
 echo "ℹ️ Now running 'flutter pub get' :"
 echo ""
-ls -lAh
 flutter pub get
 flutter pub upgrade --major-versions
 
