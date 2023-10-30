@@ -1,0 +1,21 @@
+{
+  "autorun": true,
+  "autokill": true,
+  "terminals": [
+    {
+      "name": "APP",
+      "focus": true,
+      "color": "terminal.ansiGreen",
+      "shellPath": "/bin/zsh",
+      "command": ""
+    },
+    {
+      "name": "watcher",
+      "description": "launch build_runner for app",
+      "icon": "eye-watch",
+      "color": "terminal.ansiBlue",
+      "shellPath": "/bin/zsh",
+      "command": "while true; do dart run build_runner watch --delete-conflicting-outputs; sleep 1; done"
+    }
+  ]
+}
