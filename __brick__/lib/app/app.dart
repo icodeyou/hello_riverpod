@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:{{projectName}}/app/routing/app_routes.dart';
-import 'package:{{projectName}}/i18n/translations.g.dart';
 
 /// The Widget that configures the application.
 class App extends StatelessWidget {
