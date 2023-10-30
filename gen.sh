@@ -292,11 +292,14 @@ flutter pub upgrade --major-versions
 echo ""
 echo "⚠️ If pubspec.yaml has been modified,"
 echo "⚠️ it might be time to upgrade pubspec.yaml in hello_riverpod"
-flutter pub run build_runner build --delete-conflicting-outputs
 
 echo ""
-echo "ℹ️ Running Slang Build"
-flutter pub run slang
+echo "ℹ️ Running build_runner"
+dart run build_runner build --delete-conflicting-outputs
+
+echo ""
+echo "ℹ️ Running Slang build"
+dart run slang
 
 echo ""
 echo "🔥 Mason finished"
