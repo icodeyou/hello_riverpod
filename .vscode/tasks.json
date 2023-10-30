@@ -11,9 +11,6 @@
                 "focus": true,
                 "clear": true
             },
-            "problemMatcher": [
-                "$dart-build_runner"
-            ],
         },
         {
             "label": "gen master",
@@ -25,11 +22,6 @@
                 "focus": true,
                 "clear": true
             },
-            "problemMatcher": [
-                "$dart-build_runner"
-            ],
-            "group": "build",
-            "detail": ""
         },
         {
             "label": "gen mason",
@@ -41,11 +33,17 @@
                 "focus": true,
                 "clear": true
             },
-            "problemMatcher": [
-                "$dart-build_runner"
-            ],
-            "group": "build",
-            "detail": ""
         },
+        {
+            "label": "gen helloworld",
+            "type": "shell",
+            "command": "./gen.sh helloworld",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": true,
+                "clear": true
+            },
+        }
     ]
 }
