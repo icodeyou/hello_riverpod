@@ -25,6 +25,10 @@ dependencies:
   riverpod_annotation: ^2.0.0
   slang: ^3.14.0
   slang_flutter: ^3.14.0
+  snowflake_flutter_theme:
+    git:
+      url: https://github.com/icodeyou/snowflake_flutter_theme
+      ref: "0.0.1"
   test: ^1.22.0
 
 dev_dependencies:

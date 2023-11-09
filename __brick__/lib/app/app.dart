@@ -2,9 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:{{projectName}}/app/routing/app_routes.dart';
 import 'package:{{projectName}}/i18n/translations.g.dart';
+import 'package:snowflake_flutter_theme/snowflake_flutter_theme.dart';
 
-/// The primary color of the application.
-const primaryColor = Color(0xFF13B9FF);
+/// All the colors that are specific to the application.
+const themeColors = (
+  primary: Colors.teal,
+  onPrimary: Colors.white,
+  secondary: Colors.orange,
+  onSecondary: Colors.white,
+  background: Colors.white,
+  onBackground: Colors.black,
+);
 
 /// The Widget that configures the application.
 class App extends StatelessWidget {
@@ -16,21 +24,9 @@ class App extends StatelessWidget {
     return TranslationProvider(
       child: ProviderScope(
         child: MaterialApp.router(
-          themeMode: ThemeMode.dark, // type "light" for light mode
-          theme: ThemeData(
-            brightness: Brightness.light,
-            appBarTheme: const AppBarTheme(color: primaryColor),
-            colorScheme: ColorScheme.fromSwatch(
-              accentColor: primaryColor,
-            ),
-          ),
-          darkTheme: ThemeData(
-            brightness: Brightness.dark,
-            appBarTheme: const AppBarTheme(color: primaryColor),
-            colorScheme: ColorScheme.fromSwatch(
-              accentColor: primaryColor,
-            ),
-          ),
+          themeMode: ThemeMode.light,
+          theme: getSnowflakeThemeData(ThemeMode.light, themeColors),
+          darkTheme: getSnowflakeThemeData(ThemeMode.dark, themeColors),
           routeInformationProvider: AppRoutes.router.routeInformationProvider,
           routeInformationParser: AppRoutes.router.routeInformationParser,
           routerDelegate: AppRoutes.router.routerDelegate,

@@ -5,6 +5,12 @@
 		}
 	],
 	"settings": {
+		"workbench.colorCustomizations": {
+			"titleBar.activeBackground": "#a80649",
+			"titleBar.activeForeground": "#e6c6d3",
+			"titleBar.inactiveBackground": "#a80649",
+			"titleBar.inactiveForeground": "#e6c6d3",
+		},
 		"cSpell.words": [
 			"riverpod"
 		],
