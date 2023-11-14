@@ -1,10 +1,10 @@
 {
     "cSpell.diagnosticLevel": "Hint",
     "workbench.colorCustomizations": {
-        "titleBar.activeBackground": "#0ebed8",
-        "titleBar.activeForeground": "#093a65",
-        "titleBar.inactiveBackground": "#0ebed8",
-        "titleBar.inactiveForeground": "#093a65",
+        "titleBar.activeBackground": "#093a65",
+        "titleBar.activeForeground": "#ffffff",
+        "titleBar.inactiveBackground": "#093a65",
+        "titleBar.inactiveForeground": "#ffffff",
     },
     "cSpell.words": [
         "riverpod",
