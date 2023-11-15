@@ -6,22 +6,22 @@ import 'package:snowflake_flutter_theme/snowflake_flutter_theme.dart';
 
 /// All the colors that are specific to the application in light mode.
 const lightColors = (
-  primary: Colors.green,
-  onPrimary: Colors.white,
-  secondary: Colors.orange,
-  onSecondary: Colors.white,
-  background: Colors.green,
-  onBackground: Colors.black,
+  primary: Color(0xFF11a5ed),
+  onPrimary: ThemeColors.white,
+  secondary: Color(0xFF4402A1),
+  onSecondary: ThemeColors.white,
+  background: Color(0xFFEDF3F5),
+  onBackground: Color(0xFF2F2F2F),
 );
 
 /// All the colors that are specific to the application in dark mode.
 const darkColors = (
-  primary: Colors.green,
-  onPrimary: Colors.white,
-  secondary: Colors.orange,
-  onSecondary: Colors.white,
-  background: Colors.green,
-  onBackground: Colors.white,
+  primary: Color(0xFF4402A1),
+  onPrimary: ThemeColors.white,
+  secondary: Color(0xFF11a5ed),
+  onSecondary: ThemeColors.white,
+  background: Color(0xFF2F2F2F),
+  onBackground: Color(0xFFEDF3F5),
 );
 
 /// The Widget that configures the application.
