@@ -36,8 +36,14 @@ class App extends StatelessWidget {
       child: ProviderScope(
         child: MaterialApp.router(
           themeMode: ThemeMode.light,
-          theme: getSnowflakeThemeData(mode: ThemeMode.light, appColors: lightColors),
-          darkTheme: getSnowflakeThemeData(mode: ThemeMode.dark, appColors: darkColors),
+          theme: getSnowflakeThemeData(
+            mode: ThemeMode.light,
+            appColors: lightColors,
+          ),
+          darkTheme: getSnowflakeThemeData(
+            mode: ThemeMode.dark,
+            appColors: darkColors,
+          ),
           routeInformationProvider: AppRoutes.router.routeInformationProvider,
           routeInformationParser: AppRoutes.router.routeInformationParser,
           routerDelegate: AppRoutes.router.routerDelegate,

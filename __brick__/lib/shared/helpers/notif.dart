@@ -1,17 +1,23 @@
 import 'package:bot_toast/bot_toast.dart';
-import 'package:everywear_theme/common/constants/colors.dart';
-import 'package:everywear_theme/common/views/text.dart';
 import 'package:flutter/material.dart';
 import 'package:snowflake_flutter_theme/snowflake_flutter_theme.dart';
 
+/// The type of toast to show
 enum ToastType {
+  /// Basic messages
   basic,
+  /// Success messages
   success,
+  /// Error messages
   error,
 }
 
+/// A class that contains all the methods to show notifications
 class Notif {
+
+  /// Show a toast message
   static void showToast(
+    BuildContext context,
     String message, {
     ToastType? type,
     Duration? duration,
@@ -23,7 +29,7 @@ class Notif {
             ? ThemeColors.onStatusError
             : type == ToastType.success
                 ? ThemeColors.onStatusSuccess
-                : ThemeColors.onStatusInfo,
+                : ThemeColors.onStatusInfo(context),
         fontSize: ThemeSizes.xl,
         fontWeight: FontWeight.bold,
       ),
