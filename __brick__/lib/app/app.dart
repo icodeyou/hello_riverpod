@@ -1,3 +1,4 @@
+import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:{{projectName}}/app/routing/app_routes.dart';
@@ -41,6 +42,7 @@ class App extends StatelessWidget {
           routeInformationParser: AppRoutes.router.routeInformationParser,
           routerDelegate: AppRoutes.router.routerDelegate,
           debugShowCheckedModeBanner: false,
+          builder: BotToastInit(), // (1) init bot_toast
           title: '{{projectName}}',
         ),
       ),
