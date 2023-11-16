@@ -27,7 +27,7 @@ dependencies:
   snowflake_flutter_theme:
     git:
       url: https://github.com/icodeyou/snowflake_flutter_theme
-      ref: "0.0.1"
+      ref: "0.0.4"
   test: ^1.22.0
 
 dev_dependencies:
