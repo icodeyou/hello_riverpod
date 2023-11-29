@@ -12,7 +12,7 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: const Text('{{projectName}}')),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => Notif.showToast(context, 'Hey !'),
+        onPressed: () => context.showToast('Hey !'),
         child: const Icon(Icons.star),
       ),
       body: Center(
