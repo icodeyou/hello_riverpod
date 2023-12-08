@@ -71,12 +71,15 @@ The directory tree is organized in a feature-first strategy.
     ---/main_staging.dart
     ---/app/
         ---/app.dart
-        ---/routing/ 
-    ---/l10n/
-        ---/arb/
-            ---/app_en.arb
-            ---/app_es.arb
-            ---/app_fr.arb
+        ---/navigation/
+        ---/i18n/
+            ---/main_fr.i18n.yaml
+            ---/main.i18n.yaml
+    ---/data/
+        ---/models/
+            ---/model1.dart
+            ---/model2.dart
+        ---/repository/    
     ---/features/
         ---/feature1/
             ---/providers/
