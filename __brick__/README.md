@@ -85,15 +85,15 @@ The architecture is mainly feature-first, with the exception of the data layer.
     ---/main_staging.dart
     ---/app/
         ---/app.dart
-        ---/routing/
+        ---/navigation/
+        ---/i18n/
+            ---/main_fr.i18n.yaml
+            ---/main.i18n.yaml
     ---/data/
         ---/models/
             ---/model1.dart
             ---/model2.dart
         ---/repository/    
-    ---/i18n/
-        ---/main_fr.i18n.yaml
-        ---/main.i18n.yaml
     ---/features/
         ---/feature1/
             ---/providers/

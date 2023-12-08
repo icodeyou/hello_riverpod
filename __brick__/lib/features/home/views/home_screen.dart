@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:{{projectName}}/i18n/translations.g.dart';
+import 'package:{{projectName}}/app/i18n/translations.g.dart';
 import 'package:snowflake_flutter_theme/snowflake_flutter_theme.dart';
 
 /// Widget for Home Screen

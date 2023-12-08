@@ -1,8 +1,8 @@
 import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:{{projectName}}/app/routing/app_routes.dart';
-import 'package:{{projectName}}/i18n/translations.g.dart';
+import 'package:{{projectName}}/app/navigation/app_routes.dart';
+import 'package:{{projectName}}/app/i18n/translations.g.dart';
 import 'package:snowflake_flutter_theme/snowflake_flutter_theme.dart';
 
 /// All the colors that are specific to the application in light mode.
