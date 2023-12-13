@@ -6,9 +6,9 @@ import 'package:snowflake_flutter_theme/snowflake_flutter_theme.dart';
 
 /// All the colors that are specific to the application in light mode.
 const lightColors = (
-  primary: Color(0xFF11a5ed),
+  primary: Color(0xFF14C2A5),
   onPrimary: ThemeColors.white,
-  secondary: Color(0xFF4402A1),
+  secondary: Color(0xFF6E22DA),
   onSecondary: ThemeColors.white,
   background: Color(0xFFEDF3F5),
   onBackground: Color(0xFF2F2F2F),
@@ -16,13 +16,14 @@ const lightColors = (
 
 /// All the colors that are specific to the application in dark mode.
 const darkColors = (
-  primary: Color(0xFF4402A1),
+  primary: Color(0xFF14C2A5),
   onPrimary: ThemeColors.white,
-  secondary: Color(0xFF11a5ed),
+  secondary: Color(0xFF6E22DA),
   onSecondary: ThemeColors.white,
   background: Color(0xFF2F2F2F),
   onBackground: Color(0xFFEDF3F5),
 );
+
 
 /// The Widget that configures the application.
 class App extends StatelessWidget {
