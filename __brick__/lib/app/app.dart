@@ -1,8 +1,8 @@
 import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:{{projectName}}/app/navigation/app_routes.dart';
 import 'package:{{projectName}}/app/i18n/translations.g.dart';
+import 'package:{{projectName}}/app/navigation/app_routes.dart';
 import 'package:snowflake_flutter_theme/snowflake_flutter_theme.dart';
 
 /// All the colors that are specific to the application in light mode.
@@ -24,7 +24,6 @@ const darkColors = (
   background: Color(0xFF2F2F2F),
   onBackground: Color(0xFFEDF3F5),
 );
-
 
 /// The Widget that configures the application.
 class App extends StatelessWidget {
@@ -49,7 +48,7 @@ class App extends StatelessWidget {
           routeInformationParser: AppRoutes.router.routeInformationParser,
           routerDelegate: AppRoutes.router.routerDelegate,
           debugShowCheckedModeBanner: false,
-          builder: BotToastInit(), // (1) init bot_toast
+          builder: BotToastInit(), // init bot_toast (1)
           title: '{{projectName}}',
         ),
       ),

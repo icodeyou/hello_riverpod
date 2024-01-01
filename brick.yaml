@@ -11,3 +11,8 @@ vars:
     type: string
     description: Project name
     prompt: What is the name of the project ?
+  navBar:
+    type: boolean
+    default: true
+    description: Whether we display the navigation bar
+    prompt: Do you want a bottom navigation bar?
