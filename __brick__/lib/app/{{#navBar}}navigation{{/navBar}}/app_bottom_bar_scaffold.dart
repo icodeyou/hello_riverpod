@@ -72,11 +72,10 @@ class RoutedNavigationBarItem extends NavigationDestination {
   const RoutedNavigationBarItem({
     super.key,
     required this.tabRootPath,
-    required Widget icon,
+    required super.icon,
     required Widget? selectedIcon,
     required super.label,
   }) : super(
-          icon: icon,
           selectedIcon: selectedIcon ?? icon,
         );
 

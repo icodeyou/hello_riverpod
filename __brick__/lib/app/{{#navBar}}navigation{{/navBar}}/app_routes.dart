@@ -1,9 +1,8 @@
-import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:{{projectName}}/app/navigation/app_bottom_bar_scaffold.dart';
 import 'package:{{projectName}}/app/navigation/paths.dart';
-import 'package:{{projectName}}/features/home/views/home_screen.dart';
+import 'package:{{projectName}}/features/hello/views/home_screen.dart';
 
 /// This class is used to defined all the routes of the project
 class AppRoutes {
@@ -20,7 +19,6 @@ class AppRoutes {
   static final GoRouter router = GoRouter(
     initialLocation: Paths.home.path,
     navigatorKey: _rootNavigatorKey,
-    observers: [BotToastNavigatorObserver()], // init bot_toast (2)
     routes: [
       StatefulShellRoute.indexedStack(
         builder: (context, state, navigationShell) {
