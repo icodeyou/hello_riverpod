@@ -21,20 +21,20 @@ class AppBottomBarScaffold extends StatelessWidget {
     final bottomTabs = [
       RoutedNavigationBarItem(
         tabRootPath: Paths.home,
-        icon: const Icon(Icons.photo_outlined),
-        selectedIcon: const Icon(Icons.photo),
+        icon: const Icon(Icons.home_outlined),
+        selectedIcon: const Icon(Icons.home),
         label: 'Home',
       ),
       RoutedNavigationBarItem(
         tabRootPath: Paths.explore,
-        icon: const Icon(Icons.delete_outline),
-        selectedIcon: const Icon(Icons.delete),
+        icon: const Icon(Icons.explore_outlined),
+        selectedIcon: const Icon(Icons.explore),
         label: 'Explore',
       ),
       RoutedNavigationBarItem(
         tabRootPath: Paths.settings,
-        icon: const Icon(Icons.drive_file_move_outline),
-        selectedIcon: const Icon(Icons.drive_file_move),
+        icon: const Icon(Icons.settings_outlined),
+        selectedIcon: const Icon(Icons.settings),
         label: 'Settings',
       ),
     ];

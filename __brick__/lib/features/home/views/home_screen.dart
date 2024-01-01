@@ -16,7 +16,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('pixinbox')),
+      appBar: AppBar(title: const Text('{{projectName}}')),
       floatingActionButton: FloatingActionButton(
         onPressed: () => context.showToast('Hey !'),
         child: const Icon(Icons.star),
