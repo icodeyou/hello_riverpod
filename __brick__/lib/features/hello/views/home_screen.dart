@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:{{projectName}}/app/i18n/translations.g.dart';
-import 'package:snowflake_flutter_theme/snowflake_flutter_theme.dart';
 
 /// Widget for Home Screen
 class HomeScreen extends StatelessWidget {
@@ -18,7 +17,13 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: const Text('{{projectName}}')),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => context.showToast('Hey !'),
+        onPressed: () {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Text('Hey there!'),
+            ),
+          );
+        },
         child: const Icon(Icons.star),
       ),
       body: Center(
