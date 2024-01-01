@@ -8,12 +8,12 @@ import 'package:{{projectName}}/features/hello/views/home_screen.dart';
 class AppRoutes {
   // Navigator Keys
   static final _rootNavigatorKey = GlobalKey<NavigatorState>();
-  static final _shellNavigatorAlbums =
-      GlobalKey<NavigatorState>(debugLabel: 'shellAlbums');
-  static final _shellNavigatorSort =
-      GlobalKey<NavigatorState>(debugLabel: 'shellSort');
-  static final _shellNavigatorTag =
-      GlobalKey<NavigatorState>(debugLabel: 'shellTag');
+  static final _shellNavigatorHome =
+      GlobalKey<NavigatorState>(debugLabel: 'shellHome');
+  static final _shellNavigatorExplore =
+      GlobalKey<NavigatorState>(debugLabel: 'shellExplore');
+  static final _shellNavigatorSettings =
+      GlobalKey<NavigatorState>(debugLabel: 'shellSettings');
 
   /// GoRouter instantiation, with associated routes
   static final GoRouter router = GoRouter(
@@ -26,34 +26,34 @@ class AppRoutes {
         },
         branches: [
           StatefulShellBranch(
-            navigatorKey: _shellNavigatorAlbums,
+            navigatorKey: _shellNavigatorHome,
             routes: [
               GoRoute(
                 path: Paths.home.path,
                 builder: (context, state) {
-                  return const HomeScreen(title: 'Albums');
+                  return const HomeScreen(title: 'Home');
                 },
               ),
             ],
           ),
           StatefulShellBranch(
-            navigatorKey: _shellNavigatorSort,
+            navigatorKey: _shellNavigatorExplore,
             routes: [
               GoRoute(
                 path: Paths.explore.path,
                 builder: (context, state) {
-                  return const HomeScreen(title: 'Sort');
+                  return const HomeScreen(title: 'Explore');
                 },
               ),
             ],
           ),
           StatefulShellBranch(
-            navigatorKey: _shellNavigatorTag,
+            navigatorKey: _shellNavigatorSettings,
             routes: [
               GoRoute(
                 path: Paths.settings.path,
                 builder: (context, state) {
-                  return const HomeScreen(title: 'Tag');
+                  return const HomeScreen(title: 'Settings');
                 },
               ),
             ],
