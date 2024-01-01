@@ -17,9 +17,14 @@ class AppRoutes {
 
   /// GoRouter instantiation, with associated routes
   static final GoRouter router = GoRouter(
-    initialLocation: Paths.home.path,
+    initialLocation: Paths.albums.path,
     navigatorKey: _rootNavigatorKey,
     routes: [
+      GoRoute(
+        // If a page is invalid, go_router will suggest to go to '/'
+        path: '/',
+        redirect: (context, state) => Paths.albums.path,
+      ),
       StatefulShellRoute.indexedStack(
         builder: (context, state, navigationShell) {
           return AppBottomBarScaffold(navigationShell: navigationShell);

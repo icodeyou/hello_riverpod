@@ -9,6 +9,11 @@ class AppRoutes {
     initialLocation: Paths.home.path,
     routes: [
       GoRoute(
+        // If a page is invalid, go_router will suggest to go to '/'
+        path: '/',
+        redirect: (context, state) => Paths.home.path,
+      ),
+      GoRoute(
         path: Paths.home.path,
         builder: (context, state) {
           return const HomeScreen(title: 'Home');
