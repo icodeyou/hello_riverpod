@@ -49,7 +49,7 @@ class App extends StatelessWidget {
           routerDelegate: AppRoutes.router.routerDelegate,
           debugShowCheckedModeBanner: false,
           builder: BotToastInit(), // init bot_toast (1)
-          title: '{{projectName}}',
+          title: t.common.appName,
         ),
       ),
     );

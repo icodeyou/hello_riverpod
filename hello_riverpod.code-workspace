@@ -40,6 +40,17 @@
 			"SNOWBALL": true,
 			"MASTER": true,
 			"MASON": true,
+		},
+		// Prevent autoformat on location files
+		"files.associations": {
+			"**/__brick__/**/main.i18n.yaml": "locMain",
+			"**/__brick__/**/main_fr.i18n.yaml": "locFr",
+		},
+		"[locMain]": {
+			"editor.formatOnSave": false
+		},
+		"[locFr]": {
+			"editor.formatOnSave": false
 		}
 	},
 }
