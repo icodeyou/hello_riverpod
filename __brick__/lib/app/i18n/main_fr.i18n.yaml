@@ -1,2 +1,5 @@
+common:
+  appName: {{projectName.titleCase()}}
+
 home:
   hello: "Salut"
