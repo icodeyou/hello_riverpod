@@ -18,14 +18,14 @@ class AppRoutes {
 
   /// GoRouter instantiation, with associated routes
   static final GoRouter router = GoRouter(
-    initialLocation: Paths.albums.path,
+    initialLocation: Paths.home.path,
     navigatorKey: _rootNavigatorKey,
     observers: [BotToastNavigatorObserver()], // init bot_toast (2)
     routes: [
       GoRoute(
         // If a page is invalid, go_router will suggest to go to '/'
         path: '/',
-        redirect: (context, state) => Paths.albums.path,
+        redirect: (context, state) => Paths.home.path,
       ),
       StatefulShellRoute.indexedStack(
         builder: (context, state, navigationShell) {
