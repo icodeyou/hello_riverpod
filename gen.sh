@@ -82,14 +82,16 @@ case "$genType" in
     cd HELLOWORLDS/
     ;;
 "mason")
-    rm -rf MASON/; mkdir MASON/ # Safest way to clear MASON/ including empty files
+    # Folder cannot be called MASON in case a branche is called mason
+    rm -rf MASONS/; mkdir MASONS/ # Safest way to clear MASON/ including empty files
     # Plus it creates the directory if it does not exist
-    cd MASON/
+    cd MASONS/
     ;;
 "snowball")
-    rm -rf SNOWBALL/; mkdir SNOWBALL/ # Safest way to clear SNOWBALL/ including empty files
+    # Folder cannot be called SNOWBALL because it would be a conflict with the branch name (it makes checkout impossible 😂)
+    rm -rf SNOWBALLS/; mkdir SNOWBALLS/ # Safest way to clear SNOWBALL/ including empty files
     # Plus it creates the directory if it does not exist
-    cd SNOWBALL/
+    cd SNOWBALLS/
     ;;
 "master")
     rm -rf MASTER/; mkdir MASTER/ # Safest way to clear SNOWBALL/ including empty files
@@ -150,28 +152,28 @@ case "$genType" in
     echo "📂 To $PWD"
     ;;
 "mason")
-    echo "Move app to MASON/"
+    echo "Move app to MASONS/"
     mv $nameLowercase ../ # Move app to hello_riverpod
     cd ..
-    rm -rf MASON/ # Delete empty MASON
-    mv $nameLowercase MASON # Rename app to MASON
+    rm -rf MASONS/ # Delete empty MASONS
+    mv $nameLowercase MASONS # Rename app to MASONS
     echo ""
     echo "Navigate inside new project"
     echo "📂 From $PWD"
-    cd MASON
+    cd MASONS
     echo "📂 To $PWD"
     ;;
 \
 "snowball")
-    echo "Move app to SNOWBALL/"
+    echo "Move app to SNOWBALLS/"
     mv $nameLowercase ../ # Move app to hello_riverpod
     cd ..
-    rm -rf SNOWBALL/ # Delete empty SNOWBALL
-    mv $nameLowercase SNOWBALL # Rename app to SNOWBALL
+    rm -rf SNOWBALLS/ # Delete empty SNOWBALLS
+    mv $nameLowercase SNOWBALLS # Rename app to SNOWBALLS
     echo ""
     echo "Navigate inside new project"
     echo "📂 From $PWD"
-    cd SNOWBALL
+    cd SNOWBALLS
     echo "📂 To $PWD"
     ;;
 "master")
