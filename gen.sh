@@ -4,12 +4,12 @@ SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 cd $SCRIPTPATH
 
 genType=$1
-if [[ $genType != "helloworld" ]] && [[ $genType != "mason" ]] && [[ $genType != "snowball" ]] && [[ $genType != "master" ]] 
+if [[ $genType != "snowball" ]] && [[ $genType != "mason" ]] && [[ $genType != "local" ]] && [[ $genType != "master" ]] 
   then
     echo ""
     echo "ERROR"
     echo "Please type the following command : './gen.sh <ARGUMENT>'"
-    echo "<ARGUMENT> can be : snowball, mason, helloworld"
+    echo "<ARGUMENT> can be : local, mason, snowball, or master"
     echo ""
     exit
 fi
@@ -19,7 +19,7 @@ echo "Prerequisites : Make sure that following CLI are installed :"
 echo "flutter, very_good, mason, gh"
 echo ""
 
-if [[ $genType == "helloworld" ]]
+if [[ $genType == "snowball" ]]
   then
 
   # Get name of project
@@ -33,13 +33,13 @@ if [[ $genType == "helloworld" ]]
   nameUppercaseNoSpace=$(echo "$nameUppercase" | tr -d ' ')
   nameLowercase=$(echo "$nameUppercase" | awk '{print tolower($0)}' | tr -d ' ')
 
-  # Check if HELLOWORLDS folder exists in this path
-  if ! [ -d "HELLOWORLDS" ]; then
-    mkdir HELLOWORLDS
+  # Check if SNOWBALLS folder exists in this path
+  if ! [ -d "SNOWBALLS" ]; then
+    mkdir SNOWBALLS
     else 
-      # Check if project already exists in HELLOWORLDS/
-      if [ -d "HELLOWORLDS/$nameLowercase" ]; then
-        echo "$nameLowercase does exist in HELLOWORLDS/"
+      # Check if project already exists in SNOWBALLS/
+      if [ -d "SNOWBALLS/$nameLowercase" ]; then
+        echo "$nameLowercase does exist in SNOWBALLS/"
         echo "Delete the folder or choose another name for your project."
         echo ""
         exit
@@ -78,25 +78,25 @@ echo ""
 echo "Navigate to the folder where the project will be created"
 echo "📂 From $PWD"
 case "$genType" in
-"helloworld")
-    cd HELLOWORLDS/
-    ;;
-"mason")
-    # Folder cannot be called MASON in case a branche is called mason
-    rm -rf MASONS/; mkdir MASONS/ # Safest way to clear MASON/ including empty files
+"local")
+    rm -rf LOCAL/; mkdir LOCAL/ # Safest way to clear SNOWBALL/ including empty files
     # Plus it creates the directory if it does not exist
-    cd MASONS/
+    cd LOCAL/
     ;;
 "snowball")
-    # Folder cannot be called SNOWBALL because it would be a conflict with the branch name (it makes checkout impossible 😂)
-    rm -rf SNOWBALLS/; mkdir SNOWBALLS/ # Safest way to clear SNOWBALL/ including empty files
-    # Plus it creates the directory if it does not exist
+    # Folder cannot be called SNOWBALL because it would be a conflict with the branch name (it makes checkout impossible !)
     cd SNOWBALLS/
     ;;
 "master")
-    rm -rf MASTER/; mkdir MASTER/ # Safest way to clear SNOWBALL/ including empty files
+    # Here strangely the folder can be called MASTER/
+    rm -rf MASTER/; mkdir MASTER/ # Safest way to clear MASTER/ including empty files
     # Plus it creates the directory if it does not exist
     cd MASTER/
+    ;;
+"mason")
+    rm -rf MASON/; mkdir MASON/ # Safest way to clear MASON/ including empty files
+    # Plus it creates the directory if it does not exist
+    cd MASON/
     ;;
 *)
     echo "ERROR : Argument is not recognized"
@@ -145,35 +145,22 @@ fi
 # Navigate inside new project
 echo ""
 case "$genType" in
-"helloworld")
+"local")
+    echo "Move app to LOCAL/"
+    mv $nameLowercase ../ # Move app to hello_riverpod
+    cd ..
+    rm -rf LOCAL/ # Delete empty LOCAL
+    mv $nameLowercase LOCAL # Rename app to LOCAL
+    echo ""
+    echo "Navigate inside new project"
+    echo "📂 From $PWD"
+    cd LOCAL
+    echo "📂 To $PWD"
+    ;;
+"snowball")
     echo "Navigate inside new project"
     echo "📂 From $PWD"
     cd $nameLowercase
-    echo "📂 To $PWD"
-    ;;
-"mason")
-    echo "Move app to MASONS/"
-    mv $nameLowercase ../ # Move app to hello_riverpod
-    cd ..
-    rm -rf MASONS/ # Delete empty MASONS
-    mv $nameLowercase MASONS # Rename app to MASONS
-    echo ""
-    echo "Navigate inside new project"
-    echo "📂 From $PWD"
-    cd MASONS
-    echo "📂 To $PWD"
-    ;;
-\
-"snowball")
-    echo "Move app to SNOWBALLS/"
-    mv $nameLowercase ../ # Move app to hello_riverpod
-    cd ..
-    rm -rf SNOWBALLS/ # Delete empty SNOWBALLS
-    mv $nameLowercase SNOWBALLS # Rename app to SNOWBALLS
-    echo ""
-    echo "Navigate inside new project"
-    echo "📂 From $PWD"
-    cd SNOWBALLS
     echo "📂 To $PWD"
     ;;
 "master")
@@ -188,6 +175,18 @@ case "$genType" in
     cd MASTER
     echo "📂 To $PWD"
     ;;
+"mason")
+    echo "Move app to MASON/"
+    mv $nameLowercase ../ # Move app to hello_riverpod
+    cd ..
+    rm -rf MASON/ # Delete empty MASON
+    mv $nameLowercase MASON # Rename app to MASON
+    echo ""
+    echo "Navigate inside new project"
+    echo "📂 From $PWD"
+    cd MASON
+    echo "📂 To $PWD"
+    ;;
 *)
     echo "ERROR : Argument is not recognized"
     exit
@@ -196,7 +195,7 @@ esac
 
 
 # Git upload
-if [[ $genType == "helloworld" ]] 
+if [[ $genType == "snowball" ]] 
   then
     projectPath=$PWD
     echo ""
@@ -256,17 +255,17 @@ mason init
 echo ""
 echo "🔥 Mason add brick"
 case "$genType" in
-"helloworld")
-    mason add hello_riverpod --git-url https://github.com/icodeyou/hello_riverpod.git  --git-ref snowball
-    ;;
-"mason")
-    mason add hello_riverpod
+"local")
+    mason add hello_riverpod --path ../../
     ;;
 "snowball")
-    mason add hello_riverpod --path ../../
+    mason add hello_riverpod --git-url https://github.com/icodeyou/hello_riverpod.git  --git-ref snowball
     ;;
 "master")
     mason add hello_riverpod --git-url https://github.com/icodeyou/hello_riverpod.git  --git-ref master
+    ;;
+"mason")
+    mason add hello_riverpod
     ;;
 *)
     echo "ERROR : Argument is not recognized"
@@ -284,7 +283,7 @@ echo "📂 From $PWD"
 cd ..
 echo "📂 To $PWD"
 
-if [[ $genType == 'helloworld' ]]; then 
+if [[ $genType == 'snowball' ]]; then 
   echo ""
   echo "Rename terminals_example.json to terminals.json"
   # This will set up Terminals Manager
@@ -313,7 +312,7 @@ echo ""
 echo "🔥 Mason finished"
 
 # Commit and push
-if [[ $genType == "helloworld" ]]
+if [[ $genType == "snowball" ]]
   then
     echo ""
     echo ""
