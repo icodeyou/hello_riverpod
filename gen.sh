@@ -193,11 +193,11 @@ case "$genType" in
     ;;
 esac 
 
+projectPath=$PWD
 
 # Git upload
 if [[ $genType == "snowball" ]] 
   then
-    projectPath=$PWD
     echo ""
     echo ""
     echo "🔥 Creating Git Repository for project $nameLowercase 🔥"
