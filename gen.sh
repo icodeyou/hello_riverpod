@@ -109,7 +109,7 @@ echo "📂 To $PWD"
 	set -e
 	echo ""
 	echo ""
-    echo "🔥 Creating project '$nameLowercase' with bundle ID '$org.app' 🔥"
+    echo "🔥 Creating project '$nameLowercase' with bundle ID '$bundleId' 🔥"
     echo ""
     very_good create flutter_app $nameLowercase --org-name $org --application-id $bundleId
     
