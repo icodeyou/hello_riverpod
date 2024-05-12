@@ -12,6 +12,7 @@
 			"titleBar.inactiveForeground": "#e6c6d3",
 		},
 		"cSpell.words": [
+			"HELLOWORLDS",
 			"riverpod"
 		],
 		"dart.analysisExcludedFolders": [
