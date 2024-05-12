@@ -4,6 +4,9 @@
 			"path": "."
 		},
 		{
+			"path": "LOCAL"
+		},
+		{
 			"path": "SNOWBALL"
 		},
 		{
