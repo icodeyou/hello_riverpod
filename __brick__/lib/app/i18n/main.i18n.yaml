@@ -1,5 +1,9 @@
 common:
   appName: {{projectName.titleCase()}}
 
+splash:
+  errorTitle: An error occurred while loading the app.
+  retryButton: Retry
+
 home:
   hello: "Hello"

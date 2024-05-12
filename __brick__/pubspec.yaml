@@ -22,6 +22,7 @@ dependencies:
   logger: ^2.0.2+1
   mocktail: ^1.0.2
   riverpod_annotation: ^2.0.0
+  shared_preferences: ^2.2.3
   slang: ^3.14.0
   slang_flutter: ^3.14.0
   snowflake_flutter_theme:

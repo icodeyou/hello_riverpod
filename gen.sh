@@ -119,6 +119,7 @@ echo "📂 To $PWD"
     echo ""
     echo "ℹ️ Cleaning very good project"
     rm -f pubspec.lock
+    rm -f lib/bootstrap.dart
     rm -rf lib/counter/
     rm -rf lib/app/view/
     rm -rf lib/l10n/

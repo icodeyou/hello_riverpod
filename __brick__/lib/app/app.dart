@@ -27,7 +27,7 @@ const darkColors = (
 
 /// The Widget that configures the application.
 class App extends StatelessWidget {
-  /// Unique constructor for class App
+  /// Constructor
   const App({super.key});
 
   @override
