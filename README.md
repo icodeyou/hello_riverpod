@@ -23,9 +23,9 @@ Thanks to `hello_riverpod`, you now have a way to generate a 'Very Good project'
 
 All you need to do is [this script](https://github.com/icodeyou/hello_riverpod/blob/master/gen.sh).
 Download it and put it in a folder where you want to create your new projects.
-Then, run it with `./gen.sh helloworld` and follow the instructions.
+Then, run it with `./gen.sh snowball` and follow the instructions.
 
-Your projects will be added in a folder named `HELLOWORLDS/`
+Your projects will be added in a folder named `SNOWBALL/`
 
 Feel free to create an issue if you have any question.
 

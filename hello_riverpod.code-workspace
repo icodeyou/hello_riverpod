@@ -21,12 +21,11 @@
 			"titleBar.inactiveForeground": "#e6c6d3",
 		},
 		"cSpell.words": [
-			"HELLOWORLDS",
+			"snowball",
 			"Salut"
 		],
 		"cSpell.useGitignore": false,
 		"dart.analysisExcludedFolders": [
-			"HELLOWORLDS",
 			"__brick__"
 		],
 		"dart.runPubGetOnPubspecChanges": "never",
