@@ -4,22 +4,12 @@
 
 ## Getting started
 
-### Clone project and handle theme
-
-To clone project, run :
-
-`git clone --recurse-submodules https://...`
-
-To load last changes in theme, run the command :
-
-`git submodule update --remote`
-
 ### Running the project
 
 To compile the project, run the following command :
 
 ```shell
-flutter run --flavor {FLAVOR} -t main_{FLAVOR}.dart
+flutter run --flavor {FLAVOR} -t lib/main_{FLAVOR}.dart
 ```
 
 💡 Replace {FLAVOR} by the one of the following flavors :
@@ -31,7 +21,7 @@ flutter run --flavor {FLAVOR} -t main_{FLAVOR}.dart
 Example :
 
 ```shell
-flutter run --flavor development -t main_development.dart
+flutter run --flavor development -t lib/main_development.dart
 ```
 
 If you need to specify the device, add the argument :
