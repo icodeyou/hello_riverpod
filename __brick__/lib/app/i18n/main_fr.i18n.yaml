@@ -6,4 +6,4 @@ splash:
   retryButton: Réessayer
 
 home:
-  hello: "Salut"
+  floatingActionButton: "Mot généré"

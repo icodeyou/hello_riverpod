@@ -1,4 +1,3 @@
-import 'package:everywear_core/common/services/log.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:{{projectName}}/shared/services/log.dart';
 

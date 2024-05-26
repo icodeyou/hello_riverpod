@@ -6,4 +6,4 @@ splash:
   retryButton: Retry
 
 home:
-  hello: "Hello"
+  floatingActionButton: "Word has been generated"
