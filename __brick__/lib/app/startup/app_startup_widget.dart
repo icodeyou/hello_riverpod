@@ -3,7 +3,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:{{projectName}}/app/app.dart';
 import 'package:{{projectName}}/app/startup/app_startup_error_widget.dart';
 import 'package:{{projectName}}/app/startup/app_startup_provider.dart';
-import 'package:{{projectName}}/shared/services/log.dart';
 
 /// Root widget to handle splash screen while loading config
 class AppStartupWidget extends ConsumerWidget {

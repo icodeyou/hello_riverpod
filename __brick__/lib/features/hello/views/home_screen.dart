@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:{{projectName}}/app/i18n/translations.g.dart';
+import 'package:{{projectName}}/features/home/providers/word_provider.dart';
 
 /// Widget for Home Screen
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends ConsumerWidget {
   /// Unique constructor for HomeScreen
   const HomeScreen({
     super.key,
@@ -13,14 +15,15 @@ class HomeScreen extends StatelessWidget {
   final String title;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(title: Text(t.common.appName)),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
+          ref.read($wordProvider.notifier).generateLetter();
           ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(
-              content: Text('Hey there!'),
+            SnackBar(
+              content: Text(t.home.floatingActionButton),
             ),
           );
         },
@@ -32,7 +35,7 @@ class HomeScreen extends StatelessWidget {
           children: [
             Text(title, style: const TextStyle(fontWeight: FontWeight.bold)),
             const SizedBox(height: 20),
-            Text(t.home.hello),
+            Text(ref.watch($wordProvider)),
           ],
         ),
       ),
