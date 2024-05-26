@@ -1,5 +1,9 @@
 common:
   appName: {{projectName.titleCase()}}
 
+splash:
+  errorTitle: Une erreur s'est produite lors du chargement de l'application.
+  retryButton: Réessayer
+
 home:
   hello: "Salut"
