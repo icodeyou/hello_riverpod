@@ -15,7 +15,6 @@ class AppStartupWidget extends ConsumerWidget {
     final appStartupState = ref.watch(appStartupProvider);
     return appStartupState.when(
       error: (e, st) {
-        logger.e(e.toString(), stackTrace: st);
         return AppStartupErrorWidget(
           message: e.toString(),
           onRetry: () => ref.invalidate(appStartupProvider),
