@@ -10,6 +10,9 @@ class AppStartupScope extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return const ProviderScope(
+      observers: [
+        RiverpodObserver(),
+      ],
       child: AppStartupWidget(),
     );
   }
