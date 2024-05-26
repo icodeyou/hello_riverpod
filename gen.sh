@@ -80,7 +80,7 @@ echo "Navigate to the folder where the project will be created"
 echo "📂 From $PWD"
 case "$genType" in
 "local")
-    rm -rf LOCAL/; mkdir LOCAL/ # Safest way to clear SNOWBALL/ including empty files
+    rm -rf LOCAL/; mkdir LOCAL/ # Safest way to clear LOCAL/ including empty files
     # Plus it creates the directory if it does not exist
     cd LOCAL/
     ;;
