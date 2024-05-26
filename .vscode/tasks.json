@@ -4,7 +4,7 @@
         {
             "label": "gen local",
             "type": "shell",
-            "command": "./gen.sh local withoutNavBar",
+            "command": "./gen.sh local withNavBar",
             "presentation": {
                 "echo": true,
                 "reveal": "always",
@@ -26,7 +26,7 @@
         {
             "label": "gen master",
             "type": "shell",
-            "command": "./gen.sh master withNavBar",
+            "command": "./gen.sh master withoutNavBar",
             "presentation": {
                 "echo": true,
                 "reveal": "always",
