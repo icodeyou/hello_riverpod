@@ -18,7 +18,6 @@ class App extends StatelessWidget {
           routeInformationParser: AppRoutes.router.routeInformationParser,
           routerDelegate: AppRoutes.router.routerDelegate,
           debugShowCheckedModeBanner: false,
-          builder: BotToastInit(), // init bot_toast (1)
           title: t.common.appName,
         ),
       ),
