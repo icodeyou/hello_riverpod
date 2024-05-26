@@ -24,8 +24,9 @@
 			"titleBar.inactiveForeground": "#e6c6d3",
 		},
 		"cSpell.words": [
-			"snowball",
-			"Salut"
+			"projectlocal",
+			"Salut",
+			"snowball"
 		],
 		"cSpell.useGitignore": false,
 		"dart.analysisExcludedFolders": [

@@ -1,6 +1,5 @@
 import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:{{projectName}}/app/i18n/translations.g.dart';
 import 'package:{{projectName}}/app/navigation/app_routes.dart';
 import 'package:snowflake_flutter_theme/snowflake_flutter_theme.dart';
@@ -33,24 +32,22 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TranslationProvider(
-      child: ProviderScope(
-        child: MaterialApp.router(
-          themeMode: ThemeMode.light,
-          theme: getSnowflakeThemeData(
-            mode: ThemeMode.light,
-            appColors: lightColors,
-          ),
-          darkTheme: getSnowflakeThemeData(
-            mode: ThemeMode.dark,
-            appColors: darkColors,
-          ),
-          routeInformationProvider: AppRoutes.router.routeInformationProvider,
-          routeInformationParser: AppRoutes.router.routeInformationParser,
-          routerDelegate: AppRoutes.router.routerDelegate,
-          debugShowCheckedModeBanner: false,
-          builder: BotToastInit(), // init bot_toast (1)
-          title: t.common.appName,
+      child: MaterialApp.router(
+        themeMode: ThemeMode.light,
+        theme: getSnowflakeThemeData(
+          mode: ThemeMode.light,
+          appColors: lightColors,
         ),
+        darkTheme: getSnowflakeThemeData(
+          mode: ThemeMode.dark,
+          appColors: darkColors,
+        ),
+        routeInformationProvider: AppRoutes.router.routeInformationProvider,
+        routeInformationParser: AppRoutes.router.routeInformationParser,
+        routerDelegate: AppRoutes.router.routerDelegate,
+        debugShowCheckedModeBanner: false,
+        builder: BotToastInit(), // init bot_toast (1)
+        title: t.common.appName,
       ),
     );
   }
