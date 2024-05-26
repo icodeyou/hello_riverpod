@@ -13,7 +13,9 @@
 		},
 		"cSpell.words": [
 			"HELLOWORLDS",
-			"riverpod"
+			"riverpod",
+			"prefs",
+			"Salut",
 		],
 		"dart.analysisExcludedFolders": [
 			"HELLOWORLDS",

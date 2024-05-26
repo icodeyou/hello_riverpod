@@ -1,5 +1,7 @@
 import 'dart:math';
 
+import 'package:{{projectName}}/shared/constants/shared_preferences_keys.dart';
+import 'package:projectlocal/shared/helpers/extensions/ref_extensions.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'word_provider.g.dart';
@@ -8,7 +10,7 @@ part 'word_provider.g.dart';
 class $Word extends _$$Word {
   @override
   String build() {
-    return 'Hello';
+    return ref.prefs.getString(SharedPreferencesKeys.spWord) ?? 'Hello';
   }
 
   void generateLetter() {
@@ -16,5 +18,6 @@ class $Word extends _$$Word {
     const letters = 'abcdefghijklmnopqrstuvwxyz';
     final randomLetter = letters[random.nextInt(letters.length)];
     state = state + randomLetter;
+    ref.prefs.setString(SharedPreferencesKeys.spWord, state);
   }
 }
