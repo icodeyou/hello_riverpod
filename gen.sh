@@ -73,6 +73,7 @@ echo "It is not easy to change it, so be sure to pick the right one."
 echo "✨ ✨ ✨ ✨ ✨"
 echo ""
 
+
 # Navigate to the folder where the project will be created
 echo ""
 echo "Navigate to the folder where the project will be created"
@@ -103,6 +104,17 @@ case "$genType" in
     exit
     ;;
 esac 
+
+echo "Checking navbar"
+if [[ "$2" == "withoutNavBar" ]]; then
+  echo "Navbar false"
+  masonNavbarArgument="--navBar false"
+elif [[ "$2" == "withNavBar" ]]; then
+  masonNavbarArgument="--navBar true"
+else
+  masonNavbarArgument=""
+fi
+
 echo "📂 To $PWD"
 
 ( # try
@@ -276,7 +288,7 @@ esac
 
 echo ""
 echo "🔥 Mason make"
-mason make hello_riverpod --on-conflict overwrite -o ../ --projectName $nameLowercase
+mason make hello_riverpod $masonNavbarArgument --on-conflict overwrite -o ../ --projectName $nameLowercase
 
 echo ""
 echo "Navigate back to app"
