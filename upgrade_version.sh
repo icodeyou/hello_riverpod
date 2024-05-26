@@ -1,3 +1,5 @@
+#usage : ./upgrade_version.sh "Tag message"
+
 if [[ $1 == '' ]]
 then
 	echo "Please provide a message in arguments."
