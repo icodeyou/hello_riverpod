@@ -9,15 +9,21 @@ part 'word_provider.g.dart';
 @riverpod
 class $Word extends _$$Word {
   @override
-  String build() {
-    return ref.prefs.getString(SharedPreferencesKeys.spWord) ?? 'Hello';
+  Future<String> build() async {
+    return _getWordFromPref();
   }
 
-  void generateLetter() {
+  Future<void> generateLetter() async {
+    state = const AsyncLoading();
     final random = Random();
     const letters = 'abcdefghijklmnopqrstuvwxyz';
     final randomLetter = letters[random.nextInt(letters.length)];
-    state = state + randomLetter;
-    ref.prefs.setString(SharedPreferencesKeys.spWord, state);
+    final newWord = _getWordFromPref() + randomLetter;
+    await ref.prefs.setString(SharedPreferencesKeys.spWord, newWord);
+    state = AsyncData(newWord);
+  }
+
+  String _getWordFromPref() {
+    return ref.prefs.getString(SharedPreferencesKeys.spWord) ?? 'Hello';
   }
 }
