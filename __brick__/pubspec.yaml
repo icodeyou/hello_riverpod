@@ -1,6 +1,6 @@
 name: "{{projectName}}"
 description: A project created by Very Good CLI and hello_riverpod
-version: 0.0.1+1
+version: 0.1.0+1
 
 # Prevent accidental publishing to pub.dev.
 publish_to: none
