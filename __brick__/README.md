@@ -84,7 +84,7 @@ The architecture is mainly feature-first, with the exception of the data layer.
             ---/model1.dart
             ---/model2.dart
         ---/repository/    
-    ---/features/
+    ---/ui/
         ---/feature1/
             ---/providers/
                 ---/xxx_provider.dart
@@ -96,7 +96,7 @@ The architecture is mainly feature-first, with the exception of the data layer.
             ---/constants.dart
             ---/helpers/
             ---/providers/
-            ---/services/
+            ---/utils/
             ---/views/
     ---/shared/
         ---/constants.dart
@@ -107,7 +107,7 @@ The architecture is mainly feature-first, with the exception of the data layer.
         ---/providers/
             xxx_provider.dart
         ---/views/
-        ---/services/
+        ---/utils/
             ---/log.dart
             ---/camera_service.dart    
 ```

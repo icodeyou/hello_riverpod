@@ -1,13 +1,13 @@
 import 'dart:math';
 
 import 'package:{{projectName}}/shared/constants/shared_preferences_keys.dart';
-import 'package:{{projectName}}/shared/helpers/extensions/ref_extensions.dart';
+import 'package:{{projectName}}/shared/extensions/ref_extensions.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-part 'word_provider.g.dart';
+part 'word_controller.g.dart';
 
 @riverpod
-class $Word extends _$$Word {
+class $WordController extends _$$WordController {
   @override
   Future<String> build() async {
     return _getWordFromPref();

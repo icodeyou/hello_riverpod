@@ -1,5 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:{{projectName}}/shared/services/log.dart';
+import 'package:{{projectName}}/app/utils/log.dart';
 
 class RiverpodObserver extends ProviderObserver {
   @override

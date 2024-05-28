@@ -1,7 +1,7 @@
 import 'package:bot_toast/bot_toast.dart';
 import 'package:go_router/go_router.dart';
 import 'package:{{projectName}}/app/navigation/paths.dart';
-import 'package:{{projectName}}/features/home/views/home_screen.dart';
+import 'package:{{projectName}}/features/ui/home/views/home_screen.dart';
 
 /// This class is used to defined all the routes of the project
 class AppRoutes {
