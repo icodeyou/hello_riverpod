@@ -2,18 +2,6 @@
 	"folders": [
 		{
 			"path": "."
-		},
-		{
-			"path": "LOCAL"
-		},
-		{
-			"path": "SNOWBALLS"
-		},
-		{
-			"path": "MASON"
-		},
-		{
-			"path": "MASTER"
 		}
 	],
 	"settings": {
