@@ -2,6 +2,9 @@
 	"folders": [
 		{
 			"path": "."
+		},
+		{
+			"path": "MASTER"
 		}
 	],
 	"settings": {
@@ -13,9 +16,11 @@
 		},
 		"cSpell.words": [
 			"prefs",
+			"salut",
+			"snowball",
 			"projectlocal",
-			"Salut",
-			"snowball"
+			"projectmaster",
+			"projectmason",
 		],
 		"cSpell.useGitignore": false,
 		"dart.analysisExcludedFolders": [
