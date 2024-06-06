@@ -1,0 +1,46 @@
+{
+    "autorun": true,
+    "autokill": true,
+    "terminals": [
+        {
+            "name": "HR",
+            "focus": true,
+            "color": "terminal.ansiRed",
+            "shellPath": "/bin/zsh",
+            "icon": "heart-filled",
+            "command": ""
+        },
+        {
+            "name": "LOCAL",
+            "focus": true,
+            "color": "terminal.ansiGreen",
+            "shellPath": "/bin/zsh",
+            "icon": "pinned",
+            "command": "cd LOCAL/"
+        },
+        {
+            "name": "SNOWBALL",
+            "focus": true,
+            "color": "terminal.ansiCyan",
+            "shellPath": "/bin/zsh",
+            "icon": "sparkle-filled",
+            "command": "cd SNOWBALL/"
+        },
+        {
+            "name": "MASTER",
+            "focus": true,
+            "color": "terminal.ansiMagenta",
+            "shellPath": "/bin/zsh",
+            "icon": "github-inverted",
+            "command": "cd MASTER/"
+        },
+        {
+            "name": "MASON",
+            "focus": true,
+            "color": "terminal.ansiYellow",
+            "shellPath": "/bin/zsh",
+            "icon": "rocket",
+            "command": "cd MASON/"
+        }
+    ]
+}

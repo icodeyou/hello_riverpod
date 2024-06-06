@@ -39,5 +39,11 @@
     },
     "[locFr]": {
         "editor.formatOnSave": false
-    }
+    },
+    // ------------------------
+    // The two following codes kill terminals when reloading window,
+    // so that Terminals Manager doesn't display duplicated terminals
+    "terminal.integrated.enablePersistentSessions": false,
+    "terminal.integrated.environmentChangesRelaunch": false,
+    // ------------------------
 }
