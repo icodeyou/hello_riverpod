@@ -353,3 +353,19 @@ echo "The project has been created in : $projectPath"
 
 echo ""
 echo ""
+
+if [[ $genType == "local" ]]
+  then
+    echo "🚀 Running Project"
+    flutter run --flavor development --target lib/main_development.dart
+else
+  # Ask user
+  echo "Do you want to run the project ? Press enter to confirm, type NO otherwise :"
+  read runAnswer
+  if [[ $runAnswer != 'NO' ]]; then 
+    echo "🚀 Running Project"
+    flutter run --flavor development --target lib/main_development.dart
+  fi
+fi
+echo ""
+echo ""
