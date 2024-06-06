@@ -137,6 +137,7 @@ echo "📂 To $PWD"
     rm -rf lib/l10n/
     rm -rf l10n.yaml
     rm -rf test/**
+
     echo ""
     echo "⚠️ Removing folders web/ linux/ windows/ macos/"
     rm -rf web/ linux/ windows/ macos/ #this can be removed when very_good has a flag like "--platforms"
@@ -296,11 +297,11 @@ echo "📂 From $PWD"
 cd ..
 echo "📂 To $PWD"
 
-if [[ $genType == 'snowball' ]]; then 
+# This will set up Terminals Manager
+if [[ $genType == 'snowball' ]] ||  [[ $genType == 'local' ]]; then 
   echo ""
-  echo "Rename terminals_example.json to terminals.json"
-  # This will set up Terminals Manager
-  mv .vscode/terminals_example.json .vscode/terminals.json
+  echo "Rename file terminals_template.json to terminals.json"
+  mv .vscode/terminals_template.json .vscode/terminals.json || exit
 fi
 
 echo ""
