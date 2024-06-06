@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:{{projectName}}/app/navigation/app_bottom_bar_scaffold.dart';
 import 'package:{{projectName}}/app/navigation/paths.dart';
 import 'package:{{projectName}}/features/home/ui/views/home_screen.dart';
+import 'package:{{projectName}}/features/kitten/ui/views/kitten_screen.dart';
 
 /// This class is used to defined all the routes of the project
 class AppRoutes {
@@ -27,6 +28,12 @@ class AppRoutes {
         path: '/',
         redirect: (context, state) => Paths.home.path,
       ),
+      GoRoute(
+        path: Paths.kitten.path,
+        builder: (context, state) {
+          return const KittenScreen();
+        },
+      ),
       StatefulShellRoute.indexedStack(
         builder: (context, state, navigationShell) {
           return AppBottomBarScaffold(navigationShell: navigationShell);
@@ -38,7 +45,7 @@ class AppRoutes {
               GoRoute(
                 path: Paths.home.path,
                 builder: (context, state) {
-                  return const HomeScreen(title: 'Home');
+                  return const HomeScreen();
                 },
               ),
             ],
@@ -49,7 +56,7 @@ class AppRoutes {
               GoRoute(
                 path: Paths.explore.path,
                 builder: (context, state) {
-                  return const HomeScreen(title: 'Explore');
+                  return const Scaffold(body: Center(child: Text('Explore')));
                 },
               ),
             ],
@@ -60,7 +67,7 @@ class AppRoutes {
               GoRoute(
                 path: Paths.settings.path,
                 builder: (context, state) {
-                  return const HomeScreen(title: 'Settings');
+                  return const Scaffold(body: Center(child: Text('Settings')));
                 },
               ),
             ],

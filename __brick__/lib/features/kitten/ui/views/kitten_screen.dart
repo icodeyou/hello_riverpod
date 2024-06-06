@@ -5,36 +5,24 @@ import 'package:{{projectName}}/features/home/ui/controllers/word_controller.dar
 import 'package:snowflake_flutter_theme/snowflake_flutter_theme.dart';
 
 /// Widget for Home Screen
-class HomeScreen extends ConsumerWidget {
-  /// Unique constructor for HomeScreen
-  const HomeScreen({
+class KittenScreen extends ConsumerWidget {
+  const KittenScreen({
     super.key,
-    required this.title,
   });
-
-  /// The text to display
-  final String title;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final $wordState = ref.watch($wordControllerProvider);
 
     return Scaffold(
-      appBar: AppBar(title: Text(t.common.appName)),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          ref.read($wordControllerProvider.notifier).generateLetter();
-          context.showToast(t.home.floatingActionButton);
-        },
-        child: const Icon(Icons.star),
-      ),
+      appBar: AppBar(title: Text('Kitten screen')),
       body: Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
             GestureDetector(
               child: Text(
-                title,
+                'Kitten',
                 style: const TextStyle(fontWeight: FontWeight.bold),
               ),
               onTap: () {

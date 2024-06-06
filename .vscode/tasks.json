@@ -2,9 +2,20 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "gen local",
+            "label": "gen local with navbar",
             "type": "shell",
             "command": "./gen.sh local withNavBar",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": true,
+                "clear": true
+            },
+        },
+        {
+            "label": "gen local without navbar",
+            "type": "shell",
+            "command": "./gen.sh local withoutNavBar",
             "presentation": {
                 "echo": true,
                 "reveal": "always",
