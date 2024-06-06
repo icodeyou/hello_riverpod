@@ -1,5 +1,23 @@
 #!/bin/bash
 
+# Usage :
+
+# ./gen.sh snowball
+# ./gen.sh snowball withoutNavBar
+# ./gen.sh snowball withNavBar
+
+# ./gen.sh local
+# ./gen.sh local withoutNavBar
+# ./gen.sh local withNavBar
+
+# ./gen.sh mason
+# ./gen.sh mason withoutNavBar
+# ./gen.sh mason withNavBar
+
+# ./gen.sh master
+# ./gen.sh master withoutNavBar
+# ./gen.sh master withNavBar
+
 SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 cd $SCRIPTPATH
 
@@ -107,9 +125,10 @@ esac
 
 echo "Checking navbar"
 if [[ "$2" == "withoutNavBar" ]]; then
-  echo "Navbar false"
+  echo "Navbar : false"
   masonNavbarArgument="--navBar false"
 elif [[ "$2" == "withNavBar" ]]; then
+  echo "Navbar : true"
   masonNavbarArgument="--navBar true"
 else
   masonNavbarArgument=""
