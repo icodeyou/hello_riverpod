@@ -1,0 +1,43 @@
+{
+    "workbench.colorCustomizations": {
+        "titleBar.activeBackground": "#a80649",
+        "titleBar.activeForeground": "#e6c6d3",
+        "titleBar.inactiveBackground": "#a80649",
+        "titleBar.inactiveForeground": "#e6c6d3",
+    },
+    "cSpell.words": [
+        "prefs",
+        "salut",
+        "snowball",
+        "projectlocal",
+        "projectmaster",
+        "projectmason",
+    ],
+    "cSpell.useGitignore": false,
+    "dart.analysisExcludedFolders": [
+        "__brick__"
+    ],
+    "dart.runPubGetOnPubspecChanges": "never",
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/Thumbs.db": true,
+        "SNOWBALL": true,
+        "MASTER": true,
+        "MASON": true,
+    },
+    // Prevent autoformat on location files
+    "files.associations": {
+        "**/__brick__/**/main.i18n.yaml": "locMain",
+        "**/__brick__/**/main_fr.i18n.yaml": "locFr",
+    },
+    "[locMain]": {
+        "editor.formatOnSave": false
+    },
+    "[locFr]": {
+        "editor.formatOnSave": false
+    }
+}
