@@ -9,5 +9,9 @@
 
 # Output folder
 HELLOWORLDS/
+
+# Temp files generated in branch `snowball`
 MASON/
 MASTER/
+LOCAL/
+SNOWBALL/
