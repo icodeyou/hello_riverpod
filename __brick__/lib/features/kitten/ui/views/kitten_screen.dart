@@ -12,7 +12,7 @@ class KittenScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final $wordState = ref.watch($wordControllerProvider);
+    final wordState = ref.watch(wordControllerProvider);
 
     return Scaffold(
       appBar: AppBar(title: Text('Kitten screen')),
@@ -20,24 +20,12 @@ class KittenScreen extends ConsumerWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            GestureDetector(
-              child: Text(
-                'Kitten',
-                style: const TextStyle(fontWeight: FontWeight.bold),
-              ),
-              onTap: () {
-                Notif.showPopup(
-                  context: context,
-                  title: 'Title',
-                  content: 'Hello',
-                  confirmButton: 'OK',
-                  cancelButton: 'Cancel',
-                  onConfirm: () => print('Confirm'),
-                );
-              },
+            Text(
+              'Kitten',
+              style: const TextStyle(fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 20),
-            $wordState.when(
+            wordState.when(
               data: (word) => Text(word),
               loading: () => const CircularProgressIndicator(),
               error: (error, stackTrace) => const Text('Error'),

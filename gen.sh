@@ -103,18 +103,17 @@ case "$genType" in
     cd LOCAL/
     ;;
 "snowball")
+    rm -rf SNOWBALLS/; mkdir SNOWBALLS/
     # Folder cannot be called SNOWBALL because it would be a conflict with the branch name (it makes checkout impossible !)
     cd SNOWBALLS/
     ;;
 "master")
-    # Here strangely the folder can be called MASTER/
-    rm -rf MASTER/; mkdir MASTER/ # Safest way to clear MASTER/ including empty files
-    # Plus it creates the directory if it does not exist
+    rm -rf MASTERBRANCH/; mkdir MASTERBRANCH/
+    # Folder cannot be called MASTER because it would not be opened in VS Code.
     cd MASTER/
     ;;
 "mason")
-    rm -rf MASON/; mkdir MASON/ # Safest way to clear MASON/ including empty files
-    # Plus it creates the directory if it does not exist
+    rm -rf MASON/; mkdir MASON/
     cd MASON/
     ;;
 *)

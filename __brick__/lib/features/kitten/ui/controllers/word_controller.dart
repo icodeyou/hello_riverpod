@@ -7,7 +7,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 part 'word_controller.g.dart';
 
 @riverpod
-class $WordController extends _$$WordController {
+class WordController extends _$WordController {
   @override
   Future<String> build() async {
     return _getWordFromPref();
