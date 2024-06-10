@@ -195,15 +195,15 @@ case "$genType" in
     echo "📂 To $PWD"
     ;;
 "master")
-    echo "Move app to MASTER/"
+    echo "Move app to MASTERBRANCH/"
     mv $nameLowercase ../ # Move app to hello_riverpod
     cd ..
-    rm -rf MASTER/ # Delete empty MASTER
-    mv $nameLowercase MASTER # Rename app to MASTER
+    rm -rf MASTERBRANCH/ # Delete empty MASTERBRANCH
+    mv $nameLowercase MASTERBRANCH # Rename app to MASTERBRANCH
     echo ""
     echo "Navigate inside new project"
     echo "📂 From $PWD"
-    cd MASTER
+    cd MASTERBRANCH
     echo "📂 To $PWD"
     ;;
 "mason")
