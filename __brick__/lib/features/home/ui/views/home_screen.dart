@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:{{projectName}}/app/i18n/translations.g.dart';
-import 'package:{{projectName}}/features/home/ui/controllers/word_controller.dart';
 
 /// Widget for Home Screen
 class HomeScreen extends ConsumerWidget {
@@ -16,47 +16,25 @@ class HomeScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final wordState = ref.watch(wordControllerProvider);
-
     return Scaffold(
       appBar: AppBar(title: Text(t.common.appName)),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          ref.read(wordControllerProvider.notifier).generateLetter();
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text(t.home.floatingActionButton),
-            ),
-          );
+          context.push(Paths.kitten.path);
         },
-        child: const Icon(Icons.star),
+        child: const Icon(Icons.pets),
       ),
       body: Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            GestureDetector(
-              child: Text(
-                title,
-                style: const TextStyle(fontWeight: FontWeight.bold),
-              ),
-              onTap: () {
-                Notif.showPopup(
-                  context: context,
-                  title: 'Title',
-                  content: 'Hello',
-                  confirmButton: 'OK',
-                  cancelButton: 'Cancel',
-                  onConfirm: () => print('Confirm'),
-                );
+            ElevatedButton(
+              onPressed: () {
+                context.showToast(t.home.floatingActionButton);
               },
+              child: const Text('Show toast'),
             ),
-            const SizedBox(height: 20),
-            wordState.when(
-              data: (word) => Text(word),
-              loading: () => const CircularProgressIndicator(),
-              error: (error, stackTrace) => const Text('Error'),
-            ),
+            // - Other buttons -
           ],
         ),
       ),

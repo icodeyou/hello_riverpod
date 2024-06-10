@@ -7,3 +7,7 @@ splash:
 
 home:
   floatingActionButton: "Mot généré"
+
+kitten:
+  title: Kitten
+  appBar: Kitten Screen
