@@ -6,7 +6,7 @@ splash:
   retryButton: Réessayer
 
 home:
-  floatingActionButton: "Mot généré"
+  floatingActionButton: "Hey there !"
 
 kitten:
   title: Kitten
