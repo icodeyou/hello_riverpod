@@ -30,7 +30,11 @@ class HomeScreen extends ConsumerWidget {
           children: [
             ElevatedButton(
               onPressed: () {
-                context.showToast(t.home.floatingActionButton);
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text(t.home.floatingActionButton),
+                  ),
+                );
               },
               child: const Text('Show toast'),
             ),
