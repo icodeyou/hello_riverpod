@@ -103,7 +103,6 @@ case "$genType" in
     cd LOCAL/
     ;;
 "snowball")
-    rm -rf SNOWBALLS/; mkdir SNOWBALLS/
     # Folder cannot be called SNOWBALL because it would be a conflict with the branch name (it makes checkout impossible !)
     cd SNOWBALLS/
     ;;
