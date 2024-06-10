@@ -3,7 +3,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:{{projectName}}/app/i18n/translations.g.dart';
 import 'package:{{projectName}}/app/navigation/paths.dart';
-import 'package:{{projectName}}/features/home/ui/controllers/word_controller.dart';
 import 'package:snowflake_flutter_theme/snowflake_flutter_theme.dart';
 
 /// Widget for Home Screen
@@ -14,8 +13,6 @@ class HomeScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final $wordState = ref.watch($wordControllerProvider);
-
     return Scaffold(
       appBar: AppBar(title: Text(t.common.appName)),
       floatingActionButton: FloatingActionButton(
@@ -32,7 +29,7 @@ class HomeScreen extends ConsumerWidget {
               onPressed: () {
                 context.showToast(t.home.floatingActionButton);
                 }, 
-              child: Text('Show toast'),
+              child: const Text('Show toast'),
             ),
             ElevatedButton(
               onPressed: () {
@@ -45,7 +42,7 @@ class HomeScreen extends ConsumerWidget {
                   onConfirm: () => print('Confirm'),
                 );
                 }, 
-              child: Text('Show popup'),
+              child: const Text('Show popup'),
             ),
           ],
         ),
