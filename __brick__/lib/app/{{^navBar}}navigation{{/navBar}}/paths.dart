@@ -15,11 +15,16 @@ class Path {
   final String location;
 }
 
-/// A class that contains all the paths of the app.
 class Paths {
   /// Home path
   static Path get home => const Path(
         path: '/home',
         location: '/home',
+      );
+
+  /// Kitten path
+  static Path get kitten => const Path(
+        path: '/kitten',
+        location: '/kitten',
       );
 }

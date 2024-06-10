@@ -34,4 +34,10 @@ class Paths {
         path: '/settings',
         location: '/settings',
       );
+
+  /// Kitten path
+  static Path get kitten => const Path(
+        path: '/kitten',
+        location: '/kitten',
+      );
 }
