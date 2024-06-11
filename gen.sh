@@ -226,16 +226,17 @@ esac
 
 projectPath=$PWD
 
-# Git upload
+# Create Git and commit
+echo ""
+echo ""
+echo "🔥 Creating Git Repository for project $nameLowercase 🔥"
+git init
+git add --all
+git commit -m "First commit 🦋"
+
+# Git push for snowball projects
 if [[ $genType == "snowball" ]] 
   then
-    echo ""
-    echo ""
-    echo "🔥 Creating Git Repository for project $nameLowercase 🔥"
-    git init
-    git add --all
-    git commit -m "First commit 🦋"
-
     echo "Do you want to push the repo to Github ? Press enter to confirm, type NO otherwise :"
     read githubAnswer
     if [[ $githubAnswer != 'NO' ]]; then 
@@ -342,15 +343,16 @@ dart run slang
 echo ""
 echo "🔥 Mason finished"
 
-# Commit and push
+# Git commit
+echo ""
+echo ""
+git add --all 
+git commit -m "Mason template ✨"
+echo "🎉 Commit Mason"
+
+# Git push
 if [[ $genType == "snowball" ]]
   then
-    echo ""
-    echo ""
-    git add --all 
-    git commit -m "Mason template ✨"
-    echo "🎉 Commit Mason"
-
     if [[ $githubAnswer != 'NO' ]]; then 
       echo "🎯 LAST STEP : PUSH"
       git push
@@ -384,5 +386,3 @@ else
     flutter run --flavor development --target lib/main_development.dart
   fi
 fi
-echo ""
-echo ""
