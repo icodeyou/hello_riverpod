@@ -1,5 +1,5 @@
-import 'package:{{projectName}}/shared/constants/shared_preferences_keys.dart';
-import 'package:{{projectName}}/shared/extensions/ref_extensions.dart';
+import 'package:{{projectName}}/features/kitten/data/repository/kitten_repository.dart';
+import 'package:{{projectName}}/features/kitten/domain/models/kitten.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'kitten_service.g.dart';
@@ -13,8 +13,13 @@ class KittenService {
   KittenService(this.ref);
 
   final KittenServiceRef ref;
-  
-  void save(String newWord) {
-    ref.prefs.setString(SharedPreferencesKeys.spWord, newWord);
+  late final kittenRepository = ref.read(kittenRepositoryProvider);
+
+  void save(Kitten kitten) {
+    kittenRepository.saveKitten(kitten);
+  }
+
+  Future<Kitten> getKitten() async {
+    return kittenRepository.getKitten();
   }
 }

@@ -1,8 +1,7 @@
 import 'dart:math';
 
+import 'package:{{projectName}}/features/kitten/domain/models/kitten.dart';
 import 'package:{{projectName}}/features/kitten/domain/services/kitten_service.dart';
-import 'package:{{projectName}}/shared/constants/shared_preferences_keys.dart';
-import 'package:{{projectName}}/shared/extensions/ref_extensions.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'word_controller.g.dart';
@@ -21,17 +20,19 @@ class WordController extends _$WordController {
     final random = Random();
     const letters = 'abcdefghijklmnopqrstuvwxyz';
     final randomLetter = letters[random.nextInt(letters.length)];
-    final newWord = _getWord() + randomLetter;
+    var newWord = await _getWord();
+    newWord += randomLetter;
 
     await _saveWord(newWord);
     state = AsyncData(newWord);
   }
 
-  String _getWord() {
-    return ref.prefs.getString(SharedPreferencesKeys.spWord) ?? 'Hello';
+  Future<String> _getWord() async {
+    final kitten = await _kittenService.getKitten();
+    return kitten.name;
   }
 
   Future<void> _saveWord(String newWord) async {
-    _kittenService.save(newWord);
+    _kittenService.save(Kitten(id: 0, name: newWord));
   }
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:{{projectName}}/app/i18n/translations.g.dart';
 import 'package:{{projectName}}/features/kitten/ui/controllers/word_controller.dart';
+import 'package:snowflake_flutter_theme/snowflake_flutter_theme.dart';
 
 /// Widget for Home Screen
 class KittenScreen extends ConsumerWidget {
@@ -19,15 +20,39 @@ class KittenScreen extends ConsumerWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Text(
+            AppText.l(
               t.kitten.title,
-              style: const TextStyle(fontWeight: FontWeight.bold),
+              bold: true,
             ),
             const SizedBox(height: 20),
-            wordState.when(
-              data: (word) => Text(word),
-              loading: () => const CircularProgressIndicator(),
-              error: (error, stackTrace) => const Text('Error'),
+            ConstrainedBox(
+              constraints: const BoxConstraints(minHeight: 110),
+              child: Container(
+                decoration: BoxDecoration(
+                  border: Border.all(),
+                  borderRadius: BorderRadius.circular(5),
+                ),
+                alignment: Alignment.center,
+                width: double.infinity,
+                margin: ThemeSizes.s.asInsets,
+                padding: ThemeSizes.s.asInsets,
+                child: wordState.when(
+                  data: (word) => AppText.s(
+                    word,
+                    maxLines: 10,
+                  ),
+                  loading: () => const Center(
+                    child: CircularProgressIndicator(),
+                  ),
+                  error: (error, stackTrace) => const Text('Error'),
+                ),
+              ),
+            ),
+            const SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () =>
+                  ref.read(wordControllerProvider.notifier).generateLetter(),
+              child: const Text('Generate letter'),
             ),
           ],
         ),
