@@ -51,7 +51,7 @@ for file in $modified_files; do
     echo "Renamed file : ${renamed_files[@]}"
     echo "${filename}"
   
-    if [[ " ${renamed_files[@]} " =~ " ${filename} " ]]; then
+    if [[ " ${renamed_files[@]} " =~ " ${file} " ]]; then
       echo "It has been renamed."
       # Get the name of the file before it was renamed
       previous_name=$(git diff --name-status --staged | awk '/^R/ {print $2}')
@@ -66,7 +66,7 @@ for file in $modified_files; do
       mv "$previous_file_path" "$new_file_path"
       # Replace $target_file with the new file
       target_file="$new_file_path"
-    elif [[ " ${created_files[@]} " =~ " ${filename} " ]]; then
+    elif [[ " ${created_files[@]} " =~ " ${file} " ]]; then
       echo "It has been created."
       new_file_path="$target_directory/$file"
       mkdir -p "$(dirname "$new_file_path")"  # Ensure the directory exists
