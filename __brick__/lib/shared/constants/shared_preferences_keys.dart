@@ -1,3 +1,3 @@
 class SharedPreferencesKeys {
-  static const String spWord = 'word';
+  static const String spKittenName = 'kitten_name';
 }
