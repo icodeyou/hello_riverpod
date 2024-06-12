@@ -35,12 +35,12 @@
             "command": "cd SNOWBALL/"
         },
         {
-            "name": "MASTER",
+            "name": "MASTERBRANCH",
             "focus": true,
             "color": "terminal.ansiMagenta",
             "shellPath": "/bin/zsh",
             "icon": "github-inverted",
-            "command": "cd MASTER/"
+            "command": "cd MASTERBRANCH/"
         },
         {
             "name": "MASON",
