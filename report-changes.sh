@@ -18,7 +18,7 @@ modified_files=$(git diff --name-only --staged)
 # Iterate over each modified file
 for file in $modified_files; do
 
-  echo "BIG FOR"
+  echo "BIG FOR : $file"
 
   # Get the base name of the file (without path)
   filename=$(basename "$file")
@@ -63,6 +63,7 @@ for file in $modified_files; do
 
     for created_files in ${created_files[@]}; do
       index=$((index+1))
+      echo "Created file : $created_file"
       if [[ $created_file == $file ]]; then
         echo "It has been created."
         new_file_path="$target_directory/$file"
