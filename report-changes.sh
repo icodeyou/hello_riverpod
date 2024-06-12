@@ -18,6 +18,8 @@ modified_files=$(git diff --name-only --staged)
 # Iterate over each modified file
 for file in $modified_files; do
 
+  echo "BIG FOR"
+
   # Get the base name of the file (without path)
   filename=$(basename "$file")
   
@@ -56,6 +58,8 @@ for file in $modified_files; do
         continue 2
       fi
     done
+    
+    echo "After for 1"
 
     for created_files in ${created_files[@]}; do
       index=$((index+1))
@@ -68,6 +72,8 @@ for file in $modified_files; do
         continue 2
       fi
     done
+
+    echo "After for 2"
 
     echo "❌ File has not been renamed, it has not been created ... What happened ?"
 
