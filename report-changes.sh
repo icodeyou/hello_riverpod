@@ -38,21 +38,25 @@ for file in $modified_files; do
     target_file=${matching_files[0]}
   else
     # No matches found
-    echo "❌ No file $filename was found."
+    echo "⚠️ No file $filename was found."
     renamed_files=$(git diff --name-status --staged | awk '/^R/ {print $3}')
     created_files=$(git diff --name-status --staged | awk '/^A/ {print $2}')
     
     if [[ " ${renamed_files[@]} " =~ " ${filename} " ]]; then
       echo "It has been renamed."
-      echo "Type the full path of the destination folder where the file to rename is located:"
-      echo "$file" 
-      echo "$new_path"
-      read -r path
-      current_filepath="$path/$file"
-      new_filepath="$path/$filename"
-      echo "Renaming file "$current_filepath" to: $new_filepath"
-      mv "$current_filepath" "$new_filepath"
-      target_file="$new_filepath"
+      # Get the name of the file before it was renamed
+      previous_name=$(git diff --name-status --staged | awk '/^R/ {print $2}')
+      # Find that file in the target directory
+      previous_file_path=$(find "$target_directory" -name "$(basename "$previous_name")")
+      # Get the new name of the file
+      new_name=$(git diff --name-status --staged | awk '/^R/ {print $3}')
+      # Get the new file path
+      new_file_path="$(dirname "$previous_file_path")/$new_name"
+      # Rename that file with the new name
+      echo "Renaming $previous_file_path to $new_file_path"
+      mv "$previous_file_path" "$new_file_path"
+      # Replace $target_file with the new file
+      target_file="$new_file_path"
     elif [[ " ${created_files[@]} " =~ " ${filename} " ]]; then
       echo "It has been created."
       echo "Please provide the path where you want to create the file:"
