@@ -45,6 +45,8 @@ for file in $modified_files; do
     if [[ " ${renamed_files[@]} " =~ " ${filename} " ]]; then
       echo "It has been renamed."
       echo "Type the full path of the destination folder where the file to rename is located:"
+      echo "$file" 
+      echo "$new_path"
       read -r path
       new_path="$path/$filename"
       echo "Renaming file to: $new_path"
