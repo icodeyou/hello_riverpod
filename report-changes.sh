@@ -56,6 +56,7 @@ for file in $modified_files; do
         previous_name=$(echo $previous_names | cut -d ' ' -f $index)
         echo "It has been renamed from $previous_name to $file."
         mv "$target_directory/$previous_name" "$target_directory/$file"
+        target_file="$target_directory/$file"
         fileHasBeenFound=true
       fi
     done
