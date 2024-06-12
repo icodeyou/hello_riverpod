@@ -18,6 +18,7 @@ modified_files=$(git diff --name-only --staged)
 renamed_files=$(git diff --name-status --staged | awk '/^R/ {print $3}')
 created_files=$(git diff --name-status --staged | awk '/^A/ {print $2}')
 echo "Modified files : $modified_files"
+echo ""
 
 # Iterate over each modified file
 for file in $modified_files; do
@@ -51,11 +52,9 @@ for file in $modified_files; do
     for renamed_file in ${renamed_files[@]}; do
       index=$((index+1))
       if [[ $renamed_file == $file ]]; then
-        echo "It has been renamed."
         previous_names=$(git diff --name-status --staged | awk '/^R/ {print $2}')
         previous_name=$(echo $previous_names | cut -d ' ' -f $index)
-        echo "Previous name : $previous_name"
-        echo "New name : $file"
+        echo "It has been renamed from $previous_name to $file."
         mv "$target_directory/$previous_name" "$target_directory/$file"
         fileHasBeenFound=true
       fi
@@ -63,7 +62,6 @@ for file in $modified_files; do
     
     if [ $fileHasBeenFound = false ]; then
       for created_file in ${created_files[@]}; do
-        echo "Created file : $created_file"
         if [[ $created_file == $file ]]; then
           echo "It has been created."
           new_file_path="$target_directory/$file"
