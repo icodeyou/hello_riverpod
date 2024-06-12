@@ -19,7 +19,6 @@ modified_files=$(git diff --name-status --staged | awk '/^M/ {print $2}')
 renamed_files=$(git diff --name-status --staged | awk '/^R/ {print $3}')
 created_files=$(git diff --name-status --staged | awk '/^A/ {print $2}')
 deleted_files=$(git diff --name-status --staged | awk '/^D/ {print $2}')
-echo "Modified files : $modified_files"
 echo ""
 
 # Function to copy the content of a file to another file
@@ -35,7 +34,7 @@ copyFile() {
     # Replace 'projectlocal' with '{{projectName}}' in the target file
     sed -i '' 's/projectlocal/{{projectName}}/g' "$target_file"
 
-    echo "✅ Successfully pasted file $filename"
+    echo "✅ Successfully pasted file $source_file" to $target_file
   else
     echo "❌ We tried to copy the content of $source_file to $target_file but one of them does not exist."
   fi
@@ -43,6 +42,7 @@ copyFile() {
 
 ## --------------------------- ##
 # Iterate over each modified file
+echo "➰ Looping over modified files"
 for file in $modified_files; do
 
   # Get the base name of the file (without path)
@@ -75,18 +75,20 @@ done
 
 ## --------------------------- ##
 # Iterate over each renamed file
+echo "➰ Looping over renamed files"
 index=0
 for renamed_file in ${renamed_files[@]}; do
   index=$((index+1))
   previous_names=$(git diff --name-status --staged | awk '/^R/ {print $2}')
   previous_name=$(echo $previous_names | cut -d ' ' -f $index)
-  echo "It has been renamed from $previous_name to $renamed_file."
+  echo "File has been renamed from $previous_name to $renamed_file."
   mv "$target_directory/$previous_name" "$target_directory/$renamed_file"
   copyFile "$renamed_file" "$target_directory/$renamed_file"
 done
 
 ## --------------------------- ##
 # Iterate over each created file
+echo "➰ Looping over created files"
 for created_file in ${created_files[@]}; do
   if [[ $created_file == $file ]]; then
     echo "It has been created."
@@ -99,6 +101,7 @@ done
 
 ## --------------------------- ##
 # Iterate over each deleted file
+echo "➰ Looping over deleted files"
 for deleted_file in ${deleted_files[@]}; do
   if [[ $deleted_file == $file ]]; then
     echo "It has been deleted."
