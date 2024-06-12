@@ -18,8 +18,6 @@ modified_files=$(git diff --name-only --staged)
 # Iterate over each modified file
 for file in $modified_files; do
 
-  echo "file is $file"
-
   # Get the base name of the file (without path)
   filename=$(basename "$file")
   
@@ -41,35 +39,38 @@ for file in $modified_files; do
     target_file=${matching_files[0]}
   else
     # No matches found
-    echo "❗ No file $filename was found in the target directory."
+    echo "❗ File '$filename' is not found in the target directory."
     renamed_files=$(git diff --name-status --staged | awk '/^R/ {print $3}')
     created_files=$(git diff --name-status --staged | awk '/^A/ {print $2}')
-  
-    if [[ " ${renamed_files[@]} " =~ "${file}" ]]; then
-      echo "It has been renamed."
-      # Get the name of the file before it was renamed
-      previous_name=$(git diff --name-status --staged | awk '/^R/ {print $2}')
-      # Find that file in the target directory
-      previous_file_path=$(find "$target_directory" -name "$(basename "$previous_name")")
-      # Get the new name of the file
-      new_name=$(git diff --name-status --staged | awk '/^R/ {print $3}')
-      # Get the new file path
-      new_file_path="$(dirname "$previous_file_path")/$new_name"
-      # Rename that file with the new name
-      echo "Renaming $previous_file_path to $new_file_path"
-      mv "$previous_file_path" "$new_file_path"
-      # Replace $target_file with the new file
-      target_file="$new_file_path"
-    elif [[ " ${created_files[@]} " =~ "${file}" ]]; then
-      echo "It has been created."
-      new_file_path="$target_directory/$file"
-      mkdir -p "$(dirname "$new_file_path")"  # Ensure the directory exists
-      touch "$new_file_path"
-      target_file="$new_file_path"
-    else
-      echo "❌ File has not been renamed, it has not been created ... What happened ?"
-      continue
-    fi
+
+    index=0
+    for renamed_file in ${renamed_files[@]}; do
+      index=$((index+1))
+      if [[ $renamed_file == $file ]]; then
+        echo "It has been renamed."
+        previous_names=$(git diff --name-status --staged | awk '/^R/ {print $2}')
+        previous_name=$(echo $previous_names | cut -d ' ' -f $index)
+        echo "Previous name : $previous_name"
+        echo "New name : $file"
+        mv "$target_directory/$previous_name" "$target_directory/$file"
+        break
+      fi
+    done
+
+    for created_files in ${created_files[@]}; do
+      index=$((index+1))
+      if [[ $created_file == $file ]]; then
+        echo "It has been created."
+        new_file_path="$target_directory/$file"
+        mkdir -p "$(dirname "$new_file_path")"  # Ensure the directory exists
+        touch "$new_file_path"
+        target_file="$new_file_path"
+        break
+      fi
+    done
+
+    echo "❌ File has not been renamed, it has not been created ... What happened ?"
+
   fi
 
   exit
