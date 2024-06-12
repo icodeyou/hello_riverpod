@@ -24,20 +24,20 @@ echo ""
 
 # Function to copy the content of a file to another file
 copyFile() {
-  sourceFile=$1
-  targetFile=$2
+  source_file=$1
+  target_file=$2
 
   # Ensure the target file exists before attempting to copy
-  if [[ -f "$sourceFile" ]] && [[ -f "$target_file" ]]; then
+  if [[ -f "$source_file" ]] && [[ -f "$target_file" ]]; then
     # Copy the content of the modified file to the target file
-    cp "$sourceFile" "$target_file"
+    cp "$source_file" "$target_file"
 
     # Replace 'projectlocal' with '{{projectName}}' in the target file
     sed -i '' 's/projectlocal/{{projectName}}/g' "$target_file"
 
     echo "✅ Successfully pasted file $filename"
   else
-    echo "❌ We tried to copy the content of $sourceFile to $target_file but one of them does not exist."
+    echo "❌ We tried to copy the content of $source_file to $target_file but one of them does not exist."
   fi
 }
 
@@ -82,8 +82,6 @@ for renamed_file in ${renamed_files[@]}; do
   previous_name=$(echo $previous_names | cut -d ' ' -f $index)
   echo "It has been renamed from $previous_name to $renamed_file."
   mv "$target_directory/$previous_name" "$target_directory/$renamed_file"
-  echo "From path $renamed_file"
-  echo "To path $target_directory/$renamed_file"
   copyFile "$renamed_file" "$target_directory/$renamed_file"
 done
 
