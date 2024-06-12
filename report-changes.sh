@@ -22,6 +22,26 @@ deleted_files=$(git diff --name-status --staged | awk '/^D/ {print $2}')
 echo "Modified files : $modified_files"
 echo ""
 
+# Function to copy the content of a file to another file
+copyFile() {
+  sourceFile=$1
+  targetFile=$2
+
+  # Ensure the target file exists before attempting to copy
+  if [[ -f "$sourceFile" ]] && [[ -f "$target_file" ]]; then
+    # Copy the content of the modified file to the target file
+    cp "$sourceFile" "$target_file"
+
+    # Replace 'projectlocal' with '{{projectName}}' in the target file
+    sed -i '' 's/projectlocal/{{projectName}}/g' "$target_file"
+
+    echo "✅ Successfully pasted file $filename"
+  else
+    echo "❌ We tried to copy the content of $sourceFile to $target_file but one of them does not exist."
+  fi
+}
+
+## --------------------------- ##
 # Iterate over each modified file
 for file in $modified_files; do
 
@@ -53,6 +73,8 @@ for file in $modified_files; do
 
 done
 
+## --------------------------- ##
+# Iterate over each renamed file
 index=0
 for renamed_file in ${renamed_files[@]}; do
   index=$((index+1))
@@ -63,6 +85,8 @@ for renamed_file in ${renamed_files[@]}; do
   copyFile "$renamed_file" "$target_directory/$renamed_file"
 done
 
+## --------------------------- ##
+# Iterate over each created file
 for created_file in ${created_files[@]}; do
   if [[ $created_file == $file ]]; then
     echo "It has been created."
@@ -73,6 +97,8 @@ for created_file in ${created_files[@]}; do
   fi
 done
 
+## --------------------------- ##
+# Iterate over each deleted file
 for deleted_file in ${deleted_files[@]}; do
   if [[ $deleted_file == $file ]]; then
     echo "It has been deleted."
@@ -82,22 +108,3 @@ for deleted_file in ${deleted_files[@]}; do
 done
 
 
-
-
-copyFile() {
-  sourceFile=$1
-  targetFile=$2
-
-  # Ensure the target file exists before attempting to copy
-  if [[ -f "$sourceFile" ]] && [[ -f "$target_file" ]]; then
-    # Copy the content of the modified file to the target file
-    cp "$sourceFile" "$target_file"
-
-    # Replace 'projectlocal' with '{{projectName}}' in the target file
-    sed -i '' 's/projectlocal/{{projectName}}/g' "$target_file"
-
-    echo "✅ Successfully pasted file $filename"
-  else
-    echo "❌ We tried to copy the content of $sourceFile to $target_file but one of them does not exist."
-  fi
-}
