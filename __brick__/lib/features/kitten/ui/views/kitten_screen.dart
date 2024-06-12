@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:{{projectName}}/app/i18n/translations.g.dart';
 import 'package:{{projectName}}/features/kitten/ui/controllers/word_controller.dart';
-import 'package:snowflake_flutter_theme/snowflake_flutter_theme.dart';
 
 class KittenScreen extends ConsumerWidget {
   const KittenScreen({
@@ -19,9 +18,12 @@ class KittenScreen extends ConsumerWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            AppText.l(
+            Text(
               t.kitten.title,
-              bold: true,
+              style: const TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+              ),
             ),
             const SizedBox(height: 20),
             ConstrainedBox(
@@ -33,10 +35,10 @@ class KittenScreen extends ConsumerWidget {
                 ),
                 alignment: Alignment.center,
                 width: double.infinity,
-                margin: ThemeSizes.s.asInsets,
-                padding: ThemeSizes.s.asInsets,
+                margin: const EdgeInsets.all(12.0),
+                padding: const EdgeInsets.all(12.0),
                 child: wordState.when(
-                  data: (word) => AppText.s(
+                  data: (word) => Text(
                     word,
                     maxLines: 10,
                   ),
