@@ -19,6 +19,14 @@
             "command": "cd LOCAL/"
         },
         {
+            "name": "local watch",
+            "focus": true,
+            "color": "terminal.ansiGreen",
+            "shellPath": "/bin/zsh",
+            "icon": "eye",
+            "command": "cd LOCAL/; watch"
+        },
+        {
             "name": "SNOWBALL",
             "focus": true,
             "color": "terminal.ansiCyan",

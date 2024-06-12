@@ -96,7 +96,7 @@ for created_file in ${created_files[@]}; do
   new_file_path="$target_directory/$created_file"
   mkdir -p "$(dirname "$new_file_path")"  # Ensure the directory exists
   touch "$new_file_path"
-  copyFile "$renamed_file" "$new_file_path"
+  copyFile "$created_file" "$new_file_path"
 done
 
 ## --------------------------- ##
