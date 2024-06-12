@@ -17,8 +17,7 @@ modified_files=$(git diff --name-only --staged)
 
 renamed_files=$(git diff --name-status --staged | awk '/^R/ {print $3}')
 created_files=$(git diff --name-status --staged | awk '/^A/ {print $2}')
-echo "Renamed files : $renamed_files"
-echo "Created files : $created_files"
+echo "Modified files : $modified_files"
 
 # Iterate over each modified file
 for file in $modified_files; do
@@ -76,8 +75,6 @@ for file in $modified_files; do
     echo "❌ File has not been renamed, it has not been created ... What happened ?"
 
   fi
-
-  exit
 
   # Ensure the target file exists before attempting to copy
   if [ -f "$file" ]; then
