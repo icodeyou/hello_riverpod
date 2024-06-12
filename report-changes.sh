@@ -15,6 +15,11 @@ git add --all
 # Get the list of modified files in the git repository
 modified_files=$(git diff --name-only --staged)
 
+renamed_files=$(git diff --name-status --staged | awk '/^R/ {print $3}')
+created_files=$(git diff --name-status --staged | awk '/^A/ {print $2}')
+echo "Renamed files : $renamed_files"
+echo "Created files : $created_files"
+
 # Iterate over each modified file
 for file in $modified_files; do
 
@@ -42,9 +47,7 @@ for file in $modified_files; do
   else
     # No matches found
     echo "❗ File '$filename' is not found in the target directory."
-    renamed_files=$(git diff --name-status --staged | awk '/^R/ {print $3}')
-    created_files=$(git diff --name-status --staged | awk '/^A/ {print $2}')
-
+    
     index=0
     for renamed_file in ${renamed_files[@]}; do
       index=$((index+1))
