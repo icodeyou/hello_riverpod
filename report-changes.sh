@@ -108,4 +108,18 @@ for deleted_file in ${deleted_files[@]}; do
   echo "✅ Successfully deleted file $deleted_file"
 done
 
-
+cd "$target_directory"
+echo ""
+echo "ℹ️ Changes in target directory :"
+git --no-pager show
+git status
+cd "$source_directory"
+echo ""
+read -p "🚀 Do you want to commit the changes in LOCAL/? (y/n) " -n 1 -r
+echo ""
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+  git commit -m "Update projectlocal files"
+  echo "✅ Successfully committed the changes."
+else
+  echo "❌ Changes not committed."
+fi
