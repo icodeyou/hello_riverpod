@@ -42,7 +42,7 @@ copyFile() {
 
 ## --------------------------- ##
 # Iterate over each modified file
-echo "➰ Looping over modified files"
+echo "➰ Looping over modified files : $modified_files"
 for file in $modified_files; do
 
   # Get the base name of the file (without path)
@@ -75,7 +75,7 @@ done
 
 ## --------------------------- ##
 # Iterate over each renamed file
-echo "➰ Looping over renamed files"
+echo "➰ Looping over renamed files : $renamed_files"
 index=0
 for renamed_file in ${renamed_files[@]}; do
   index=$((index+1))
@@ -88,7 +88,7 @@ done
 
 ## --------------------------- ##
 # Iterate over each created file
-echo "➰ Looping over created files"
+echo "➰ Looping over created files : $created_files"
 for created_file in ${created_files[@]}; do
   if [[ $created_file == $file ]]; then
     echo "It has been created."
@@ -101,7 +101,7 @@ done
 
 ## --------------------------- ##
 # Iterate over each deleted file
-echo "➰ Looping over deleted files"
+echo "➰ Looping over deleted files : $deleted_files"
 for deleted_file in ${deleted_files[@]}; do
   if [[ $deleted_file == $file ]]; then
     echo "It has been deleted."
