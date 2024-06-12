@@ -42,6 +42,7 @@ copyFile() {
 
 ## --------------------------- ##
 # Iterate over each modified file
+echo ""
 echo "➰ Looping over modified files : $modified_files"
 for file in $modified_files; do
 
@@ -75,6 +76,7 @@ done
 
 ## --------------------------- ##
 # Iterate over each renamed file
+echo ""
 echo "➰ Looping over renamed files : $renamed_files"
 index=0
 for renamed_file in ${renamed_files[@]}; do
@@ -88,26 +90,24 @@ done
 
 ## --------------------------- ##
 # Iterate over each created file
+echo ""
 echo "➰ Looping over created files : $created_files"
 for created_file in ${created_files[@]}; do
-  if [[ $created_file == $file ]]; then
-    echo "It has been created."
-    new_file_path="$target_directory/$file"
-    mkdir -p "$(dirname "$new_file_path")"  # Ensure the directory exists
-    touch "$new_file_path"
-    copyFile "$renamed_file" "$new_file_path"
-  fi
+  echo "It has been created."
+  new_file_path="$target_directory/$created_file"
+  mkdir -p "$(dirname "$new_file_path")"  # Ensure the directory exists
+  touch "$new_file_path"
+  copyFile "$renamed_file" "$new_file_path"
 done
 
 ## --------------------------- ##
 # Iterate over each deleted file
+echo ""
 echo "➰ Looping over deleted files : $deleted_files"
 for deleted_file in ${deleted_files[@]}; do
-  if [[ $deleted_file == $file ]]; then
-    echo "It has been deleted."
-    rm -rf "$target_directory/$file"
-    echo "✅ Successfully deleted file $file"
-  fi
+  echo "It has been deleted."
+  rm -rf "$target_directory/$deleted_file"
+  echo "✅ Successfully deleted file $deleted_file"
 done
 
 
