@@ -82,6 +82,8 @@ for renamed_file in ${renamed_files[@]}; do
   previous_name=$(echo $previous_names | cut -d ' ' -f $index)
   echo "It has been renamed from $previous_name to $renamed_file."
   mv "$target_directory/$previous_name" "$target_directory/$renamed_file"
+  echo "From path $renamed_file"
+  echo "To path $target_directory/$renamed_file"
   copyFile "$renamed_file" "$target_directory/$renamed_file"
 done
 
