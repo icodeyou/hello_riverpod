@@ -47,6 +47,9 @@ for file in $modified_files; do
     echo "Created files : $created_files"
     echo "Created file : ${created_files[@]}"
     echo "${filename}"
+    echo "Renamed files : $renamed_files"
+    echo "Renamed file : ${renamed_files[@]}"
+    echo "${filename}"
   
     if [[ " ${renamed_files[@]} " =~ " ${filename} " ]]; then
       echo "It has been renamed."
