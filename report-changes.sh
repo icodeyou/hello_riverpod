@@ -17,6 +17,9 @@ modified_files=$(git diff --name-only --staged)
 
 # Iterate over each modified file
 for file in $modified_files; do
+
+  echo "file is $file"
+
   # Get the base name of the file (without path)
   filename=$(basename "$file")
   
@@ -59,11 +62,10 @@ for file in $modified_files; do
       target_file="$new_file_path"
     elif [[ " ${created_files[@]} " =~ " ${filename} " ]]; then
       echo "It has been created."
-      echo "Please provide the path where you want to create the file:"
-      read -r new_path
-      mkdir -p "$(dirname "$new_path")"  # Ensure the directory exists
-      touch "$new_path"
-      target_file="$new_path"
+      new_file_path="$target_directory/$file"
+      mkdir -p "$(dirname "$new_file_path")"  # Ensure the directory exists
+      touch "$new_file_path"
+      target_file="$new_file_path"
     else
       continue
     fi
