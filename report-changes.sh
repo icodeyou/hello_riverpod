@@ -41,16 +41,12 @@ for file in $modified_files; do
     target_file=${matching_files[0]}
   else
     # No matches found
-    echo "⚠️ No file $filename was found in the target directory."
+    echo "❗ No file $filename was found in the target directory."
     renamed_files=$(git diff --name-status --staged | awk '/^R/ {print $3}')
     created_files=$(git diff --name-status --staged | awk '/^A/ {print $2}')
-    echo "Created files : $created_files"
-    echo "Renamed files : $renamed_files"
-    echo "File ${file}"
   
     if [[ " ${renamed_files[@]} " =~ "${file}" ]]; then
       echo "It has been renamed."
-      continue
       # Get the name of the file before it was renamed
       previous_name=$(git diff --name-status --staged | awk '/^R/ {print $2}')
       # Find that file in the target directory
