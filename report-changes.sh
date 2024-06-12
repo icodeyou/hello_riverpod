@@ -45,6 +45,8 @@ for file in $modified_files; do
     # No matches found
     echo "❗ File '$filename' is not found in the target directory."
     
+    fileHasBeenFound=false
+
     index=0
     for renamed_file in ${renamed_files[@]}; do
       index=$((index+1))
@@ -55,24 +57,27 @@ for file in $modified_files; do
         echo "Previous name : $previous_name"
         echo "New name : $file"
         mv "$target_directory/$previous_name" "$target_directory/$file"
-        continue 2
+        fileHasBeenFound=true
       fi
     done
     
-    for created_file in ${created_files[@]}; do
-      index=$((index+1))
-      echo "Created file : $created_file"
-      if [[ $created_file == $file ]]; then
-        echo "It has been created."
-        new_file_path="$target_directory/$file"
-        mkdir -p "$(dirname "$new_file_path")"  # Ensure the directory exists
-        touch "$new_file_path"
-        target_file="$new_file_path"
-        continue 2
-      fi
-    done
+    if [ $fileHasBeenFound = false ]; then
+      for created_file in ${created_files[@]}; do
+        echo "Created file : $created_file"
+        if [[ $created_file == $file ]]; then
+          echo "It has been created."
+          new_file_path="$target_directory/$file"
+          mkdir -p "$(dirname "$new_file_path")"  # Ensure the directory exists
+          touch "$new_file_path"
+          target_file="$new_file_path"
+          fileHasBeenFound=true
+        fi
+      done
+    fi
 
-    echo "❌ File has not been renamed, it has not been created ... What happened ?"
+    if [ $fileHasBeenFound = false ]; then
+      echo "❌ File has not been renamed, it has not been created ... What happened ?"
+    fi
 
   fi
 
