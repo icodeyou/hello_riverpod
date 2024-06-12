@@ -83,7 +83,7 @@ for renamed_file in ${renamed_files[@]}; do
   index=$((index+1))
   previous_names=$(git diff --name-status --staged | awk '/^R/ {print $2}')
   previous_name=$(echo $previous_names | cut -d ' ' -f $index)
-  echo "File has been renamed from $previous_name to $renamed_file."
+  echo "File $index has been renamed from $previous_name to $renamed_file."
   mv "$target_directory/$previous_name" "$target_directory/$renamed_file"
   copyFile "$renamed_file" "$target_directory/$renamed_file"
 done
@@ -93,7 +93,6 @@ done
 echo ""
 echo "➰ Looping over created files : $created_files"
 for created_file in ${created_files[@]}; do
-  echo "It has been created."
   new_file_path="$target_directory/$created_file"
   mkdir -p "$(dirname "$new_file_path")"  # Ensure the directory exists
   touch "$new_file_path"
@@ -105,7 +104,6 @@ done
 echo ""
 echo "➰ Looping over deleted files : $deleted_files"
 for deleted_file in ${deleted_files[@]}; do
-  echo "It has been deleted."
   rm -rf "$target_directory/$deleted_file"
   echo "✅ Successfully deleted file $deleted_file"
 done
