@@ -48,10 +48,11 @@ for file in $modified_files; do
       echo "$file" 
       echo "$new_path"
       read -r path
-      new_path="$path/$filename"
-      echo "Renaming file to: $new_path"
-      mv "$file" "$new_path"
-      target_file="$new_path"
+      current_filepath="$path/$file"
+      new_filepath="$path/$filename"
+      echo "Renaming file "$current_filepath" to: $new_filepath"
+      mv "$current_filepath" "$new_filepath"
+      target_file="$new_filepath"
     elif [[ " ${created_files[@]} " =~ " ${filename} " ]]; then
       echo "It has been created."
       echo "Please provide the path where you want to create the file:"
