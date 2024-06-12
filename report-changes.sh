@@ -53,7 +53,7 @@ for file in $modified_files; do
         echo "Previous name : $previous_name"
         echo "New name : $file"
         mv "$target_directory/$previous_name" "$target_directory/$file"
-        continue
+        continue 2
       fi
     done
 
@@ -65,7 +65,7 @@ for file in $modified_files; do
         mkdir -p "$(dirname "$new_file_path")"  # Ensure the directory exists
         touch "$new_file_path"
         target_file="$new_file_path"
-        continue
+        continue 2
       fi
     done
 
