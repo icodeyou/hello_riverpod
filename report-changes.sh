@@ -4,7 +4,7 @@
 source_directory="LOCAL/"
 
 # Get the directory where the script is located
-target_directory=$(dirname "$(realpath "$0")")
+target_directory=$(dirname "$(realpath "$0")")/__brick__
 
 # Navigate to the source directory
 cd "$source_directory" || exit
@@ -44,5 +44,11 @@ for file in $modified_files; do
 
   # Copy the content of the modified file to the target file
   cp "$file" "$target_file"
+
+
+  echo "$target_file"
+  # Replace 'projectlocal' with '{{projectName}}' in the target file
+  sed -i '' 's/projectlocal/{{projectName}}/g' "$target_file"
+
   echo "✅ Successfully pasted file $filename"
 done
