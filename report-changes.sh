@@ -23,8 +23,6 @@ echo "Created files : $created_files"
 # Iterate over each modified file
 for file in $modified_files; do
 
-  echo "BIG FOR : $file"
-
   # Get the base name of the file (without path)
   filename=$(basename "$file")
   
@@ -62,8 +60,6 @@ for file in $modified_files; do
       fi
     done
     
-    echo "After for 1"
-
     for created_file in ${created_files[@]}; do
       index=$((index+1))
       echo "Created file : $created_file"
@@ -76,8 +72,6 @@ for file in $modified_files; do
         continue 2
       fi
     done
-
-    echo "After for 2"
 
     echo "❌ File has not been renamed, it has not been created ... What happened ?"
 
