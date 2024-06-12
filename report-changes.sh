@@ -17,6 +17,7 @@ modified_files=$(git diff --name-only --staged)
 
 renamed_files=$(git diff --name-status --staged | awk '/^R/ {print $3}')
 created_files=$(git diff --name-status --staged | awk '/^A/ {print $2}')
+deleted_files=$(git diff --name-status --staged | awk '/^D/ {print $2}')
 echo "Modified files : $modified_files"
 echo ""
 
@@ -75,6 +76,17 @@ for file in $modified_files; do
     fi
 
     if [ $fileHasBeenFound = false ]; then
+      for deleted_file in ${deleted_files[@]}; do
+        if [[ $deleted_file == $file ]]; then
+          echo "It has been deleted."
+          rm -rf "$target_directory/$file"
+          echo "✅ Successfully deleted file $file"
+          continue 2
+        fi
+      done
+    fi
+
+    if [ $fileHasBeenFound = false ]; then
       echo "❌ File has not been renamed, it has not been created ... What happened ?"
     fi
 
@@ -90,6 +102,6 @@ for file in $modified_files; do
   
     echo "✅ Successfully pasted file $filename"
   else
-    echo "❌ Source file $file does not exist. Skipping."
+    echo "❌ We tried to copy $file to $target_file but $file does not exist."
   fi
 done
