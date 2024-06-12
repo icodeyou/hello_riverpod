@@ -67,6 +67,7 @@ for file in $modified_files; do
       touch "$new_file_path"
       target_file="$new_file_path"
     else
+      echo "❌ File has not been renamed, it has not been created ... What happened ?"
       continue
     fi
   fi
