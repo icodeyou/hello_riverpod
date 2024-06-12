@@ -41,18 +41,16 @@ for file in $modified_files; do
     target_file=${matching_files[0]}
   else
     # No matches found
-    echo "⚠️ No file $filename was found."
+    echo "⚠️ No file $filename was found in the target directory."
     renamed_files=$(git diff --name-status --staged | awk '/^R/ {print $3}')
     created_files=$(git diff --name-status --staged | awk '/^A/ {print $2}')
     echo "Created files : $created_files"
-    echo "Created file : ${created_files[@]}"
-    echo "${filename}"
     echo "Renamed files : $renamed_files"
-    echo "Renamed file : ${renamed_files[@]}"
-    echo "${filename}"
+    echo "File ${file}"
   
-    if [[ " ${renamed_files[@]} " =~ " ${file} " ]]; then
+    if [[ " ${renamed_files[@]} " =~ "${file}" ]]; then
       echo "It has been renamed."
+      continue
       # Get the name of the file before it was renamed
       previous_name=$(git diff --name-status --staged | awk '/^R/ {print $2}')
       # Find that file in the target directory
@@ -66,7 +64,7 @@ for file in $modified_files; do
       mv "$previous_file_path" "$new_file_path"
       # Replace $target_file with the new file
       target_file="$new_file_path"
-    elif [[ " ${created_files[@]} " =~ " ${file} " ]]; then
+    elif [[ " ${created_files[@]} " =~ "${file}" ]]; then
       echo "It has been created."
       new_file_path="$target_directory/$file"
       mkdir -p "$(dirname "$new_file_path")"  # Ensure the directory exists
@@ -77,6 +75,8 @@ for file in $modified_files; do
       continue
     fi
   fi
+
+  exit
 
   # Ensure the target file exists before attempting to copy
   if [ -f "$file" ]; then
