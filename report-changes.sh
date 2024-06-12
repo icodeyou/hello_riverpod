@@ -64,7 +64,7 @@ for file in $modified_files; do
     
     echo "After for 1"
 
-    for created_files in ${created_files[@]}; do
+    for created_file in ${created_files[@]}; do
       index=$((index+1))
       echo "Created file : $created_file"
       if [[ $created_file == $file ]]; then
