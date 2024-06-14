@@ -4,15 +4,15 @@ import 'package:{{projectName}}/features/kitten/domain/models/kitten.dart';
 import 'package:{{projectName}}/features/kitten/domain/services/kitten_service.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-part 'word_controller.g.dart';
+part 'kitten_controller.g.dart';
 
 @riverpod
-class WordController extends _$WordController {
+class KittenController extends _$KittenController {
   late final _kittenService = ref.read(kittenServiceProvider);
 
   @override
   Future<String> build() async {
-    return _getWord();
+    return _getKittenName();
   }
 
   Future<void> generateLetter() async {
@@ -20,14 +20,14 @@ class WordController extends _$WordController {
     final random = Random();
     const letters = 'abcdefghijklmnopqrstuvwxyz';
     final randomLetter = letters[random.nextInt(letters.length)];
-    var newWord = await _getWord();
+    var newWord = await _getKittenName();
     newWord += randomLetter;
 
     await _saveWord(newWord);
     state = AsyncData(newWord);
   }
 
-  Future<String> _getWord() async {
+  Future<String> _getKittenName() async {
     final kitten = await _kittenService.getKitten();
     return kitten.name;
   }
