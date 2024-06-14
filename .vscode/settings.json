@@ -10,6 +10,9 @@
         "riverpod",
         "prefs",
         "Salut",
+        "projectlocal",
+        "projectmaster",
+        "mason",
     ],
     "cSpell.useGitignore": false,
     "dart.analysisExcludedFolders": [
