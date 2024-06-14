@@ -115,10 +115,11 @@ git --no-pager show
 git status
 cd "$source_directory"
 echo ""
-read -p "🚀 Do you want to commit the changes in LOCAL/? (y/n) " -n 1 -r
+read -p "🚀 Do you want to commit the changes in LOCAL repo? (Press 'Y' or 'Enter' to confirm) " -n 1 -r
 echo ""
-if [[ $REPLY =~ ^[Yy]$ ]]; then
-  git commit -m "Update projectlocal files"
+if [[ -z $REPLY || $REPLY =~ ^[Yy]$ ]]; then
+  git add --all || exit
+  git commit -m "Just an update" || exit
   echo "✅ Successfully committed the changes."
 else
   echo "❌ Changes not committed."
