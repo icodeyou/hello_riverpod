@@ -1,10 +1,13 @@
 #!/bin/bash
 
-# Specify the source directory (where we do git add)
-source_directory="LOCAL/"
+#Specify the folder where the script is located
+root_directory=$(dirname "$(realpath "$0")")
 
-# Get the directory where the script is located
-target_directory=$(dirname "$(realpath "$0")")/__brick__
+# Specify the source directory
+source_directory="$root_directory/LOCAL/"
+
+# Get the destination directory (where we want to copy the changes)
+target_directory="$root_directory/__brick__/"
 
 # Navigate to the source directory
 cd "$source_directory" || exit
@@ -108,7 +111,8 @@ for deleted_file in ${deleted_files[@]}; do
   echo "✅ Successfully deleted file $deleted_file"
 done
 
-cd "$target_directory"
+cd "$target_directory" # __brick__
+cd .. # root
 echo ""
 echo "ℹ️ Changes in target directory :"
 git --no-pager show
