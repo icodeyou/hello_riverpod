@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Load my aliases
+source ~/.oh-my-zsh/custom/my_aliases.zsh > /dev/null 2>&1
+
 #Specify the folder where the script is located
 root_directory=$(dirname "$(realpath "$0")")
 
