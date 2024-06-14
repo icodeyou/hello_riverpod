@@ -12,7 +12,7 @@ class KittenScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final kittenState = ref.watch(kittenControllerProvider);
+    final kittenNameState = ref.watch(kittenControllerProvider);
     final kittenNotifier = ref.read(kittenControllerProvider.notifier);
 
     return Scaffold(
@@ -40,9 +40,9 @@ class KittenScreen extends ConsumerWidget {
                 width: double.infinity,
                 margin: const EdgeInsets.all(12.0),
                 padding: const EdgeInsets.all(12.0),
-                child: kittenState.when(
-                  data: (word) => AppText.s(
-                    word,
+                child: kittenNameState.when(
+                  data: (kittenName) => AppText.s(
+                    kittenName,
                     maxLines: 10,
                   ),
                   loading: () => const Center(
