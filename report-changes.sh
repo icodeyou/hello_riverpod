@@ -118,11 +118,12 @@ echo "ℹ️ Changes in target directory :"
 git --no-pager show
 git status
 echo ""
-read -p "🚀 Do you want to commit the changes in LOCAL repo? (Press 'Y' or 'Enter' to confirm) " -n 1 -r
+read -p "🚀 Commit changes ? (Press 'Y' or 'Enter' to confirm) " -n 1 -r
 echo ""
 if [[ -z $REPLY || $REPLY =~ ^[Yy]$ ]]; then
-  echo "📝 Type your commit message ..."
+  echo "📝 Type your commit message :"
   read commit_message
+  echo ""
   if [[ $commit_message == "" ]]; then
     echo "❌ You must provide a commit message. Bybye."
     exit
@@ -132,7 +133,13 @@ if [[ -z $REPLY || $REPLY =~ ^[Yy]$ ]]; then
     git commit -m "$commit_message" || exit
     cd "$root_directory" || exit
     git add --all || exit
-    git commit -m "$commit_message" || exit
+    echo "❓ Commit to master branch? (Press 'Y' or 'Enter' to confirm) "
+    read do_master_commit
+    if [[ -z $do_master_commit || $do_master_commit =~ ^[Yy]$ ]]; then
+      gg "$commit_message"
+    else
+      git commit -m "$commit_message" || exit
+    fi
     echo "✅ Successfully committed the changes in local/ and hello_riverpod/"
   fi
 else
