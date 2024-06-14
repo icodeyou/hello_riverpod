@@ -9,9 +9,6 @@
         "prefs",
         "salut",
         "snowball",
-        "projectlocal",
-        "projectmaster",
-        "projectmason",
     ],
     "cSpell.useGitignore": false,
     "dart.analysisExcludedFolders": [
