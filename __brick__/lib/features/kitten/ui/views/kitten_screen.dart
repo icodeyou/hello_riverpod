@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:{{projectName}}/app/i18n/translations.g.dart';
 import 'package:{{projectName}}/features/kitten/ui/controllers/kitten_controller.dart';
-import 'package:{{projectName}}/features/kitten/ui/controllers/word_controller.dart';
 
 /// Widget for Home Screen
 class KittenScreen extends ConsumerWidget {
@@ -41,7 +40,7 @@ class KittenScreen extends ConsumerWidget {
                 margin: const EdgeInsets.all(12.0),
                 padding: const EdgeInsets.all(12.0),
                 child: kittenNameState.when(
-                  data: (kittenName) => AppText.s(
+                  data: (kittenName) => Text(
                     kittenName,
                     maxLines: 10,
                   ),
