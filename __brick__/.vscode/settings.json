@@ -9,7 +9,7 @@
     "cSpell.words": [
         "riverpod",
         "prefs",
-        "projectmaster",
+        "{{projectName}}",
     ],
     "cSpell.overrides": [
         {
