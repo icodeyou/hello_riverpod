@@ -118,7 +118,7 @@ cd "$target_directory" # __brick__
 cd .. # root
 echo ""
 echo "ℹ️ Changes in target directory :"
-git --no-pager show
+git --no-pager diff 
 git status
 echo ""
 read -p "🚀 Commit changes ? (Press 'Y' or 'Enter' to confirm) " -n 1 -r
