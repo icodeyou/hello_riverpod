@@ -1,5 +1,6 @@
 {
   "recommendations": [
+    "zhuangtongfa.material-theme",
     "dart-code.dart-code",
     "dart-code.flutter",
     "streetsidesoftware.code-spell-checker",
@@ -21,6 +22,6 @@
     "Gruntfuggly.todo-tree",
     "usernamehw.errorlens",
     "ryuta46.multi-command",
-    "Arkroot.freezed-snippets",
+    "Arkroot.freezed-snippets"
   ],
 }
