@@ -373,16 +373,23 @@ echo "The project has been created in : $projectPath"
 echo ""
 echo ""
 
+# Method to run the project
+runProject() {
+  echo "🚀 Running Project"
+  flutter run --flavor development --target lib/main_development.dart &
+  git add --all 
+  git commit -m "clean: upgrade project files after first run ✨"
+  fg
+}
+
 if [[ $genType == "local" ]]
   then
-    echo "🚀 Running Project"
-    flutter run --flavor development --target lib/main_development.dart
+    runProject
 else
   # Ask user
   echo "Do you want to run the project ? Press enter to confirm, type NO otherwise :"
   read runAnswer
   if [[ $runAnswer != 'NO' ]]; then 
-    echo "🚀 Running Project"
-    flutter run --flavor development --target lib/main_development.dart
+    runProject
   fi
 fi
