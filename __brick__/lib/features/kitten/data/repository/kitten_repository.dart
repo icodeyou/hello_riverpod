@@ -19,10 +19,15 @@ class KittenRepository {
     // Simulate a network request
     await Future.delayed(const Duration(milliseconds: 500));
     final name = ref.prefs.getString(SharedPreferencesKeys.spKittenName) ?? '';
-    return Kitten(id: 0, name: name);
+    final kittenDto = KittenDTO(id: 0, name: name);
+    return kittenFromDto(kittenDto);
   }
 
   Future<void> saveKitten(Kitten kitten) async {
     await ref.prefs.setString(SharedPreferencesKeys.spKittenName, kitten.name);
   }
+}
+
+Kitten kittenFromDto(KittenDTO dto) {
+  return Kitten(id: dto.id, name: dto.name);
 }
