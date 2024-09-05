@@ -12,7 +12,7 @@ class KittenScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final kittenNameState = ref.watch(kittenControllerProvider);
+    final $kittenNameState = ref.watch(kittenControllerProvider);
     final kittenNotifier = ref.read(kittenControllerProvider.notifier);
 
     return Scaffold(
@@ -37,7 +37,7 @@ class KittenScreen extends ConsumerWidget {
                 width: double.infinity,
                 margin: ThemeSizes.s.asInsets,
                 padding: ThemeSizes.s.asInsets,
-                child: kittenNameState.when(
+                child: $kittenNameState.when(
                   data: (kittenName) => AppText.s(
                     kittenName,
                     maxLines: 10,
