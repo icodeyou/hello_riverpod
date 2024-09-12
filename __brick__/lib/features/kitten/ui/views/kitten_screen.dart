@@ -26,6 +26,8 @@ class KittenScreen extends ConsumerWidget {
               bold: true,
             ),
             const SizedBox(height: 20),
+            Image.asset('assets/images/kitten.png'),
+            const SizedBox(height: 20),
             ConstrainedBox(
               constraints: const BoxConstraints(minHeight: 110),
               child: Container(
