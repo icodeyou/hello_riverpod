@@ -26,3 +26,7 @@ class KittenRepository {
     await ref.prefs.setString(SharedPreferencesKeys.spKittenName, kitten.name);
   }
 }
+
+Kitten kittenFromDto(KittenDTO dto) {
+  return Kitten(id: dto.id, name: dto.name);
+}
