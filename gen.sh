@@ -376,10 +376,13 @@ echo ""
 # Method to run the project
 runProject() {
   echo "🚀 Running Project"
-  flutter run --flavor development --target lib/main_development.dart &
+  flutter run --flavor development --target lib/main_development.dart
+  echo "Do you want to commit the changes that have been made after the build ?"
+  echo "Press enter to confirm, or any other key to cancel :"
+  read commitAnswer
+  if [[ $commitAnswer != '' ]]; then exit; fi
   git add --all 
   git commit -m "clean: upgrade project files after first run ✨"
-  fg
 }
 
 if [[ $genType == "local" ]]
