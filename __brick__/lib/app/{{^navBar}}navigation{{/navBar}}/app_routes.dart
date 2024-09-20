@@ -18,12 +18,14 @@ class AppRoutes {
       ),
       GoRoute(
         path: Paths.home.path,
+        name: Paths.home.name,
         builder: (context, state) {
           return const HomeScreen();
         },
       ),
       GoRoute(
         path: Paths.kitten.path,
+        name: Paths.kitten.name,
         builder: (context, state) {
           return const KittenScreen();
         },

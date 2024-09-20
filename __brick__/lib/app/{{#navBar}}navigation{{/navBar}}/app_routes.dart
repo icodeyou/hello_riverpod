@@ -30,6 +30,7 @@ class AppRoutes {
       ),
       GoRoute(
         path: Paths.kitten.path,
+        name: Paths.kitten.name,
         builder: (context, state) {
           return const KittenScreen();
         },
@@ -44,6 +45,7 @@ class AppRoutes {
             routes: [
               GoRoute(
                 path: Paths.home.path,
+                name: Paths.home.name,
                 builder: (context, state) {
                   return const HomeScreen();
                 },
@@ -55,6 +57,7 @@ class AppRoutes {
             routes: [
               GoRoute(
                 path: Paths.explore.path,
+                name: Paths.explore.name,
                 builder: (context, state) {
                   return const Scaffold(body: Center(child: Text('Explore')));
                 },
@@ -66,6 +69,7 @@ class AppRoutes {
             routes: [
               GoRoute(
                 path: Paths.settings.path,
+                name: Paths.settings.name,
                 builder: (context, state) {
                   return const Scaffold(body: Center(child: Text('Settings')));
                 },

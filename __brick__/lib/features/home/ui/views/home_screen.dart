@@ -17,7 +17,8 @@ class HomeScreen extends ConsumerWidget {
       appBar: AppBar(title: Text(t.common.appName)),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          context.push(Paths.kitten.path);
+          // We should always use pushNamed rather than push, it's more accurate
+          context.pushNamed(Paths.kitten.name);
         },
         child: const Icon(Icons.pets),
       ),
@@ -28,7 +29,7 @@ class HomeScreen extends ConsumerWidget {
             ElevatedButton(
               onPressed: () {
                 context.showToast(t.home.floatingActionButton);
-                }, 
+              },
               child: const Text('Show toast'),
             ),
             ElevatedButton(
@@ -41,7 +42,7 @@ class HomeScreen extends ConsumerWidget {
                   cancelButton: 'Cancel',
                   onConfirm: () => print('Confirm'),
                 );
-                }, 
+              },
               child: const Text('Show popup'),
             ),
           ],
