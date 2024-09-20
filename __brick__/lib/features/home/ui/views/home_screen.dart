@@ -21,7 +21,8 @@ class HomeScreen extends ConsumerWidget {
       appBar: AppBar(title: Text(t.common.appName)),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          context.push(Paths.kitten.path);
+          // We should always use pushNamed rather than push, it's more accurate
+          context.pushNamed(Paths.kitten.name);
         },
         child: const Icon(Icons.pets),
       ),
