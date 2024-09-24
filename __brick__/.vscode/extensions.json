@@ -22,6 +22,7 @@
     "Gruntfuggly.todo-tree",
     "usernamehw.errorlens",
     "ryuta46.multi-command",
-    "Arkroot.freezed-snippets"
+    "Arkroot.freezed-snippets",
+    "vscjava.vscode-gradle"
   ],
 }
