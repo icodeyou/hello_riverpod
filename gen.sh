@@ -375,24 +375,57 @@ echo ""
 
 # Method to run the project
 runProject() {
+  stopProcess="false"  # Default is not to stop
+
+  # Check if the --stop argument is passed
+  if [[ $1 == "--stop-immediately" ]]; then
+    stopProcess="true"
+  fi
+
+  if [[ $genType == "local" ]]; then
+    echo "Do you want to commit the changes that have been made after the build?"
+    echo "Press enter to confirm, or any other key to cancel:"
+    read commitAnswer
+  else
+    commitAnswer=''
+  fi
+
   echo "🚀 Running Project"
-  flutter run --flavor development --target lib/main_development.dart
-  echo "Do you want to commit the changes that have been made after the build ?"
-  echo "Press enter to confirm, or any other key to cancel :"
-  read commitAnswer
+  
+  # Run flutter in the background
+  flutter run --flavor development --target lib/main_development.dart &
+  
+  # Get the process ID ($!) of the last background process, which is flutter run
+  flutter_pid=$!
+
+  # Allow some time for the app to start up
+  sleep 20
+  
   if [[ $commitAnswer != '' ]]; then exit; fi
   git add --all 
   git commit -m "clean: upgrade project files after first run ✨"
+
+  if [[ $stopProcess != "true" ]]; then
+    echo "The next key you type will quit the app."
+    read -n1 key
+  fi
+
+  # Stopping the Flutter run process
+  echo "Stopping the Flutter run process..."
+  kill -9 "$flutter_pid"
+
+  # Verify if flutter process is stopped
+  sleep 5
+  if ps -p "$flutter_pid" > /dev/null; then
+    echo "❌ Flutter is still running"
+  else
+    echo "✅ Flutter stopped."
+  fi
 }
 
 if [[ $genType == "local" ]]
   then
     runProject
 else
-  # Ask user
-  echo "Do you want to run the project ? Press enter to confirm, type NO otherwise :"
-  read runAnswer
-  if [[ $runAnswer != 'NO' ]]; then 
-    runProject
-  fi
+  runProject --stop-immediately
 fi
