@@ -1,3 +1,4 @@
+import 'package:{{projectName}}/features/kitten/data/dto/kitten_dto.dart';
 import 'package:{{projectName}}/features/kitten/domain/models/kitten.dart';
 import 'package:{{projectName}}/shared/constants/shared_preferences_keys.dart';
 import 'package:{{projectName}}/shared/extensions/ref_extensions.dart';
