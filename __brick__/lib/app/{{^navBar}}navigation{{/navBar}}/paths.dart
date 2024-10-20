@@ -19,20 +19,20 @@ class Paths {
   /// Home path
   static Path get home => const Path(
         path: '/home', // This is an absolute path
-        name: 'home_screen',
+        location: 'home_screen',
       );
 
   /// Kitten path. Pushed from home, the location will be '/home/kitten'
   static Path get kitten => const Path(
         path: 'kitten', // This is a relative path
-        name: 'kitten_screen',
+        location: 'kitten_screen',
       );
 
   // Location parameter becomes handy with dynamic routes
   // Example of dynamic route with user id :
   static Path get profile => const Path(
         path: 'profile/:id', // The path with a dynamic segment
-        name: 'profile_screen', // To push a named location
+        location: 'profile_screen', // To push a named location
       );
   // To get the location :
   // GoRouter.namedLocation(Paths.profile.name, params: {'id': 42});
