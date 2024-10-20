@@ -16,7 +16,7 @@ class AppBottomBarScaffold extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final currentLocation = GoRouter.of(context).location;
+    final currentLocation = GoRouter.of(context).currentPath;
 
     final bottomTabs = [
       RoutedNavigationBarItem(
@@ -40,9 +40,11 @@ class AppBottomBarScaffold extends StatelessWidget {
     ];
 
     int getCurrentIndex() {
+      print('currentLocation: $currentLocation');
+      print('tabs : ${bottomTabs.map((e) => e.tabRootPath.path)}');
       final index = bottomTabs.indexWhere(
         (tab) => currentLocation.startsWith(
-          tab.tabRootPath.location,
+          tab.tabRootPath.path,
         ),
       );
       return index == -1 ? 0 : index;
@@ -59,7 +61,7 @@ class AppBottomBarScaffold extends StatelessWidget {
         selectedIndex: getCurrentIndex(),
         destinations: bottomTabs,
         onDestinationSelected: (destinationIndex) {
-          context.go(getDestinationPath(destinationIndex).location);
+          context.goNamed(getDestinationPath(destinationIndex).location);
         },
       ),
     );
