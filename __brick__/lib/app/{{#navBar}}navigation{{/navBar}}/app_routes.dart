@@ -26,13 +26,6 @@ class AppRoutes {
         path: '/',
         redirect: (context, state) => Paths.home.path,
       ),
-      GoRoute(
-        path: Paths.kitten.path,
-        name: Paths.kitten.location,
-        builder: (context, state) {
-          return const KittenScreen();
-        },
-      ),
       StatefulShellRoute.indexedStack(
         builder: (context, state, navigationShell) {
           return AppBottomBarScaffold(navigationShell: navigationShell);
@@ -42,12 +35,20 @@ class AppRoutes {
             navigatorKey: _shellNavigatorHome,
             routes: [
               GoRoute(
-                path: Paths.home.path,
-                name: Paths.home.location,
-                builder: (context, state) {
-                  return const HomeScreen(title: 'Home');
-                },
-              ),
+                  path: Paths.home.path,
+                  name: Paths.home.location,
+                  builder: (context, state) {
+                    return const HomeScreen(title: 'Home');
+                  },
+                  routes: [
+                    GoRoute(
+                      path: Paths.kitten.path,
+                      name: Paths.kitten.location,
+                      builder: (context, state) {
+                        return const KittenScreen();
+                      },
+                    ),
+                  ]),
             ],
           ),
           StatefulShellBranch(

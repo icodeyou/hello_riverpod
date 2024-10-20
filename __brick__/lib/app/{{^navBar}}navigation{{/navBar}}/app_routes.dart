@@ -15,19 +15,20 @@ class AppRoutes {
         redirect: (context, state) => Paths.home.path,
       ),
       GoRoute(
-        path: Paths.home.path,
-        name: Paths.home.location,
-        builder: (context, state) {
-          return const HomeScreen(title: 'Home');
-        },
-      ),
-      GoRoute(
-        path: Paths.kitten.path,
-        name: Paths.kitten.location,
-        builder: (context, state) {
-          return const KittenScreen();
-        },
-      ),
+          path: Paths.home.path,
+          name: Paths.home.location,
+          builder: (context, state) {
+            return const HomeScreen(title: 'Home');
+          },
+          routes: [
+            GoRoute(
+              path: Paths.kitten.path,
+              name: Paths.kitten.location,
+              builder: (context, state) {
+                return const KittenScreen();
+              },
+            ),
+          ]),
     ],
   );
 }
