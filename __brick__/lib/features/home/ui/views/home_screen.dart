@@ -18,7 +18,7 @@ class HomeScreen extends ConsumerWidget {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           // We should always use pushNamed rather than push, it's more accurate
-          context.pushNamed(Paths.kitten.name);
+          context.pushNamed(Paths.kitten.location);
         },
         child: const Icon(Icons.pets),
       ),
