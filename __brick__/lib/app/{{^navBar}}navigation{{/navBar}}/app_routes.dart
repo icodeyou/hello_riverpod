@@ -22,14 +22,17 @@ class AppRoutes {
         builder: (context, state) {
           return const HomeScreen();
         },
+        routes: [
+          GoRoute(
+            path: Paths.kitten.path,
+            name: Paths.kitten.location,
+            builder: (context, state) {
+              return const KittenScreen();
+            },
+          ),
+        ]
       ),
-      GoRoute(
-        path: Paths.kitten.path,
-        name: Paths.kitten.location,
-        builder: (context, state) {
-          return const KittenScreen();
-        },
-      ),
+      
     ],
   );
 }

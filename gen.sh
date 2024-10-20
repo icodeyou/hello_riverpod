@@ -399,7 +399,7 @@ runProject() {
   flutter_pid=$!
 
   # Allow some time for the app to start up
-  sleep 20
+  sleep 120
   
   if [[ $commitAnswer != '' ]]; then exit; fi
   git add --all 
