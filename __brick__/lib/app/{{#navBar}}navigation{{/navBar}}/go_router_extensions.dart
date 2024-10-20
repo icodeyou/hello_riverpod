@@ -6,7 +6,7 @@ extension GoRouterLocation on GoRouter {
   // https://github.com/flutter/flutter/issues/129833
 
   /// The current location in the app
-  String get location {
+  String get currentPath {
     final lastMatch = routerDelegate.currentConfiguration.last;
     final matchList = lastMatch is ImperativeRouteMatch
         ? lastMatch.matches
