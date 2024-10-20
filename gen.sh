@@ -370,27 +370,12 @@ echo "✅ ✅ ✅ ✅ ✅ "
 
 echo "The project has been created in : $projectPath"
 
-echo ""
-echo ""
-
 # Method to run the project
 runProject() {
-  stopProcess="false"  # Default is not to stop
-
-  # Check if the --stop argument is passed
-  if [[ $1 == "--stop-immediately" ]]; then
-    stopProcess="true"
-  fi
-
-  if [[ $genType == "local" ]]; then
-    echo "Do you want to commit the changes that have been made after the build?"
-    echo "Press enter to confirm, or any other key to cancel:"
-    read commitAnswer
-  else
-    commitAnswer=''
-  fi
-
-  echo "🚀 Running Project"
+  echo ""
+  echo "🚀 🚀 🚀 🚀 🚀 🚀 🚀"
+  echo "RUNNING PROJECT"
+  echo ""
   
   # Run flutter in the background
   flutter run --flavor development --target lib/main_development.dart &
@@ -399,16 +384,31 @@ runProject() {
   flutter_pid=$!
 
   # Allow some time for the app to start up
-  sleep 120
-  
-  if [[ $commitAnswer != '' ]]; then exit; fi
-  git add --all 
-  git commit -m "clean: upgrade project files after first run ✨"
+  sleep 60
 
-  if [[ $stopProcess != "true" ]]; then
-    echo "The next key you type will quit the app."
-    read -n1 key
+  echo ""
+  echo "🌈 FLUTTER RUN IS FINISHED 🌈"
+  echo ""
+
+  if [[ $genType == "local" ]]; then
+    echo "Do you want to commit the changes that have been made after the build?"
+    echo "If you do, press enter to confirm, otherwise any other key :"
+    read -n1 commitAnswer
+    echo ""
+    echo "Thank you for your answer."
+  else
+    commitAnswer=''
   fi
+  
+  if [[ $commitAnswer == '' ]]; then
+    git add --all 
+    git commit -m "clean: upgrade project files after first run ✨"
+  fi
+
+  echo ""
+  echo "ℹ️ We need to stop the Flutter process because we ran the app in the background to be able to commit the files created after the first run."
+  echo "If you want to hot reload/restart, you have to launch 'flutter run' again."
+  echo ""
 
   # Stopping the Flutter run process
   echo "Stopping the Flutter run process..."
@@ -423,9 +423,4 @@ runProject() {
   fi
 }
 
-if [[ $genType == "local" ]]
-  then
-    runProject
-else
-  runProject --stop-immediately
-fi
+runProject
