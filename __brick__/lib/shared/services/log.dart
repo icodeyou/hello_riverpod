@@ -17,11 +17,16 @@ Logger get logger => Log();
 ///
 /// The class is a Singleton.
 class Log extends Logger {
-  Log._() : super(printer: PrettyPrinter(printTime: true));
+  Log._()
+      : super(
+          printer: PrettyPrinter(
+            dateTimeFormat: DateTimeFormat.onlyTimeAndSinceStart,
+          ),
+        );
 
   static final _instance = Log._();
 
-  /// Primary public constructor, returns instance of singleton 
+  /// Primary public constructor, returns instance of singleton
   // ignore: sort_unnamed_constructors_first, sort_constructors_first
   factory Log() {
     return _instance;
