@@ -41,7 +41,7 @@ if [[ $genType == "snowball" ]]
   then
 
   # Get name of project
-  echo "Enter the name of the project (ex: Top Gun) : "
+  echo "Enter the name of the project (ex: Kitten Land) : "
   read nameUppercase
   if [[ $nameUppercase == "" ]]
     then
