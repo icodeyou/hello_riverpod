@@ -40,8 +40,6 @@ class AppBottomBarScaffold extends StatelessWidget {
     ];
 
     int getCurrentIndex() {
-      print('currentLocation: $currentLocation');
-      print('tabs : ${bottomTabs.map((e) => e.tabRootPath.path)}');
       final index = bottomTabs.indexWhere(
         (tab) => currentLocation.startsWith(
           tab.tabRootPath.path,
