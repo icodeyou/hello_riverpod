@@ -5,7 +5,7 @@ echo "Prerequisites : Make sure that following CLI are installed :"
 echo "flutter, very_good, mason, gh"
 echo ""
 
-echo "Enter the name of the project (ex: Top Gun) : "
+echo "Enter the name of the project (ex: Kitten Land) : "
 read nameUppercase
 nameUppercaseNoSpace=$(echo "$nameUppercase" | tr -d ' ')
 nameLowercase=$(echo "$nameUppercase" | awk '{print tolower($0)}' | tr -d ' ')
