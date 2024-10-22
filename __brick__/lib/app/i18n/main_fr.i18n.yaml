@@ -6,8 +6,10 @@ splash:
   retryButton: Réessayer
 
 home:
-  floatingActionButton: "Hey there !"
+  floatingActionButton: "Salut toi !"
+  popupConfirmed: Confirmation
 
 kitten:
-  title: Kitten
-  appBar: Kitten Screen
+  appBar: L'espace chaton
+  title: Le chaton sacré de Birmanie
+  

@@ -7,7 +7,9 @@ splash:
 
 home:
   floatingActionButton: "Hey there !"
+  popupConfirmed: Popup confirmed
 
 kitten:
-  title: Kitten
   appBar: Kitten Screen
+  title: The Birman kitten
+  

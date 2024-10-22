@@ -40,7 +40,7 @@ class HomeScreen extends ConsumerWidget {
                   content: 'Hello',
                   confirmButton: 'OK',
                   cancelButton: 'Cancel',
-                  onConfirm: () => print('Confirm'),
+                  onConfirm: () => print(t.home.popupConfirmed),
                 );
               },
               child: const Text('Show popup'),
