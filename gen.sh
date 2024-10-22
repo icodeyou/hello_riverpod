@@ -384,7 +384,7 @@ runProject() {
   flutter_pid=$!
 
   # Allow some time for the app to start up
-  sleep 60
+  sleep 120
 
   echo ""
   echo "🌈 FLUTTER RUN IS FINISHED 🌈"
