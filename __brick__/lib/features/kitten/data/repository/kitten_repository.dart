@@ -1,3 +1,4 @@
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:{{projectName}}/features/kitten/data/dto/kitten_dto.dart';
 import 'package:{{projectName}}/features/kitten/domain/models/kitten.dart';
 import 'package:{{projectName}}/shared/constants/shared_preferences_keys.dart';
@@ -7,14 +8,14 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 part 'kitten_repository.g.dart';
 
 @riverpod
-KittenRepository kittenRepository(KittenRepositoryRef ref) {
+KittenRepository kittenRepository(Ref ref) {
   return KittenRepository(ref);
 }
 
 class KittenRepository {
   KittenRepository(this.ref);
 
-  final KittenRepositoryRef ref;
+  final Ref ref;
 
   Future<Kitten> getKitten() async {
     // Simulate a network request
