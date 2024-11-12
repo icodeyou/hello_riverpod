@@ -41,7 +41,7 @@ class HomeScreen extends ConsumerWidget {
                   confirmButton: 'OK',
                   cancelButton: 'Cancel',
                   onConfirm: () {
-                    Notif.showToast(context: context, t.home.popupConfirmed)
+                    Notif.showToast(context: context, t.home.popupConfirmed);
                   },
                 );
               },
