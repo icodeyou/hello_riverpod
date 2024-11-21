@@ -34,63 +34,59 @@ fi
 
 echo ""
 echo "Prerequisites : Make sure that following CLI are installed :"
-echo "flutter, very_good, mason, gh"
+echo "flutter, mason, gh"
 echo ""
 
 if [[ $genType == "snowball" ]]
   then
 
-  # Get name of project
-  echo "Enter the name of the project (ex: Kitten Land) : "
-  read nameUppercase
-  if [[ $nameUppercase == "" ]]
-    then
-      echo "The name of your project is invalid. Please start again."
-      exit
-  fi
-  nameUppercaseNoSpace=$(echo "$nameUppercase" | tr -d ' ')
-  nameLowercase=$(echo "$nameUppercase" | awk '{print tolower($0)}' | tr -d ' ')
-
-  # Check if SNOWBALLS folder exists in this path
-  if ! [ -d "SNOWBALLS" ]; then
-    mkdir SNOWBALLS
-    else 
-      # Check if project already exists in SNOWBALLS/
-      if [ -d "SNOWBALLS/$nameLowercase" ]; then
-        echo "$nameLowercase does exist in SNOWBALLS/"
-        echo "Delete the folder or choose another name for your project."
-        echo ""
+    # Get name of project
+    echo "Enter the name of the project (ex: Kitten Land) : "
+    read nameUppercase
+    if [[ $nameUppercase == "" ]]
+      then
+        echo "The name of your project is invalid. Please start again."
         exit
-      fi
-  fi
+    fi
+    nameLowercase=$(echo "$nameUppercase" | awk '{print tolower($0)}' | tr -d ' ')
 
-  # Get Bundle ID for project
-  org="com.$nameLowercase"
-  echo "⚠️ Your organization is by default : $org"
-  echo "If this is OK, press enter. Otherwise type the name of your new org :"
-  read newOrg
-  if [[ $newOrg != '' ]]; then org="$newOrg"; fi
-  bundleId="$org.app"
-  echo ""
-  echo "Here is a suggestion for the Bundle ID : $bundleId"
-  echo "If this is OK, press enter. Otherwise, enter the word that you need after '$org.'"
-  read nameAppForBundleId
-  if [[ $nameAppForBundleId != '' ]]; then bundleId="$org.$nameAppForBundleId"; fi
+    # Check if SNOWBALLS folder exists in this path
+    if ! [ -d "SNOWBALLS" ]; then
+      mkdir SNOWBALLS
+      else 
+        # Check if project already exists in SNOWBALLS/
+        if [ -d "SNOWBALLS/$nameLowercase" ]; then
+          echo "$nameLowercase does exist in SNOWBALLS/"
+          echo "Delete the folder or choose another name for your project."
+          echo ""
+          exit
+        fi
+    fi
 
+    # Get Bundle ID for project
+    org="com.$nameLowercase"
+    echo "⚠️ Your organization is by default : $org"
+    echo "If this is OK, press enter. Otherwise type the name of your new org :"
+    read newOrg
+    if [[ $newOrg != '' ]]; then org="$newOrg"; fi
+    bundleId="$org.$nameLowercase"
+    echo ""
+    echo "✨ ✨ ✨ ✨ ✨"
+    echo "The Bundle ID of the project will be : $bundleId"
+    echo "Are you okay with that ? Press enter to confirm, type NO otherwise :"
+    read bundleIdAnswer
+    if [[ $bundleIdAnswer == 'NO' ]]; then
+      echo "The last part of your bundle ID has to be your app name (so that we can run 'flutter create .' in the future)"
+      echo "Please start again."
+      exit
+    fi
+    echo ""
+  
   else
-    nameUppercaseNoSpace=project$genType
     nameLowercase=project$genType
     org="com.$nameLowercase"
-    bundleId="$org.app"
+    bundleId="$org.$nameLowercase"
 fi
-
-echo ""
-echo "✨ ✨ ✨ ✨ ✨"
-echo "The Bundle ID of the project will be : $bundleId"
-echo "It is not easy to change it, so be sure to pick the right one."
-echo "✨ ✨ ✨ ✨ ✨"
-echo ""
-
 
 # Navigate to the folder where the project will be created
 echo ""
@@ -121,6 +117,7 @@ case "$genType" in
     ;;
 esac 
 
+echo ""
 echo "Checking navbar"
 if [[ "$2" == "withoutNavBar" ]]; then
   echo "Navbar : false"
@@ -133,45 +130,10 @@ else
 fi
 
 echo "📂 To $PWD"
-
-( # try
-	set -e
-	echo ""
-	echo ""
-    echo "🔥 Creating project '$nameLowercase' with bundle ID '$bundleId' 🔥"
-    echo ""
-    very_good create flutter_app $nameLowercase --org-name $org --application-id $bundleId
-    
-    # Navigating inside new project (only for this temporary environment)
-    cd $nameLowercase
-    
-    echo ""
-    echo "ℹ️ Cleaning very good project"
-    rm -f pubspec.lock
-    rm -f lib/bootstrap.dart
-    rm -rf lib/counter/
-    rm -rf lib/app/view/
-    rm -rf lib/l10n/
-    rm -rf l10n.yaml
-    rm -rf test/**
-
-    echo ""
-    echo "⚠️ Removing folders web/ linux/ windows/ macos/"
-    rm -rf web/ linux/ windows/ macos/ #this can be removed when very_good has a flag like "--platforms"
-    # https://github.com/VeryGoodOpenSource/very_good_cli/issues/467 OMG felangel just answered !
-)
-
-#catch error
-errorCode=$?
-if [ $errorCode -ne 0 ]; then
-  echo ""
-  echo "We have an error !"
-  echo "⚠️ This folder is about to be deleted : $PWD/$nameLowercase"
-  echo "Do you want to delete it ? Press enter to confirm, type NO if you want to keep it :"
-  read answer
-  if [[ $answer != 'NO' ]]; then rm -rf $nameLowercase; echo "Removed generated project $folderToDelete"; fi
-  exit $errorCode
-fi 
+echo ""
+echo "🔥 Creating project '$nameLowercase' with bundle ID '$bundleId'"
+echo ""
+flutter create $nameLowercase --platforms=ios,android --org $org --empty
 
 # Navigate inside new project
 echo ""
@@ -229,44 +191,51 @@ projectPath=$PWD
 # Create Git and commit
 echo ""
 echo ""
-echo "🔥 Creating Git Repository for project $nameLowercase 🔥"
+echo "😼 Creating Git Repository for project $nameLowercase"
 git init
 git add --all
 git commit -m "First commit 🦋"
 
+createRemoteRepo() {
+  gh repo create $nameLowercase --private
+  git remote add origin https://github.com/icodeyou/$nameLowercase.git
+  echo "New remote URLs :"
+  git remote -v
+  git push -u origin master
+
+  echo ""
+  echo "If you have this message : 'command not found: gh' ➡️ Follow steps below :"
+  echo "1) Run 'brew install gh'"
+  echo "2) Run 'gh repo create $nameLowercase --private' "
+  echo "3) Run 'git remote add origin git@github.com:icodeyou/$nameLowercase.git' "
+  echo "4) Run 'git 'git push -u origin master' "
+
+  echo ""
+  echo "If you have this message : 'To authenticate, please run gh auth login.' ➡️ Follow steps below :"
+  echo "1) Run 'gh auth login' "
+  echo "2) Run 'gh repo create $nameLowercase --private' "
+  echo "3) Run 'git remote add origin git@github.com:icodeyou/$nameLowercase.git' "
+  echo "4) Run 'git 'git push -u origin master' "
+
+  echo ""
+  echo ""
+  echo "🎉 Project uploaded"
+  echo ""
+  echo ""
+  echo "The project has been uploaded to : https://github.com/icodeyou/$nameLowercase.git"
+}
+
 # Git push for snowball projects
-if [[ $genType == "snowball" ]] 
-  then
-    echo "Do you want to push the repo to Github ? Press enter to confirm, type NO otherwise :"
-    read githubAnswer
-    if [[ $githubAnswer != 'NO' ]]; then 
-      gh repo create $nameLowercase --private
-      git remote add origin https://github.com/icodeyou/$nameLowercase.git
-      echo "New remote URLs :"
-      git remote -v
-      git push -u origin master
-
-      echo ""
-      echo "If you have this message : 'command not found: gh' ➡️ Follow steps below :"
-      echo "1) Run 'brew install gh'"
-      echo "2) Run 'gh repo create $nameLowercase --private' "
-      echo "3) Run 'git remote add origin git@github.com:icodeyou/$nameLowercase.git' "
-      echo "4) Run 'git 'git push -u origin master' "
-
-      echo ""
-      echo "If you have this message : 'To authenticate, please run gh auth login.' ➡️ Follow steps below :"
-      echo "1) Run 'gh auth login' "
-      echo "2) Run 'gh repo create $nameLowercase --private' "
-      echo "3) Run 'git remote add origin git@github.com:icodeyou/$nameLowercase.git' "
-      echo "4) Run 'git 'git push -u origin master' "
-
-      echo ""
-      echo ""
-      echo "🎉 Project uploaded"
-      echo ""
-      echo ""
-      echo "The project has been uploaded to : https://github.com/icodeyou/$nameLowercase.git"
-    fi
+if [[ $genType == "snowball" ]]; then
+  while true; do
+    echo "Do you want to push the repo to Github? (Y/N): "
+    read answer
+    case $answer in
+      [Yy]* ) echo "👍 Creating the remote repository"; createRemoteRepo; break;;
+      [Nn]* ) echo "👎 Skipping remote config"; break;;
+      * ) echo "❌ Invalid input. Please enter Y or N.";;
+    esac
+  done
 fi
 
 # Mason
@@ -378,7 +347,7 @@ runProject() {
   echo ""
   
   # Run flutter in the background
-  flutter run --flavor development --target lib/main_development.dart &
+  flutter run &
   
   # Get the process ID ($!) of the last background process, which is flutter run
   flutter_pid=$!
