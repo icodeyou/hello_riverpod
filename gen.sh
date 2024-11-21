@@ -85,6 +85,7 @@ if [[ $genType == "snowball" ]]
   
   else
     nameLowercase=project$genType
+    nameSnakeCase=project_$genType
     org="com.$nameLowercase"
     bundleId="$org.$nameLowercase"
 fi
@@ -414,4 +415,4 @@ runProject() {
   fi
 }
 
-ru
+runProject
