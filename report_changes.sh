@@ -136,13 +136,7 @@ if [[ -z $REPLY || $REPLY =~ ^[Yy]$ ]]; then
     git commit -m "$commit_message" || exit
     cd "$root_directory" || exit
     git add --all || exit
-    echo "❓ Commit to master branch? (Press 'Y' or 'Enter' to confirm) "
-    read do_master_commit
-    if [[ -z $do_master_commit || $do_master_commit =~ ^[Yy]$ ]]; then
-      gg "$commit_message"
-    else
-      git commit -m "$commit_message" || exit
-    fi
+    it commit -m "$commit_message" || exit
     echo "✅ Successfully committed the changes in local/ and hello_riverpod/"
   fi
 else
