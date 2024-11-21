@@ -30,9 +30,8 @@ class AppRoutes {
               return const KittenScreen();
             },
           ),
-        ]
+        ],
       ),
-      
     ],
   );
 }
