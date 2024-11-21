@@ -43,11 +43,11 @@ if [[ $genType == "snowball" ]]
     # Get name of project
     echo "Enter the name of the project (ex: Kitten Land) : "
     read nameUppercase
-    if [[ $nameUppercase == "" ]]
-      then
+    if [[ $nameUppercase == "" ]] || [[ ! "$nameUppercase" =~ ^[a-zA-Z[:space:]]+$ ]]; then
         echo "The name of your project is invalid. Please start again."
         exit
     fi
+    nameSnakeCase=$(echo "$nameUppercase" | awk '{gsub(/[[:space:]]+/, "_"); print tolower($0)}')
     nameLowercase=$(echo "$nameUppercase" | awk '{print tolower($0)}' | tr -d ' ')
 
     # Check if SNOWBALLS folder exists in this path
@@ -55,8 +55,8 @@ if [[ $genType == "snowball" ]]
       mkdir SNOWBALLS
       else 
         # Check if project already exists in SNOWBALLS/
-        if [ -d "SNOWBALLS/$nameLowercase" ]; then
-          echo "$nameLowercase does exist in SNOWBALLS/"
+        if [ -d "SNOWBALLS/$nameSnakeCase" ]; then
+          echo "$nameSnakeCase does exist in SNOWBALLS/"
           echo "Delete the folder or choose another name for your project."
           echo ""
           exit
@@ -72,6 +72,7 @@ if [[ $genType == "snowball" ]]
     bundleId="$org.$nameLowercase"
     echo ""
     echo "✨ ✨ ✨ ✨ ✨"
+    echo "The name of the Flutter app will be : $nameSnakeCase"
     echo "The Bundle ID of the project will be : $bundleId"
     echo "Are you okay with that ? Press enter to confirm, type NO otherwise :"
     read bundleIdAnswer
@@ -131,19 +132,19 @@ fi
 
 echo "📂 To $PWD"
 echo ""
-echo "🔥 Creating project '$nameLowercase' with bundle ID '$bundleId'"
+echo "🔥 Creating project '$nameSnakeCase' with bundle ID '$bundleId'"
 echo ""
-flutter create $nameLowercase --platforms=ios,android --org $org --empty
+flutter create $nameSnakeCase --platforms=ios,android --org $org --empty
 
 # Navigate inside new project
 echo ""
 case "$genType" in
 "local")
     echo "Move app to LOCAL/"
-    mv $nameLowercase ../ # Move app to hello_riverpod
+    mv $nameSnakeCase ../ # Move app to hello_riverpod
     cd ..
     rm -rf LOCAL/ # Delete empty LOCAL
-    mv $nameLowercase LOCAL # Rename app to LOCAL
+    mv $nameSnakeCase LOCAL # Rename app to LOCAL
     echo ""
     echo "Navigate inside new project"
     echo "📂 From $PWD"
@@ -153,15 +154,15 @@ case "$genType" in
 "snowball")
     echo "Navigate inside new project"
     echo "📂 From $PWD"
-    cd $nameLowercase
+    cd $nameSnakeCase
     echo "📂 To $PWD"
     ;;
 "master")
     echo "Move app to MASTERBRANCH/"
-    mv $nameLowercase ../ # Move app to hello_riverpod
+    mv $nameSnakeCase ../ # Move app to hello_riverpod
     cd ..
     rm -rf MASTERBRANCH/ # Delete empty MASTERBRANCH
-    mv $nameLowercase MASTERBRANCH # Rename app to MASTERBRANCH
+    mv $nameSnakeCase MASTERBRANCH # Rename app to MASTERBRANCH
     echo ""
     echo "Navigate inside new project"
     echo "📂 From $PWD"
@@ -170,10 +171,10 @@ case "$genType" in
     ;;
 "mason")
     echo "Move app to MASON/"
-    mv $nameLowercase ../ # Move app to hello_riverpod
+    mv $nameSnakeCase ../ # Move app to hello_riverpod
     cd ..
     rm -rf MASON/ # Delete empty MASON
-    mv $nameLowercase MASON # Rename app to MASON
+    mv $nameSnakeCase MASON # Rename app to MASON
     echo ""
     echo "Navigate inside new project"
     echo "📂 From $PWD"
@@ -191,14 +192,14 @@ projectPath=$PWD
 # Create Git and commit
 echo ""
 echo ""
-echo "😼 Creating Git Repository for project $nameLowercase"
+echo "😼 Creating Git Repository for project $nameSnakeCase"
 git init
 git add --all
 git commit -m "First commit 🦋"
 
 createRemoteRepo() {
-  gh repo create $nameLowercase --private
-  git remote add origin https://github.com/icodeyou/$nameLowercase.git
+  gh repo create $nameSnakeCase --private
+  git remote add origin https://github.com/icodeyou/$nameSnakeCase.git
   echo "New remote URLs :"
   git remote -v
   git push -u origin master
@@ -206,15 +207,15 @@ createRemoteRepo() {
   echo ""
   echo "If you have this message : 'command not found: gh' ➡️ Follow steps below :"
   echo "1) Run 'brew install gh'"
-  echo "2) Run 'gh repo create $nameLowercase --private' "
-  echo "3) Run 'git remote add origin git@github.com:icodeyou/$nameLowercase.git' "
+  echo "2) Run 'gh repo create $nameSnakeCase --private' "
+  echo "3) Run 'git remote add origin git@github.com:icodeyou/$nameSnakeCase.git' "
   echo "4) Run 'git 'git push -u origin master' "
 
   echo ""
   echo "If you have this message : 'To authenticate, please run gh auth login.' ➡️ Follow steps below :"
   echo "1) Run 'gh auth login' "
-  echo "2) Run 'gh repo create $nameLowercase --private' "
-  echo "3) Run 'git remote add origin git@github.com:icodeyou/$nameLowercase.git' "
+  echo "2) Run 'gh repo create $nameSnakeCase --private' "
+  echo "3) Run 'git remote add origin git@github.com:icodeyou/$nameSnakeCase.git' "
   echo "4) Run 'git 'git push -u origin master' "
 
   echo ""
@@ -222,7 +223,7 @@ createRemoteRepo() {
   echo "🎉 Project uploaded"
   echo ""
   echo ""
-  echo "The project has been uploaded to : https://github.com/icodeyou/$nameLowercase.git"
+  echo "The project has been uploaded to : https://github.com/icodeyou/$nameSnakeCase.git"
 }
 
 # Git push for snowball projects
@@ -276,7 +277,7 @@ esac
 
 echo ""
 echo "🔥 Mason make"
-mason make hello_riverpod $masonNavbarArgument --on-conflict overwrite -o ../ --projectName $nameLowercase
+mason make hello_riverpod $masonNavbarArgument --on-conflict overwrite -o ../ --projectName $nameSnakeCase
 
 echo ""
 echo "Navigate back to app"
@@ -327,7 +328,7 @@ if [[ $genType == "snowball" ]]
       git push
       echo ""
       echo ""
-      echo "The project has been uploaded to : https://github.com/icodeyou/$nameLowercase.git"
+      echo "The project has been uploaded to : https://github.com/icodeyou/$nameSnakeCase.git"
     fi
 fi
 
@@ -392,4 +393,4 @@ runProject() {
   fi
 }
 
-runProject
+ru
