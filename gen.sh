@@ -33,8 +33,8 @@ if [[ $genType != "snowball" ]] && [[ $genType != "mason" ]] && [[ $genType != "
 fi
 
 echo ""
-echo "Prerequisites : Make sure that following CLI are installed :"
-echo "flutter, mason, gh"
+echo "👀 PREREQUISITES : Make sure that following CLI are installed :"
+echo "flutter, mason, gh, fvm"
 echo ""
 
 if [[ $genType == "snowball" ]]
@@ -197,7 +197,31 @@ git init
 git add --all
 git commit -m "First commit 🦋"
 
-createRemoteRepo() {
+# Git push for snowball projects
+if [[ $genType == "snowball" ]]; then
+  while true; do
+    echo "Do you want to push the repo to Github? (Y/N): "
+    read answer
+    case $answer in
+      [Yy]* ) 
+        echo "👍 Creating the remote repository"
+        pushToRemote=true
+        break
+        ;;
+      [Nn]* ) 
+        echo "👎 Skipping remote config"
+        pushToRemote=false
+        break
+        ;;
+      * ) 
+        echo "❌ Invalid input. Please enter Y or N.";;
+    esac
+  done
+fi
+
+if [[ $pushToRemote == true ]]; then
+  echo "OK"
+  exit
   gh repo create $nameSnakeCase --private
   git remote add origin https://github.com/icodeyou/$nameSnakeCase.git
   echo "New remote URLs :"
@@ -224,19 +248,6 @@ createRemoteRepo() {
   echo ""
   echo ""
   echo "The project has been uploaded to : https://github.com/icodeyou/$nameSnakeCase.git"
-}
-
-# Git push for snowball projects
-if [[ $genType == "snowball" ]]; then
-  while true; do
-    echo "Do you want to push the repo to Github? (Y/N): "
-    read answer
-    case $answer in
-      [Yy]* ) echo "👍 Creating the remote repository"; createRemoteRepo; break;;
-      [Nn]* ) echo "👎 Skipping remote config"; break;;
-      * ) echo "❌ Invalid input. Please enter Y or N.";;
-    esac
-  done
 fi
 
 # Mason
@@ -307,7 +318,11 @@ echo "ℹ️ Running build_runner"
 dart run build_runner build --delete-conflicting-outputs
 
 echo ""
-echo "ℹ️ Running Slang build"
+echo "ℹ️ Generate Flutter Icons"
+dart run flutter_launcher_icons
+
+echo ""
+echo "ℹ️ Generate Slang Translations"
 dart run slang
 
 echo ""
@@ -317,13 +332,19 @@ echo "🔥 Mason finished"
 echo ""
 echo ""
 git add --all 
-git commit -m "Mason template ✨"
+git commit -m "✨ Mason template"
 echo "🎉 Commit Mason"
+
+# Set up FVM and commit
+fvm use stable --force
+git add --all 
+git commit -m "✨ FVM configuration files"
+echo "✅ Commit FVM"
 
 # Git push
 if [[ $genType == "snowball" ]]
   then
-    if [[ $githubAnswer != 'NO' ]]; then 
+    if [[ $pushToRemote == true ]]; then 
       echo "🎯 LAST STEP : PUSH"
       git push
       echo ""
@@ -372,7 +393,7 @@ runProject() {
   
   if [[ $commitAnswer == '' ]]; then
     git add --all 
-    git commit -m "clean: upgrade project files after first run ✨"
+    git commit -m "✨ clean: upgrade project files after first run"
   fi
 
   echo ""
