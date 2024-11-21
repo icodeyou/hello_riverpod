@@ -319,10 +319,6 @@ echo "ℹ️ Running build_runner"
 dart run build_runner build --delete-conflicting-outputs
 
 echo ""
-echo "ℹ️ Generate Flutter Icons"
-dart run flutter_launcher_icons
-
-echo ""
 echo "ℹ️ Generate Slang Translations"
 dart run slang
 
@@ -331,16 +327,25 @@ echo "🔥 Mason finished"
 
 # Git commit
 echo ""
-echo ""
 git add --all 
 git commit -m "✨ Mason template"
 echo "🎉 Commit Mason"
 
 # Set up FVM and commit
+echo ""
+echo "ℹ️ Generate FVM configuration files"
 fvm use stable --force
 git add --all 
 git commit -m "✨ FVM configuration files"
 echo "✅ Commit FVM"
+
+# Generate icons and commit
+echo ""
+echo "ℹ️ Generate Flutter Icons"
+dart run flutter_launcher_icons
+git add --all 
+git commit -m "✨ Flutter icons"
+echo "✅ Commit icons"
 
 # Git push
 if [[ $genType == "snowball" ]]
