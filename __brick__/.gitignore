@@ -56,3 +56,6 @@ app.*.map.json
 
 # Terminals Manager
 .vscode/terminals.json
+
+# FVM Version Cache
+.fvm/
