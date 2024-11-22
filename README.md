@@ -13,12 +13,6 @@ Installed version of [Mason](https://pub.dev/packages/mason)
 Installed version of [Very Good CLI](https://github.com/VeryGoodOpenSource/very_good_cli)
 ✅ hello_riverpod tested with version 0.9.1
 
-## Why are we using Very Good CLI ?
-
-`Very Good Core` provides all the configuration we need for a new project with several flavors. This has become a standard for many developers, even for those using Riverpod. The problem is that 'very_good create' generates projects with an architecture based on BLoC.
-
-Thanks to `hello_riverpod`, you now have a way to generate a 'Very Good project', and clean it in a way that makes it ready to use Riverpod instead of BLoC.
-
 ## Get Started
 
 All you need to do is [this script](https://github.com/icodeyou/hello_riverpod/blob/master/gen.sh).
@@ -30,3 +24,26 @@ Your projects will be added in a folder named `SNOWBALL/`
 Feel free to create an issue if you have any question.
 
 Cheers ✨
+
+## Architecture
+
+This project uses Riverpod for state management and Clean Architecture.
+
+### Riverpod
+
+We chose [Riverpod](https://riverpod.dev/) as a solution for State Management.
+
+Here is a diagram that shows how providers and states are organized in the project :
+
+![App Architecture Diagram](assets/readme/architecture_riverpod.png)
+
+### Clean Architecture
+
+We rely as much as possible on the Clean Architecture.
+It is important to distinct the following layers in the code :
+
+- Entities
+- Database provider
+- Repository
+- Business logic
+- UI
