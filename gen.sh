@@ -289,7 +289,7 @@ esac
 
 echo ""
 echo "🔥 Mason make"
-mason make hello_riverpod $masonNavbarArgument --on-conflict overwrite -o ../ --projectName $nameSnakeCase
+mason make hello_riverpod --org $org $masonNavbarArgument --on-conflict overwrite -o ../ --projectName $nameSnakeCase
 
 echo ""
 echo "Navigate back to app"

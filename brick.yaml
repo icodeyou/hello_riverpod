@@ -16,3 +16,7 @@ vars:
     default: true
     description: Whether we display the navigation bar
     prompt: Do you want a bottom navigation bar?
+  org:
+    type: string
+    description: Organization name
+    prompt: What is the name of the organization ?
