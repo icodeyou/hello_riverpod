@@ -136,7 +136,7 @@ if [[ -z $REPLY || $REPLY =~ ^[Yy]$ ]]; then
     git commit -m "$commit_message" || exit
     cd "$root_directory" || exit
     git add --all || exit
-    it commit -m "$commit_message" || exit
+    git commit -m "$commit_message" || exit
     echo "✅ Successfully committed the changes in local/ and hello_riverpod/"
   fi
 else
