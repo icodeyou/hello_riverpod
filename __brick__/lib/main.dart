@@ -2,8 +2,8 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
-import 'package:project_local/app/startup/views/app_startup_scope.dart';
-import 'package:project_local/app/utils/log.dart';
+import 'package:{{projectName}}/app/startup/views/app_startup_scope.dart';
+import 'package:{{projectName}}/app/utils/log.dart';
 
 void main() {
   runZonedGuarded(
