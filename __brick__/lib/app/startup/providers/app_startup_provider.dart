@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:{{projectName}}/app/init/shared_preferences/shared_preferences_provider.dart';
-import 'package:{{projectName}}/app/utils/log.dart';
+import 'package:project_local/app/init/shared_preferences/shared_preferences_provider.dart';
+import 'package:project_local/app/utils/log.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'app_startup_provider.g.dart';
@@ -13,7 +13,7 @@ Future<void> appStartup(Ref ref) async {
   await _initProviders(ref);
 }
 
-/// Configure the app during SplashScreen, before initialization of widgets
+/// Asynchronous initialization of the app
 Future<void> _initApp() async {
   FlutterError.onError = (details) {
     logger.e(details.exceptionAsString(), stackTrace: details.stack);

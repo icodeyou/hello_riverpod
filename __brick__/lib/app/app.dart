@@ -1,7 +1,8 @@
 import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/material.dart';
-import 'package:{{projectName}}/app/i18n/translations.g.dart';
-import 'package:{{projectName}}/app/navigation/app_routes.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
+import 'package:project_local/app/i18n/translations.g.dart';
+import 'package:project_local/app/navigation/app_routes.dart';
 import 'package:snowflake_flutter_theme/snowflake_flutter_theme.dart';
 
 /// All the colors that are specific to the application in light mode.
@@ -31,6 +32,7 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    FlutterNativeSplash.remove();
     return TranslationProvider(
       child: MaterialApp.router(
         themeMode: ThemeMode.light,

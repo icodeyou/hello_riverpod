@@ -1,4 +1,4 @@
-name: "{{projectName}}"
+name: "project_local"
 description: A beautiful project created by hello_riverpod
 version: 0.1.0+1
 
@@ -12,6 +12,7 @@ dependencies:
   bot_toast: ^4.1.3 # necessary for Snowflake
   flutter:
     sdk: flutter
+  flutter_native_splash: ^2.4.3
   flutter_riverpod: ^2.6.1
   freezed_annotation: ^2.4.4
   go_router: ^14.6.1
@@ -45,6 +46,12 @@ flutter_launcher_icons:
   ios: true
   image_path: "icon.jpg"
   min_sdk_android: 21
+
+flutter_native_splash:
+  color: "#ffffff"
+  image: "icon.jpg"
+  android: true
+  ios: true
 
 flutter:
   uses-material-design: true
