@@ -188,8 +188,6 @@ case "$genType" in
     ;;
 esac 
 
-projectPath=$PWD
-
 # Create Git and commit
 echo ""
 echo ""
@@ -365,7 +363,7 @@ echo "✅ ✅ ✅ ✅ ✅ "
 echo "✅ FINISHED ✅"
 echo "✅ ✅ ✅ ✅ ✅ "
 
-echo "The project has been created in : $projectPath"
+echo "The project has been created in : $PWD"
 
 # Method to run the project
 runProject() {
