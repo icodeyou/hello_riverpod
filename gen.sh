@@ -219,8 +219,6 @@ if [[ $genType == "snowball" ]]; then
 fi
 
 if [[ $pushToRemote == true ]]; then
-  echo "OK"
-  exit
   gh repo create $nameSnakeCase --private
   git remote add origin https://github.com/icodeyou/$nameSnakeCase.git
   echo "New remote URLs :"
