@@ -5,3 +5,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 extension RefExtensions on Ref {
   SharedPreferences get prefs => read(sharedPreferencesProvider).requireValue;
 }
+
+extension WidgetRefExtensions on WidgetRef {
+  SharedPreferences get prefs => read(sharedPreferencesProvider).requireValue;
+}
