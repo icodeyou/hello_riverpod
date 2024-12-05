@@ -28,7 +28,7 @@ class HomeScreen extends ConsumerWidget {
           children: [
             ElevatedButton(
               onPressed: () {
-                Notif.showToast(context: context, t.home.floatingActionButton);
+                Notif.showToast(context: context, t.home.heyThere);
               },
               child: const Text('Show toast'),
             ),

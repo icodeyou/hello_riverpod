@@ -6,7 +6,7 @@ splash:
   retryButton: Réessayer
 
 home:
-  floatingActionButton: "Salut toi !"
+  heyThere: "Salut toi !"
   popupConfirmed: Confirmation
 
 kitten:

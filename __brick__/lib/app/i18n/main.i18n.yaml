@@ -6,7 +6,7 @@ splash:
   retryButton: Retry
 
 home:
-  floatingActionButton: "Hey there !"
+  heyThere: "Hey there !"
   popupConfirmed: Popup confirmed
 
 kitten:
