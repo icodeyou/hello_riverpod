@@ -1,6 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:{{projectName}}/features/kitten/data/repository/kitten_repository.dart';
-import 'package:{{projectName}}/features/kitten/domain/models/kitten.dart';
+import 'package:project_local/features/kitten/data/repository/kitten_repository.dart';
+import 'package:project_local/features/kitten/domain/models/kitten.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'kitten_service.g.dart';
@@ -17,7 +17,8 @@ class KittenService {
   late final kittenRepository = ref.read(kittenRepositoryProvider);
 
   Future<String> save(Kitten kitten) async {
-    return kittenRepository.saveKitten(kitten);
+    final kittenResponse = await kittenRepository.saveKitten(kitten);
+    return kittenResponse.name;
   }
 
   Future<Kitten> getKitten() async {
