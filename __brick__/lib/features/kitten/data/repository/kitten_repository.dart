@@ -1,5 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:{{projectName}}/features/kitten/data/dto/kitten_dto.dart';
+import 'package:{{{{projectName}}}}/features/kitten/data/dto/kitten_dto.dart';
 import 'package:{{projectName}}/features/kitten/domain/models/kitten.dart';
 import 'package:{{projectName}}/shared/constants/shared_preferences_keys.dart';
 import 'package:{{projectName}}/shared/extensions/ref_extensions.dart';
@@ -19,13 +19,15 @@ class KittenRepository {
 
   Future<Kitten> getKitten() async {
     // Simulate a network request
-    await Future.delayed(const Duration(milliseconds: 500));
+    await Future.delayed(const Duration(milliseconds: 2000));
     final name = ref.prefs.getString(SharedPreferencesKeys.spKittenName) ?? '';
     final kittenDto = KittenDTO(id: 0, name: name);
     return kittenFromDto(kittenDto);
   }
 
   Future<void> saveKitten(Kitten kitten) async {
+    // Simulate a network request
+    await Future.delayed(const Duration(milliseconds: 300));
     await ref.prefs.setString(SharedPreferencesKeys.spKittenName, kitten.name);
   }
 }

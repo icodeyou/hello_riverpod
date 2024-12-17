@@ -16,8 +16,8 @@ class KittenService {
   final Ref ref;
   late final kittenRepository = ref.read(kittenRepositoryProvider);
 
-  void save(Kitten kitten) {
-    kittenRepository.saveKitten(kitten);
+  Future<void> save(Kitten kitten) async {
+    await kittenRepository.saveKitten(kitten);
   }
 
   Future<Kitten> getKitten() async {

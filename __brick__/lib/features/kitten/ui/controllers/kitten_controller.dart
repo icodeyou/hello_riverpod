@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:{{projectName}}/features/kitten/domain/models/kitten.dart';
 import 'package:{{projectName}}/features/kitten/domain/services/kitten_service.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -12,27 +10,12 @@ class KittenController extends _$KittenController {
 
   @override
   Future<String> build() async {
-    return _getKittenName();
-  }
-
-  Future<void> generateLetter() async {
-    state = const AsyncLoading();
-    final random = Random();
-    const letters = 'abcdefghijklmnopqrstuvwxyz';
-    final randomLetter = letters[random.nextInt(letters.length)];
-    var newWord = await _getKittenName();
-    newWord += randomLetter;
-
-    await _saveWord(newWord);
-    state = AsyncData(newWord);
-  }
-
-  Future<String> _getKittenName() async {
     final kitten = await _kittenService.getKitten();
     return kitten.name;
   }
 
-  Future<void> _saveWord(String newWord) async {
-    _kittenService.save(Kitten(id: 0, name: newWord));
+  Future<void> updateKitten(String name) async {
+    await _kittenService.save(Kitten(id: 0, name: name));
+    state = AsyncData(name);
   }
 }

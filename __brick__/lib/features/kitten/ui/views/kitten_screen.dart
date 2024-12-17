@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:{{projectName}}/app/i18n/translations.g.dart';
+import 'package:{{projectName}}/features/kitten/ui/controllers/gen_button_controller.dart';
 import 'package:{{projectName}}/features/kitten/ui/controllers/kitten_controller.dart';
 import 'package:snowflake_flutter_theme/snowflake_flutter_theme.dart';
 
@@ -13,7 +14,8 @@ class KittenScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final $kittenNameState = ref.watch(kittenControllerProvider);
-    final kittenNotifier = ref.read(kittenControllerProvider.notifier);
+    final genStatus = ref.watch(genButtonControllerProvider);
+    final genNotifier = ref.read(genButtonControllerProvider.notifier);
 
     return Scaffold(
       appBar: AppBar(title: Text(t.kitten.appBar)),
@@ -26,7 +28,7 @@ class KittenScreen extends ConsumerWidget {
               bold: true,
             ),
             const SizedBox(height: 20),
-            Image.asset('assets/images/kitten.png'),
+            Image.asset('assets/images/kitten.png', height: 350),
             const SizedBox(height: 20),
             ConstrainedBox(
               constraints: const BoxConstraints(minHeight: 110),
@@ -52,10 +54,15 @@ class KittenScreen extends ConsumerWidget {
               ),
             ),
             const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () => kittenNotifier.generateLetter(),
-              child: const Text('Generate letter'),
-            ),
+            if (genStatus == Status.loading) ...[
+              const SizedBox(height: 40, child: CircularProgressIndicator()),
+              const SizedBox(height: 20),
+            ] else ...[
+              ElevatedButton(
+                onPressed: () => genNotifier.generateLetter(),
+                child: const Text('Generate letter'),
+              ),
+            ],
           ],
         ),
       ),
