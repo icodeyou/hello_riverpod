@@ -15,7 +15,7 @@ class KittenController extends _$KittenController {
   }
 
   Future<void> updateKitten(String name) async {
-    await _kittenService.save(Kitten(id: 0, name: name));
-    state = AsyncData(name);
+    final result = await _kittenService.save(Kitten(id: 0, name: name));
+    state = AsyncData(result);
   }
 }
