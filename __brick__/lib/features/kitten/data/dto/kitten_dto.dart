@@ -1,9 +1,3 @@
-class KittenDTO {
-  KittenDTO({
-    required this.id,
-    required this.name,
-  });
+import 'package:{{projectName}}/features/kitten/domain/models/kitten.dart';
 
-  final int id;
-  final String name;
-}
+typedef KittenDto = Kitten;
