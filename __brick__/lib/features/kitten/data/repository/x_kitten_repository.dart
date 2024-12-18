@@ -41,7 +41,7 @@ class XKittenRepository implements IKittenRepository {
 
   @override
   Future<Kitten> registerNewKitten(Kitten kitten) {
-    return kittenDB.create(kitten);
+    return kittenDB.create(KittenEntityMapper.toEntity(kitten));
   }
 
   @override
@@ -49,6 +49,6 @@ class XKittenRepository implements IKittenRepository {
     // Simulate a network POST request
     await Future.delayed(const Duration(milliseconds: 300));
 
-    return kittenDB.update(kitten);
+    return kittenDB.update(KittenEntityMapper.toEntity(kitten));
   }
 }
