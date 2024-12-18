@@ -1,5 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:project_local/features/kitten/data/repository/kitten_repository.dart';
+import 'package:project_local/features/kitten/data/repository/x_kitten_repository.dart';
 import 'package:project_local/features/kitten/domain/models/kitten.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
