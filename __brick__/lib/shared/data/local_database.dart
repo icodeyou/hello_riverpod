@@ -1,5 +1,6 @@
 import 'package:path/path.dart';
-import 'package:project_local/shared/constants/db_keys.dart';
+import 'package:project_local/features/kitten/data/source/local/db/kitten_db_keys.dart';
+import 'package:project_local/shared/data/db_keys.dart';
 import 'package:sqflite/sqflite.dart';
 
 typedef Entity = Map<String, Object?>;
@@ -17,7 +18,7 @@ class LocalDatabase {
       join(await getDatabasesPath(), DBKeys.databaseName),
       onCreate: (db, _) {
         db.execute(
-          '''CREATE TABLE ${DBKeys.tableName}(${DBKeys.columnId} INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, ${DBKeys.columnBreed} TEXT NOT NULL)''',
+          '''CREATE TABLE ${KittenDbKeys.tableName}(${KittenDbKeys.columnId} INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, ${KittenDbKeys.columnBreed} TEXT NOT NULL)''',
         );
       },
       version: DBKeys.databaseVersion,

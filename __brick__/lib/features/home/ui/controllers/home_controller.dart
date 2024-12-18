@@ -1,4 +1,4 @@
-import 'package:project_local/shared/constants/shared_preferences_keys.dart';
+import 'package:project_local/app/init/shared_preferences/shared_preferences_keys.dart';
 import 'package:project_local/shared/extensions/ref_extensions.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
