@@ -34,18 +34,21 @@ class HomeScreen extends ConsumerWidget {
               '${t.home.welcome} ${name.value}',
               style: const TextStyle(fontSize: 24),
             ),
+            const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
                 homeControllerNotifier.setNewName();
               },
               child: const Text('Change name'),
             ),
+            const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
                 Notif.showToast(context: context, t.home.heyThere);
               },
               child: const Text('Show toast'),
             ),
+            const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
                 Notif.showPopup(

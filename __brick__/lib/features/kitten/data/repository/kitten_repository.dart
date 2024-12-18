@@ -1,38 +1,47 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:project_local/features/kitten/data/dto/kitten_dto.dart';
+import 'package:project_local/features/kitten/data/source/local/db/kitten_database.dart';
+import 'package:project_local/features/kitten/data/source/local/db/kitten_database_provider.dart';
+import 'package:project_local/features/kitten/data/source/local/mapper/kitten_entity_mapper.dart';
 import 'package:project_local/features/kitten/domain/models/kitten.dart';
-import 'package:project_local/shared/constants/shared_preferences_keys.dart';
-import 'package:project_local/shared/extensions/ref_extensions.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'kitten_repository.g.dart';
 
 @riverpod
 KittenRepository kittenRepository(Ref ref) {
-  return KittenRepository(ref);
+  final kittenDB = ref.watch(kittenDatabaseProvider);
+  return KittenRepository(kittenDB);
 }
 
 class KittenRepository {
-  KittenRepository(this.ref);
+  KittenRepository(this.kittenDB);
 
-  final Ref ref;
+  final KittenDatabase kittenDB;
 
-  Future<Kitten> getKitten() async {
+  Future<List<Kitten>> getKittens() async {
     // Simulate a network GET request
     await Future.delayed(const Duration(milliseconds: 2000));
-    final kittenDto = KittenDto(id: 0, name: 'name');
-    return kittenFromDto(kittenDto);
+
+    final kittens = await kittenDB.getAll();
+    return kittens.map((k) => KittenEntityMapper.fromEntity(k)).toList();
+  }
+
+  Future<Kitten?> getKittenById(int id) async {
+    final kitten = await kittenDB.getByID(id);
+    if (kitten == null) {
+      return null;
+    }
+    return KittenEntityMapper.fromEntity(kitten);
+  }
+
+  Future<Kitten> registerNewKitten(Kitten kitten) {
+    return kittenDB.create(kitten);
   }
 
   Future<Kitten> saveKitten(Kitten kitten) async {
     // Simulate a network POST request
     await Future.delayed(const Duration(milliseconds: 300));
 
-    // The POST request would return the new kitten
-    return kitten;
+    return kittenDB.update(kitten);
   }
-}
-
-Kitten kittenFromDto(KittenDto dto) {
-  return Kitten(id: dto.id, name: dto.name);
 }

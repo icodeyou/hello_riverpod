@@ -16,12 +16,18 @@ class KittenService {
   final Ref ref;
   late final kittenRepository = ref.read(kittenRepositoryProvider);
 
-  Future<String> save(Kitten kitten) async {
+  Future<Kitten> save(Kitten kitten) async {
     final kittenResponse = await kittenRepository.saveKitten(kitten);
-    return kittenResponse.name;
+    return kittenResponse;
   }
 
   Future<Kitten> getKitten() async {
-    return kittenRepository.getKitten();
+    var kitten = await kittenRepository.getKittenById(1);
+
+    // Create the kitten if it doesn't exist
+    const newKitten = Kitten(id: 1, breed: 'Birman');
+    kitten ??= await kittenRepository.registerNewKitten(newKitten);
+
+    return kitten;
   }
 }

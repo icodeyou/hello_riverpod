@@ -7,9 +7,8 @@ part 'kitten.g.dart';
 class Kitten with _$Kitten {
   const factory Kitten({
     required int id,
-    required String name,
+    required String breed,
   }) = _Kitten;
 
-  factory Kitten.fromJson(Map<String, Object?> json)
-  => _$KittenFromJson(json);
+  factory Kitten.fromJson(Map<String, Object?> json) => _$KittenFromJson(json);
 }
