@@ -8,7 +8,7 @@
 .idea/
 
 # Output folders
-LOCAL/
-SNOWBALLS/
-MASTERBRANCH/
-MASON/
+/LOCAL/
+/SNOWBALLS/
+/MASTERBRANCH/
+/MASON/
