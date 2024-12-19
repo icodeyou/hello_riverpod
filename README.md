@@ -10,9 +10,6 @@ With hello_riverpod, you can easily create a new Flutter project that follows th
 
 Installed version of [Mason](https://pub.dev/packages/mason)
 
-Installed version of [Very Good CLI](https://github.com/VeryGoodOpenSource/very_good_cli)
-✅ hello_riverpod tested with version 0.9.1
-
 ## Get Started
 
 All you need to do is [this script](https://github.com/icodeyou/hello_riverpod/blob/master/gen.sh).
