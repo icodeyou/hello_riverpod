@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:project_local/app/i18n/translations.g.dart';
-import 'package:project_local/app/navigation/paths.dart';
-import 'package:project_local/features/home/ui/controllers/home_controller.dart';
+import 'package:{{projectName}}/app/i18n/translations.g.dart';
+import 'package:{{projectName}}/app/navigation/paths.dart';
+import 'package:{{projectName}}/features/home/ui/controllers/home_controller.dart';
 import 'package:snowflake_flutter_theme/snowflake_flutter_theme.dart';
 
 /// Widget for Home Screen

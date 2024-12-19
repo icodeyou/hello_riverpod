@@ -1,6 +1,6 @@
 import 'package:path/path.dart';
-import 'package:project_local/features/kitten/data/source/local/db/kitten_db_keys.dart';
-import 'package:project_local/shared/data/db_keys.dart';
+import 'package:{{projectName}}/features/kitten/data/source/local/db/kitten_db_keys.dart';
+import 'package:{{projectName}}/shared/data/db_keys.dart';
 import 'package:sqflite/sqflite.dart';
 
 typedef Entity = Map<String, Object?>;

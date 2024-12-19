@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:project_local/app/utils/log.dart';
+import 'package:{{projectName}}/app/utils/log.dart';
 
 enum MutationState { idle, loading }
 

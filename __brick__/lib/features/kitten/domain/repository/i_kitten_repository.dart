@@ -1,4 +1,4 @@
-import 'package:project_local/features/kitten/domain/models/kitten.dart';
+import 'package:{{projectName}}/features/kitten/domain/models/kitten.dart';
 
 abstract class IKittenRepository {
   Future<List<Kitten>> getKittens();

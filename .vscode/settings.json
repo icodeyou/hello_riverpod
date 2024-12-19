@@ -6,12 +6,13 @@
         "titleBar.inactiveForeground": "#e6c6d3",
     },
     "cSpell.words": [
-        "snowball",
+        "mason",
         "prefs",
-        "salut",
         "projectlocal",
         "projectmaster",
-        "mason",
+        "salut",
+        "snowball",
+        "sqflite"
     ],
     "cSpell.useGitignore": false,
     "dart.analysisExcludedFolders": [

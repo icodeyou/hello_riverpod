@@ -1,4 +1,4 @@
-name: "project_local"
+name: "{{projectName}}"
 description: A beautiful project created by hello_riverpod
 version: 0.1.0+1
 
