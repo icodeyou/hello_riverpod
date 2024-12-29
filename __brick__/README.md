@@ -47,7 +47,7 @@ Here is the tree of branches :
 
 ### Commits and tags
 
-For more details concerning commits and tags, please refer to [GIT_CONVENTIONS.md](https://github.com/hello_riverpod/blob/main/GIT_CONVENTIONS.md)
+For more details concerning commits and tags, please refer to [GIT_CONVENTIONS.md](https://github.com/icodeyou/hello_riverpod/blob/snowball/GIT_CONVENTIONS.md)
 
 ## Technical stack
 
