@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:{{projectName}}/app/i18n/translations.g.dart';
-import 'package:{{projectName}}/features/kitten/ui/controllers/gen_button_controller.dart';
-import 'package:{{projectName}}/features/kitten/ui/controllers/kitten_controller.dart';
+import 'package:project_local/app/i18n/translations.g.dart';
+import 'package:project_local/features/kitten/ui/controllers/gen_button_controller.dart';
+import 'package:project_local/features/kitten/ui/controllers/kitten_controller.dart';
+import 'package:project_local/shared/helpers/mutation/mutation.dart';
 import 'package:snowflake_flutter_theme/snowflake_flutter_theme.dart';
 
 /// Widget for Home Screen
@@ -54,7 +55,7 @@ class KittenScreen extends ConsumerWidget {
               ),
             ),
             const SizedBox(height: 20),
-            if (genStatus == Status.loading) ...[
+            if (genStatus == MutationState.loading) ...[
               const SizedBox(height: 40, child: CircularProgressIndicator()),
               const SizedBox(height: 20),
             ] else ...[
