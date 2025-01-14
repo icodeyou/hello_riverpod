@@ -28,9 +28,12 @@ Run the command : `flutter build apk`
 
 #### iOS
 
-Make sure to prepare your files `ExportOptions.plist` in the iOS folder.
+Everything is documented here :
+<https://docs.flutter.dev/deployment/ios#upload-the-app-bundle-to-app-store-connect>
 
-Then, run the following command :
+Once you have made a first release, you will have access to the file 'ExportOptions.plist'.
+
+For the next builds, you can run the following command :
 
 `flutter build ipa --export-options-plist=ios/ExportOptions.plist`
 

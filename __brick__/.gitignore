@@ -1,5 +1,6 @@
 # Signing credentials
 signing.gradle
+/android/key.properties
 
 # Miscellaneous
 *.class
