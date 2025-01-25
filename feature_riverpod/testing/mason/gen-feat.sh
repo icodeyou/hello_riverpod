@@ -1,0 +1,1 @@
+mason make feature_riverpod --on-conflict overwrite -o ../build/

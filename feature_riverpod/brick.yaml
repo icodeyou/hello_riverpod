@@ -1,0 +1,31 @@
+name: feature_riverpod
+description: Feature folder containing all layers of clean architecture, using Riverpod for dependency injection.
+
+version: 0.1.0+1
+
+environment:
+  mason: ^0.1.0
+
+# Each variable has:
+#  * a type (string, number, boolean, enum, array, or list)
+#  * an optional short description
+#  * an optional default value
+#  * an optional list of default values (array only)
+#  * an optional prompt phrase used when asking for the variable
+#  * a list of values (enums only)
+#  * an optional separator (list only)
+vars:
+  project:
+    type: string
+    description: Project name, as defined in pubspec.yaml
+    prompt: Name of project (as defined in pubspec.yaml) 
+
+  feature:
+    type: string
+    description: Name of feature
+    prompt: What is the name of your feature?
+
+  model:
+    type: string
+    description: Name of model
+    prompt: What is the name of your main model?

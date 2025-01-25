@@ -17,7 +17,8 @@
     ],
     "cSpell.useGitignore": false,
     "dart.analysisExcludedFolders": [
-        "__brick__"
+        "__brick__",
+        "feature_riverpod"
     ],
     "dart.runPubGetOnPubspecChanges": "never",
     "files.exclude": {

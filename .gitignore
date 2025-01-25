@@ -12,6 +12,7 @@
 /SNOWBALLS/
 /MASTERBRANCH/
 /MASON/
+/feature_brick/FEAT_LOCAL/
 
 # Brick
 __brick__/pubspec.lock
