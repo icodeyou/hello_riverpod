@@ -4,7 +4,6 @@ import '../entity/{{model.snakeCase()}}_entity.dart';
 import 'package:{{project}}/shared/data/local_database.dart';
 import 'package:sqflite/sqlite_api.dart';
 
-/// Database class for the {{feature.camelCase()}} table
 class X{{feature.pascalCase()}}Database implements I{{feature.pascalCase()}}Database {
   X{{feature.pascalCase()}}Database(this.localDatabase);
 
