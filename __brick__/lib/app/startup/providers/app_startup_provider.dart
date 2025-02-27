@@ -22,13 +22,16 @@ Future<void> _initApp() async {
 
 Future<void> _initProviders(Ref ref) async {
   // Declare all initial providers
-  final initialProviders = [sharedPreferencesProvider];
+  final futureProviders = [
+    sharedPreferencesProvider,
+    packageInfoProvider,
+  ];
 
   // Invalidate all providers when appStartupProvider is disposed
   ref.onDispose(() {
-    initialProviders.forEach(ref.invalidate);
+    futureProviders.forEach(ref.invalidate);
   });
 
   // Asynchronously wait for initialization of all providers
-  await Future.wait(initialProviders.map((p) => ref.watch(p.future)));
+  await Future.wait(futureProviders.map((p) => ref.watch(p.future)));
 }
