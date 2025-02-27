@@ -306,19 +306,17 @@ echo ""
 flutter pub get
 flutter pub upgrade --major-versions
 
-exit
-
 echo ""
 echo "⚠️ If pubspec.yaml has been modified,"
 echo "⚠️ it might be time to upgrade pubspec.yaml in hello_riverpod"
 
 echo ""
 echo "ℹ️ Running build_runner"
-flutter run build_runner build --delete-conflicting-outputs
+dart run build_runner build --delete-conflicting-outputs
 
 echo ""
 echo "ℹ️ Generate Slang Translations"
-flutter run slang
+dart run slang
 
 echo ""
 echo "🔥 Mason finished"
@@ -340,7 +338,7 @@ echo "✅ Commit FVM"
 # Generate icons and commit
 echo ""
 echo "ℹ️ Generate Flutter Icons"
-flutter run flutter_launcher_icons
+dart run flutter_launcher_icons
 git add --all 
 git commit -m "✨ Flutter icons"
 echo "✅ Commit icons"
