@@ -1,4 +1,3 @@
-import 'package:bot_toast/bot_toast.dart';
 import 'package:go_router/go_router.dart';
 import 'package:{{projectName}}/app/navigation/paths.dart';
 import 'package:{{projectName}}/features/home/ui/views/home_screen.dart';
@@ -8,7 +7,6 @@ import 'package:{{projectName}}/features/kitten/ui/views/kitten_screen.dart';
 class AppRoutes {
   /// GoRouter instantiation, with associated routes
   static final GoRouter router = GoRouter(
-    observers: [BotToastNavigatorObserver()], // init bot_toast (2)
     initialLocation: Paths.home.path,
     routes: [
       GoRoute(

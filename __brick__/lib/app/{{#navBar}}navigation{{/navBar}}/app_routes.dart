@@ -1,4 +1,3 @@
-import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:{{projectName}}/app/navigation/app_bottom_bar_scaffold.dart';
@@ -21,7 +20,6 @@ class AppRoutes {
   static final GoRouter router = GoRouter(
     initialLocation: Paths.home.path,
     navigatorKey: _rootNavigatorKey,
-    observers: [BotToastNavigatorObserver()], // init bot_toast (2)
     routes: [
       GoRoute(
         // If a page is invalid, go_router will suggest to go to '/'
