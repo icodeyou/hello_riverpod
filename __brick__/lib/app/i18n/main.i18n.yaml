@@ -9,6 +9,7 @@ home:
   welcome: Welcome
   heyThere: "Hey there !"
   popupConfirmed: Popup confirmed
+  popupCanceled: Popup canceled
 
 kitten:
   appBar: Kitten Screen

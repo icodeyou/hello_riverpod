@@ -51,35 +51,18 @@ class HomeScreen extends ConsumerWidget {
                   confirmButton: 'OK',
                   cancelButton: 'Cancel',
                 );
-                if (answer && context.mounted) {
+                if (context.mounted) {
                   await Notif.showToast(
                     context: context,
-                    title: t.home.popupConfirmed,
-                    message: t.home.popupConfirmed,
+                    title:
+                        answer ? t.home.popupConfirmed : t.home.popupCanceled,
+                    message:
+                        answer ? t.home.popupConfirmed : t.home.popupCanceled,
+                    type: answer ? ToastType.success : ToastType.error,
                   );
                 }
               },
               child: const Text('Show toast'),
-            ),
-            const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: ()  async {
-                final answer = await Notif.showPopup(
-                  context: context,
-                  title: 'Title',
-                  content: 'Hello',
-                  confirmButton: 'OK',
-                  cancelButton: 'Cancel',
-                );
-                if (answer && context.mounted) {
-                  await Notif.showToast(
-                    context: context,
-                    title: t.home.popupConfirmed,
-                    message: t.home.popupConfirmed,
-                  );
-                }
-              },
-              child: const Text('Show popup'),
             ),
           ],
         ),

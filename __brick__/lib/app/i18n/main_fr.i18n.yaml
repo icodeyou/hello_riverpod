@@ -8,7 +8,8 @@ splash:
 home:
   welcome: Bienvenue
   heyThere: "Salut toi !"
-  popupConfirmed: Confirmation
+  popupConfirmed: "Confirmation de l'action"
+  popupCanceled: "Annulation de l'action"
 
 kitten:
   appBar: L'espace chaton
