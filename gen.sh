@@ -312,11 +312,11 @@ echo "⚠️ it might be time to upgrade pubspec.yaml in hello_riverpod"
 
 echo ""
 echo "ℹ️ Running build_runner"
-dart run build_runner build --delete-conflicting-outputs
+flutter pub run build_runner build --delete-conflicting-outputs
 
 echo ""
 echo "ℹ️ Generate Slang Translations"
-dart run slang
+flutter pub run slang
 
 echo ""
 echo "🔥 Mason finished"
