@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:{{projectName}}/app/init/shared_preferences/shared_preferences_provider.dart';
+import 'package:{{projectName}}/app/init/global_providers/global_providers.dart';
 import 'package:{{projectName}}/app/utils/log.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 

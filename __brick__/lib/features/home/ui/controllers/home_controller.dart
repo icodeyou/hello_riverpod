@@ -1,4 +1,4 @@
-import 'package:{{projectName}}/app/init/shared_preferences/shared_preferences_keys.dart';
+import 'package:{{projectName}}/app/init/global_providers/global_providers.dart';
 import 'package:{{projectName}}/shared/extensions/ref_extensions.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 

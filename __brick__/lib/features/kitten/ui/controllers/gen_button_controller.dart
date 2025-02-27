@@ -1,8 +1,8 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:project_local/features/kitten/ui/controllers/kitten_controller.dart';
-import 'package:project_local/shared/helpers/mutation/mutation.dart';
+import 'package:{{projectName}}/features/kitten/ui/controllers/kitten_controller.dart';
+import 'package:{{projectName}}/shared/helpers/mutation/mutation.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'gen_button_controller.g.dart';
