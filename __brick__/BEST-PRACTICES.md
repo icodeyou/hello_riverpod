@@ -73,31 +73,29 @@ catsAsync.when(
 
 All texts must be used by using the constructors :
 
-- `EwaText.xxs()`
-- `EwaText.xs()`
-- `EwaText.s()`
-- `EwaText.m()`
-- `EwaText.l()`
-- `EwaText.xl()`
+- `AppText.xxs()`
+- `AppText.xs()`
+- `AppText.s()`
+- `AppText.m()`
+- `AppText.l()`
+- `AppText.xl()`
 
 These constructors override the font size. The size cannot be overridden with those constructors.
 
-If you need to override the font size, you can use the default constructor `EwaText()`, but it is preferable to use the sizes that have been defined in the theme, for a consistent design.
+If you need to override the font size, you can use the default constructor `AppText()`, but it is preferable to use the sizes that have been defined in the theme, for a consistent design.
 
 ### Display assets
 
-For each module, there should be a class `XxxxSvgImage` or `XxxxAssetImage` available, so that you can display an your icons.
-
-Example :
+Use one of the following widgets to display assets :
 
 ```dart
-NutritionSvgImage(
-  iconName: 'intake_icon.svg',
+AppAssetSvg(
+  iconName: 'icon.svg',
   width: 50,
 )
 
-NutritionAssetImage(
-  iconName: 'intake_icon.svg',
+AppAsset(
+  iconName: 'icon.png',
   width: 50,
 )
 ```
